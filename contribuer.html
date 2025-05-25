@@ -73,16 +73,12 @@
       background: var(--gray);
     }
 
-    .year-btn {
-      padding: 0.75rem 1rem;
-      cursor: pointer;
-      width: 100%;
-      text-align: left;
-      background: none;
-      border: none;
-      position: relative;
-      font-size: 1rem;
-    }
+   .year-btn {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  height: 2.5rem; /* fixe la hauteur précise */
+  box-sizing: border-box;
+}
 
     .year-btn::before {
       content: "";
@@ -95,7 +91,10 @@
       border-radius: 50%;
       background: var(--gray);
     }
-
+.years-column {
+  max-height: calc(2.5rem * 10); /* 10 lignes = 25rem */
+  overflow-y: auto;
+}
     .year-btn.active {
       font-weight: bold;
       font-size: 1.2rem;
