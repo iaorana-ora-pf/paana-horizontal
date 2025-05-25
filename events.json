@@ -1,1312 +1,362 @@
 [
   {
-    "title": "Ouverture du premier hôpital à Papeete (1846)",
-    "start_year": 1846,
-    "end_year": 1846,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0001",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt001",
+    "title": "Événement santé publique 1",
+    "start": 1857,
+    "end": 1859,
+    "maincat": "Gouvernance en santé publique (stewardship)",
+    "subcat": "Qualité et équité des services de santé",
+    "themes": "Épidémie",
+    "keywords": "formation, vaccin",
+    "description": "Description de l'événement 1, sur le thème de épidémie...",
+    "source": "https://example.com/evenement-1"
   },
   {
-    "title": "Épidémie de grippe espagnole (1918)",
-    "start_year": 1918,
-    "end_year": 1919,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0002",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
+    "id": "evt002",
+    "title": "Événement santé publique 2",
+    "start": 1833,
+    "end": 1836,
+    "maincat": "Engagement communautaire et participation sociale",
+    "subcat": "Planification, financement et gestion multisectorielle",
+    "themes": "Contexte",
+    "keywords": "participation, formation, données",
+    "description": "Description de l'événement 2, sur le thème de contexte...",
+    "source": "https://example.com/evenement-2"
   },
   {
-    "title": "Création du service d’hygiène territoriale (1937)",
-    "start_year": 1937,
-    "end_year": 1937,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0003",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
+    "id": "evt003",
+    "title": "Événement santé publique 3",
+    "start": 2017,
+    "end": 2020,
+    "maincat": "Promotion de la santé",
+    "subcat": "Qualité et équité des services de santé",
+    "themes": "Technologies médicales",
+    "keywords": "vaccin, enfant, formation",
+    "description": "Description de l'événement 3, sur le thème de technologies médicales...",
+    "source": "https://example.com/evenement-3"
   },
   {
-    "title": "Campagne de vaccination contre la polio (1956)",
-    "start_year": 1956,
-    "end_year": 1957,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0004",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
+    "id": "evt004",
+    "title": "Événement santé publique 4",
+    "start": 1846,
+    "end": 1848,
+    "maincat": "Gestion des urgences de santé publique",
+    "subcat": "Surveillance et suivi de la santé publique",
+    "themes": "Vaccination",
+    "keywords": "formation, vaccin, maladie",
+    "description": "Description de l'événement 4, sur le thème de vaccination...",
+    "source": "https://example.com/evenement-4"
   },
   {
-    "title": "Ouverture du CHPF de Taaone (2010)",
-    "start_year": 2010,
-    "end_year": 2010,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0005",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt005",
+    "title": "Événement santé publique 5",
+    "start": 1829,
+    "end": 1830,
+    "maincat": "Engagement communautaire et participation sociale",
+    "subcat": "Protection de la santé",
+    "themes": "Prévention",
+    "keywords": "données, maladie",
+    "description": "Description de l'événement 5, sur le thème de prévention...",
+    "source": "https://example.com/evenement-5"
   },
   {
-    "title": "Ouverture du premier hôpital à Papeete (1847)",
-    "start_year": 1847,
-    "end_year": 1847,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0006",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt006",
+    "title": "Événement santé publique 6",
+    "start": 1936,
+    "end": 1937,
+    "maincat": "Contexte",
+    "subcat": "Gestion des urgences de santé publique",
+    "themes": "Éducation à la santé",
+    "keywords": "participation, données, hôpital",
+    "description": "Description de l'événement 6, sur le thème de éducation à la santé...",
+    "source": "https://example.com/evenement-6"
   },
   {
-    "title": "Épidémie de grippe espagnole (1919)",
-    "start_year": 1919,
-    "end_year": 1920,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0007",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
+    "id": "evt007",
+    "title": "Événement santé publique 7",
+    "start": 1916,
+    "end": 1917,
+    "maincat": "Engagement communautaire et participation sociale",
+    "subcat": "Développement de la main-d’œuvre en santé publique",
+    "themes": "Prévention",
+    "keywords": "urgence, hygiène, formation, alimentation",
+    "description": "Description de l'événement 7, sur le thème de prévention...",
+    "source": "https://example.com/evenement-7"
   },
   {
-    "title": "Création du service d’hygiène territoriale (1938)",
-    "start_year": 1938,
-    "end_year": 1938,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0008",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
+    "id": "evt008",
+    "title": "Événement santé publique 8",
+    "start": 1928,
+    "end": 1929,
+    "maincat": "Qualité et équité des services de santé",
+    "subcat": "Accès aux produits et technologies de santé",
+    "themes": "Éducation à la santé",
+    "keywords": "urgence, enfant, données",
+    "description": "Description de l'événement 8, sur le thème de éducation à la santé...",
+    "source": "https://example.com/evenement-8"
   },
   {
-    "title": "Campagne de vaccination contre la polio (1957)",
-    "start_year": 1957,
-    "end_year": 1958,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0009",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
+    "id": "evt009",
+    "title": "Événement santé publique 9",
+    "start": 1866,
+    "end": 1866,
+    "maincat": "Planification, financement et gestion multisectorielle",
+    "subcat": "Surveillance et suivi de la santé publique",
+    "themes": "Contexte",
+    "keywords": "formation, urgence, analyse, hôpital",
+    "description": "Description de l'événement 9, sur le thème de contexte...",
+    "source": "https://example.com/evenement-9"
   },
   {
-    "title": "Ouverture du CHPF de Taaone (2011)",
-    "start_year": 2011,
-    "end_year": 2011,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0010",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt010",
+    "title": "Événement santé publique 10",
+    "start": 1833,
+    "end": 1836,
+    "maincat": "Planification, financement et gestion multisectorielle",
+    "subcat": "Prévention et détection précoce des maladies",
+    "themes": "Prévention",
+    "keywords": "participation, maladie",
+    "description": "Description de l'événement 10, sur le thème de prévention...",
+    "source": "https://example.com/evenement-10"
   },
   {
-    "title": "Ouverture du premier hôpital à Papeete (1848)",
-    "start_year": 1848,
-    "end_year": 1848,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0011",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt011",
+    "title": "Événement santé publique 11",
+    "start": 1811,
+    "end": 1813,
+    "maincat": "Gouvernance en santé publique (stewardship)",
+    "subcat": "Développement de la main-d’œuvre en santé publique",
+    "themes": "Éducation à la santé",
+    "keywords": "participation, alimentation",
+    "description": "Description de l'événement 11, sur le thème de éducation à la santé...",
+    "source": "https://example.com/evenement-11"
   },
   {
-    "title": "Épidémie de grippe espagnole (1920)",
-    "start_year": 1920,
-    "end_year": 1921,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0012",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
+    "id": "evt012",
+    "title": "Événement santé publique 12",
+    "start": 1993,
+    "end": 1996,
+    "maincat": "Surveillance et suivi de la santé publique",
+    "subcat": "Engagement communautaire et participation sociale",
+    "themes": "Contexte",
+    "keywords": "hygiène, vaccin",
+    "description": "Description de l'événement 12, sur le thème de contexte...",
+    "source": "https://example.com/evenement-12"
   },
   {
-    "title": "Création du service d’hygiène territoriale (1939)",
-    "start_year": 1939,
-    "end_year": 1939,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0013",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
+    "id": "evt013",
+    "title": "Événement santé publique 13",
+    "start": 1929,
+    "end": 1931,
+    "maincat": "Développement de la main-d’œuvre en santé publique",
+    "subcat": "Accès aux produits et technologies de santé",
+    "themes": "Vaccination",
+    "keywords": "analyse, participation",
+    "description": "Description de l'événement 13, sur le thème de vaccination...",
+    "source": "https://example.com/evenement-13"
   },
   {
-    "title": "Campagne de vaccination contre la polio (1958)",
-    "start_year": 1958,
-    "end_year": 1959,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0014",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
+    "id": "evt014",
+    "title": "Événement santé publique 14",
+    "start": 1940,
+    "end": 1941,
+    "maincat": "Protection de la santé",
+    "subcat": "Promotion de la santé",
+    "themes": "Technologies médicales",
+    "keywords": "vaccin, analyse",
+    "description": "Description de l'événement 14, sur le thème de technologies médicales...",
+    "source": "https://example.com/evenement-14"
   },
   {
-    "title": "Ouverture du CHPF de Taaone (2012)",
-    "start_year": 2012,
-    "end_year": 2012,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0015",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt015",
+    "title": "Événement santé publique 15",
+    "start": 1888,
+    "end": 1889,
+    "maincat": "Recherche, évaluation et développement des connaissances",
+    "subcat": "Promotion de la santé",
+    "themes": "Contexte",
+    "keywords": "participation, urgence, hygiène",
+    "description": "Description de l'événement 15, sur le thème de contexte...",
+    "source": "https://example.com/evenement-15"
   },
   {
-    "title": "Ouverture du premier hôpital à Papeete (1849)",
-    "start_year": 1849,
-    "end_year": 1849,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0016",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt016",
+    "title": "Événement santé publique 16",
+    "start": 1938,
+    "end": 1941,
+    "maincat": "Accès aux produits et technologies de santé",
+    "subcat": "Protection de la santé",
+    "themes": "Éducation à la santé",
+    "keywords": "hygiène, urgence",
+    "description": "Description de l'événement 16, sur le thème de éducation à la santé...",
+    "source": "https://example.com/evenement-16"
   },
   {
-    "title": "Épidémie de grippe espagnole (1921)",
-    "start_year": 1921,
-    "end_year": 1922,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0017",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
+    "id": "evt017",
+    "title": "Événement santé publique 17",
+    "start": 2003,
+    "end": 2005,
+    "maincat": "Prévention et détection précoce des maladies",
+    "subcat": "Planification, financement et gestion multisectorielle",
+    "themes": "Nutrition",
+    "keywords": "enfant, hygiène",
+    "description": "Description de l'événement 17, sur le thème de nutrition...",
+    "source": "https://example.com/evenement-17"
   },
   {
-    "title": "Création du service d’hygiène territoriale (1940)",
-    "start_year": 1940,
-    "end_year": 1940,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0018",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
+    "id": "evt018",
+    "title": "Événement santé publique 18",
+    "start": 1857,
+    "end": 1860,
+    "maincat": "Contexte",
+    "subcat": "Protection de la santé",
+    "themes": "Épidémie",
+    "keywords": "hygiène, maladie, hôpital, données",
+    "description": "Description de l'événement 18, sur le thème de épidémie...",
+    "source": "https://example.com/evenement-18"
   },
   {
-    "title": "Campagne de vaccination contre la polio (1959)",
-    "start_year": 1959,
-    "end_year": 1960,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0019",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
+    "id": "evt019",
+    "title": "Événement santé publique 19",
+    "start": 1837,
+    "end": 1837,
+    "maincat": "Promotion de la santé",
+    "subcat": "Recherche, évaluation et développement des connaissances",
+    "themes": "Nutrition",
+    "keywords": "vaccin, hygiène, analyse",
+    "description": "Description de l'événement 19, sur le thème de nutrition...",
+    "source": "https://example.com/evenement-19"
   },
   {
-    "title": "Ouverture du CHPF de Taaone (2013)",
-    "start_year": 2013,
-    "end_year": 2013,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0020",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt020",
+    "title": "Événement santé publique 20",
+    "start": 1999,
+    "end": 2000,
+    "maincat": "Prévention et détection précoce des maladies",
+    "subcat": "Accès aux produits et technologies de santé",
+    "themes": "Épidémie",
+    "keywords": "alimentation, données",
+    "description": "Description de l'événement 20, sur le thème de épidémie...",
+    "source": "https://example.com/evenement-20"
   },
   {
-    "title": "Ouverture du premier hôpital à Papeete (1850)",
-    "start_year": 1850,
-    "end_year": 1850,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0021",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt021",
+    "title": "Événement santé publique 21",
+    "start": 1922,
+    "end": 1924,
+    "maincat": "Protection de la santé",
+    "subcat": "Recherche, évaluation et développement des connaissances",
+    "themes": "Vaccination",
+    "keywords": "maladie, données",
+    "description": "Description de l'événement 21, sur le thème de vaccination...",
+    "source": "https://example.com/evenement-21"
   },
   {
-    "title": "Épidémie de grippe espagnole (1922)",
-    "start_year": 1922,
-    "end_year": 1923,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0022",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
+    "id": "evt022",
+    "title": "Événement santé publique 22",
+    "start": 1953,
+    "end": 1954,
+    "maincat": "Protection de la santé",
+    "subcat": "Surveillance et suivi de la santé publique",
+    "themes": "Éducation à la santé",
+    "keywords": "alimentation, maladie",
+    "description": "Description de l'événement 22, sur le thème de éducation à la santé...",
+    "source": "https://example.com/evenement-22"
   },
   {
-    "title": "Création du service d’hygiène territoriale (1941)",
-    "start_year": 1941,
-    "end_year": 1941,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0023",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
+    "id": "evt023",
+    "title": "Événement santé publique 23",
+    "start": 1850,
+    "end": 1853,
+    "maincat": "Recherche, évaluation et développement des connaissances",
+    "subcat": "Planification, financement et gestion multisectorielle",
+    "themes": "Épidémie",
+    "keywords": "participation, vaccin",
+    "description": "Description de l'événement 23, sur le thème de épidémie...",
+    "source": "https://example.com/evenement-23"
   },
   {
-    "title": "Campagne de vaccination contre la polio (1960)",
-    "start_year": 1960,
-    "end_year": 1961,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0024",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
+    "id": "evt024",
+    "title": "Événement santé publique 24",
+    "start": 1984,
+    "end": 1986,
+    "maincat": "Promotion de la santé",
+    "subcat": "Gestion des urgences de santé publique",
+    "themes": "Technologies médicales",
+    "keywords": "participation, analyse",
+    "description": "Description de l'événement 24, sur le thème de technologies médicales...",
+    "source": "https://example.com/evenement-24"
   },
   {
-    "title": "Ouverture du CHPF de Taaone (2014)",
-    "start_year": 2014,
-    "end_year": 2014,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0025",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt025",
+    "title": "Événement santé publique 25",
+    "start": 1997,
+    "end": 1999,
+    "maincat": "Contexte",
+    "subcat": "Accès aux produits et technologies de santé",
+    "themes": "Contexte",
+    "keywords": "hygiène, participation, formation",
+    "description": "Description de l'événement 25, sur le thème de contexte...",
+    "source": "https://example.com/evenement-25"
   },
   {
-    "title": "Ouverture du premier hôpital à Papeete (1851)",
-    "start_year": 1851,
-    "end_year": 1851,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0026",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt026",
+    "title": "Événement santé publique 26",
+    "start": 1809,
+    "end": 1812,
+    "maincat": "Accès aux produits et technologies de santé",
+    "subcat": "Engagement communautaire et participation sociale",
+    "themes": "Vaccination",
+    "keywords": "alimentation, enfant, hôpital, données",
+    "description": "Description de l'événement 26, sur le thème de vaccination...",
+    "source": "https://example.com/evenement-26"
   },
   {
-    "title": "Épidémie de grippe espagnole (1923)",
-    "start_year": 1923,
-    "end_year": 1924,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0027",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
+    "id": "evt027",
+    "title": "Événement santé publique 27",
+    "start": 1858,
+    "end": 1860,
+    "maincat": "Contexte",
+    "subcat": "Surveillance et suivi de la santé publique",
+    "themes": "Épidémie",
+    "keywords": "formation, hygiène",
+    "description": "Description de l'événement 27, sur le thème de épidémie...",
+    "source": "https://example.com/evenement-27"
   },
   {
-    "title": "Création du service d’hygiène territoriale (1942)",
-    "start_year": 1942,
-    "end_year": 1942,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0028",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
+    "id": "evt028",
+    "title": "Événement santé publique 28",
+    "start": 1971,
+    "end": 1973,
+    "maincat": "Protection de la santé",
+    "subcat": "Contexte",
+    "themes": "Prévention",
+    "keywords": "maladie, données, enfant",
+    "description": "Description de l'événement 28, sur le thème de prévention...",
+    "source": "https://example.com/evenement-28"
   },
   {
-    "title": "Campagne de vaccination contre la polio (1961)",
-    "start_year": 1961,
-    "end_year": 1962,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0029",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
+    "id": "evt029",
+    "title": "Événement santé publique 29",
+    "start": 1999,
+    "end": 2001,
+    "maincat": "Surveillance et suivi de la santé publique",
+    "subcat": "Recherche, évaluation et développement des connaissances",
+    "themes": "Prévention",
+    "keywords": "hôpital, analyse, maladie",
+    "description": "Description de l'événement 29, sur le thème de prévention...",
+    "source": "https://example.com/evenement-29"
   },
   {
-    "title": "Ouverture du CHPF de Taaone (2015)",
-    "start_year": 2015,
-    "end_year": 2015,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0030",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Ouverture du premier hôpital à Papeete (1852)",
-    "start_year": 1852,
-    "end_year": 1852,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0031",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Épidémie de grippe espagnole (1924)",
-    "start_year": 1924,
-    "end_year": 1925,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0032",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
-  },
-  {
-    "title": "Création du service d’hygiène territoriale (1943)",
-    "start_year": 1943,
-    "end_year": 1943,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0033",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
-  },
-  {
-    "title": "Campagne de vaccination contre la polio (1962)",
-    "start_year": 1962,
-    "end_year": 1963,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0034",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
-  },
-  {
-    "title": "Ouverture du CHPF de Taaone (2016)",
-    "start_year": 2016,
-    "end_year": 2016,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0035",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Ouverture du premier hôpital à Papeete (1853)",
-    "start_year": 1853,
-    "end_year": 1853,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0036",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Épidémie de grippe espagnole (1925)",
-    "start_year": 1925,
-    "end_year": 1926,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0037",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
-  },
-  {
-    "title": "Création du service d’hygiène territoriale (1944)",
-    "start_year": 1944,
-    "end_year": 1944,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0038",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
-  },
-  {
-    "title": "Campagne de vaccination contre la polio (1963)",
-    "start_year": 1963,
-    "end_year": 1964,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0039",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
-  },
-  {
-    "title": "Ouverture du CHPF de Taaone (2017)",
-    "start_year": 2017,
-    "end_year": 2017,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0040",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Ouverture du premier hôpital à Papeete (1854)",
-    "start_year": 1854,
-    "end_year": 1854,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0041",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Épidémie de grippe espagnole (1926)",
-    "start_year": 1926,
-    "end_year": 1927,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0042",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
-  },
-  {
-    "title": "Création du service d’hygiène territoriale (1945)",
-    "start_year": 1945,
-    "end_year": 1945,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0043",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
-  },
-  {
-    "title": "Campagne de vaccination contre la polio (1964)",
-    "start_year": 1964,
-    "end_year": 1965,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0044",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
-  },
-  {
-    "title": "Ouverture du CHPF de Taaone (2018)",
-    "start_year": 2018,
-    "end_year": 2018,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0045",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Ouverture du premier hôpital à Papeete (1855)",
-    "start_year": 1855,
-    "end_year": 1855,
-    "themes": [
-      "Établissements",
-      "Colonisation"
-    ],
-    "keywords": [
-      "hôpital",
-      "Papeete",
-      "missionnaires",
-      "médecine coloniale"
-    ],
-    "description": "Fondation du premier hôpital à Papeete par les missionnaires catholiques, marquant le début de l'organisation sanitaire coloniale.",
-    "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
-    "contribution": "Sources historiques – Archives territoriales",
-    "major_event": true,
-    "id": "evt0046",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
-  },
-  {
-    "title": "Épidémie de grippe espagnole (1927)",
-    "start_year": 1927,
-    "end_year": 1928,
-    "themes": [
-      "Grippe",
-      "Population",
-      "Crise sanitaire"
-    ],
-    "keywords": [
-      "grippe espagnole",
-      "épidémie",
-      "1918",
-      "mortalité"
-    ],
-    "description": "Propagation rapide de la grippe espagnole en Polynésie, entraînant une forte surmortalité dans les archipels.",
-    "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
-    "contribution": "Rapport médical colonial – 1919",
-    "major_event": true,
-    "id": "evt0047",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Épidémies"
-    ]
-  },
-  {
-    "title": "Création du service d’hygiène territoriale (1946)",
-    "start_year": 1946,
-    "end_year": 1946,
-    "themes": [
-      "Hygiène",
-      "Administration"
-    ],
-    "keywords": [
-      "hygiène",
-      "colonial",
-      "territoire",
-      "1937"
-    ],
-    "description": "Institutionnalisation d'un service d'hygiène propre à la Polynésie, chargé de contrôler l'état sanitaire des populations.",
-    "source": "https://www.polynesie-francaise.pref.gouv.fr/",
-    "contribution": "Gouvernement de l’époque",
-    "major_event": false,
-    "id": "evt0048",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Institutions"
-    ]
-  },
-  {
-    "title": "Campagne de vaccination contre la polio (1965)",
-    "start_year": 1965,
-    "end_year": 1966,
-    "themes": [
-      "Vaccination",
-      "Poliomyélite"
-    ],
-    "keywords": [
-      "vaccin",
-      "polio",
-      "enfance",
-      "1956"
-    ],
-    "description": "Déploiement d'une vaste campagne de vaccination contre la poliomyélite dans les îles les plus peuplées.",
-    "source": "https://inpes.santepubliquefrance.fr/",
-    "contribution": "OMS – Service de santé territoriale",
-    "major_event": true,
-    "id": "evt0049",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Prévention"
-    ]
-  },
-  {
-    "title": "Ouverture du CHPF de Taaone (2019)",
-    "start_year": 2019,
-    "end_year": 2019,
-    "themes": [
-      "Hôpital",
-      "Modernisation"
-    ],
-    "keywords": [
-      "Taaone",
-      "hôpital",
-      "2010",
-      "CHPF"
-    ],
-    "description": "Inauguration du Centre Hospitalier de Polynésie Française, plus grand établissement de santé du territoire.",
-    "source": "https://www.chpf.pf/",
-    "contribution": "Ministère de la Santé de Polynésie",
-    "major_event": true,
-    "id": "evt0050",
-    "main_categories": [
-      "Santé publique"
-    ],
-    "secondary_categories": [
-      "Infrastructure médicale"
-    ]
+    "id": "evt030",
+    "title": "Événement santé publique 30",
+    "start": 1936,
+    "end": 1937,
+    "maincat": "Qualité et équité des services de santé",
+    "subcat": "Planification, financement et gestion multisectorielle",
+    "themes": "Vaccination",
+    "keywords": "données, maladie, formation",
+    "description": "Description de l'événement 30, sur le thème de vaccination...",
+    "source": "https://example.com/evenement-30"
   }
 ]
