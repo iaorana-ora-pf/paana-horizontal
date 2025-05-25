@@ -1,1 +1,147 @@
-<!-- HTML V2 final à insérer ici (géré dans l'étape suivante) -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frise Santé Publique - Polynésie V2</title>
+  <style>
+    body { margin: 0; font-family: sans-serif; }
+    .timeline-container { display: flex; height: 100vh; }
+    aside, main { overflow-y: auto; padding: 1rem; }
+    .year-column { width: 20%; border-right: 1px solid #ccc; background: #f9f9f9; }
+    .event-list { width: 40%; }
+    .event-details { width: 40%; border-left: 1px solid #ccc; background: #fafafa; }
+    .year-btn { display: block; width: 100%; padding: 0.5rem; background: none; border: none; text-align: left; cursor: pointer; }
+    .year-btn.active { background-color: #cdeaff; font-weight: bold; }
+    .event { padding: 0.5rem; border: 1px solid #ddd; margin-bottom: 0.5rem; border-radius: 4px; cursor: pointer; display: flex; align-items: center; }
+    .event.contextual { background-color: #f2f2f2; color: #666; }
+    .event:hover { background-color: #eaf6ff; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 10px; }
+    .filters label { display: inline-block; margin-right: 10px; font-weight: bold; }
+    .filters .group { margin-bottom: 0.5em; }
+    .keyword { color: blue; cursor: pointer; text-decoration: underline; }
+    .badge { background: orange; color: white; padding: 2px 5px; font-size: 0.7em; border-radius: 3px; margin-left: 0.5em; }
+  </style>
+</head>
+<body>
+  <div class="timeline-container">
+    <aside class="year-column" id="year-column"></aside>
+    <main class="event-list">
+      <div class="filters">
+        <div class="group" id="cat-filters"></div>
+        <div class="group" id="theme-filters"></div>
+        <div class="group" id="keyword-filters"></div>
+      </div>
+      <div id="event-list"></div>
+    </main>
+    <aside class="event-details" id="event-details">Sélectionnez un événement pour voir les détails ici.</aside>
+  </div>
+
+  <script>
+    let eventsData = [], currentYear = null, themeColors = {};
+
+    fetch('events.json')
+      .then(res => res.json())
+      .then(data => {
+        eventsData = data;
+        const allYears = [...new Set(data.flatMap(e => {
+          const r = [];
+          for (let y = e.start_year; y <= e.end_year; y++) r.push(y);
+          return r;
+        }))].sort((a,b)=>a-b);
+
+        const allThemes = [...new Set(data.flatMap(e => e.themes))];
+        const allKeywords = [...new Set(data.flatMap(e => e.keywords))];
+        const allCategories = [...new Set(data.flatMap(e => [...e.main_categories, ...e.secondary_categories]))];
+
+        // Couleurs de thème aléatoires cohérentes
+        allThemes.forEach((theme, i) => {
+          const hue = (i * 47) % 360;
+          themeColors[theme] = `hsl(${hue}, 60%, 50%)`;
+        });
+
+        // Générer UI années
+        const yearCol = document.getElementById('year-column');
+        allYears.forEach(y => {
+          const btn = document.createElement('button');
+          btn.className = 'year-btn';
+          btn.textContent = y;
+          btn.onclick = () => {
+            document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentYear = y;
+            loadEvents();
+          };
+          yearCol.appendChild(btn);
+        });
+
+        // Filtres dynamiques
+        function buildFilters(list, containerId, name) {
+          const ctn = document.getElementById(containerId);
+          list.forEach(item => {
+            const id = `${name}-${item}`.replace(/\s+/g, '-');
+            const box = document.createElement('input');
+            box.type = 'checkbox'; box.value = item; box.id = id;
+            const lbl = document.createElement('label');
+            lbl.htmlFor = id; lbl.textContent = item;
+            ctn.appendChild(box); ctn.appendChild(lbl);
+          });
+        }
+
+        buildFilters(allCategories, 'cat-filters', 'cat');
+        buildFilters(allThemes, 'theme-filters', 'theme');
+        buildFilters(allKeywords, 'keyword-filters', 'kw');
+
+        window.filterByKeyword = function(kw) {
+          document.querySelector(`#kw-${kw.replace(/\s+/g, '-')}`).checked = true;
+          loadEvents();
+        };
+
+        window.loadEvents = function() {
+          const activeCats = [...document.querySelectorAll('#cat-filters input:checked')].map(i => i.value);
+          const activeThemes = [...document.querySelectorAll('#theme-filters input:checked')].map(i => i.value);
+          const activeKeywords = [...document.querySelectorAll('#keyword-filters input:checked')].map(i => i.value);
+
+          const range = [currentYear - 2, currentYear - 1, currentYear, currentYear + 1, currentYear + 2];
+          const filtered = eventsData.filter(e => {
+            const catMatch = activeCats.length === 0 || activeCats.some(c => e.main_categories.includes(c) || e.secondary_categories.includes(c));
+            const themeMatch = activeThemes.length === 0 || activeThemes.some(t => e.themes.includes(t));
+            const kwMatch = activeKeywords.length === 0 || activeKeywords.some(k => e.keywords.includes(k));
+            return catMatch && themeMatch && kwMatch;
+          });
+
+          const list = document.getElementById('event-list');
+          list.innerHTML = '';
+
+          filtered.forEach(e => {
+            const inRange = currentYear >= e.start_year && currentYear <= e.end_year;
+            const contextual = !inRange && range.some(y => y >= e.start_year && y <= e.end_year);
+            if (!inRange && !contextual) return;
+            const div = document.createElement('div');
+            div.className = 'event' + (contextual ? ' contextual' : '');
+            const color = themeColors[e.themes[0]] || '#ccc';
+            const label = e.start_year !== e.end_year ? ` (${e.start_year}–${e.end_year})` : '';
+            const badge = (e.end_year - e.start_year >= 1) ? '<span class="badge">Pluriannuel</span>' : '';
+            div.innerHTML = `<span class="dot" style="background:${color}"></span><div><strong>${e.title}${label}</strong> ${badge}<br><small>${e.themes[0]}</small></div>`;
+            div.onclick = () => showDetails(e);
+            list.appendChild(div);
+          });
+        };
+
+        window.showDetails = function(event) {
+          const detail = document.getElementById('event-details');
+          const color = themeColors[event.themes[0]] || '#000';
+          detail.innerHTML = `
+            <h2>${event.title} (${event.start_year}–${event.end_year})</h2>
+            <p><strong>Catégories :</strong> ${event.main_categories.join(', ')} / ${event.secondary_categories.join(', ')}</p>
+            <p><strong>Thèmes :</strong> ${event.themes.map(t => `<span style='color:${themeColors[t]}'>${t}</span>`).join(', ')}</p>
+            <p><strong>Mots-clés :</strong> ${event.keywords.map(k => `<span class="keyword" onclick="filterByKeyword('${k}')">${k}</span>`).join(', ')}</p>
+            <p>${event.description}</p>
+            <p><a href="${event.source}" target="_blank">Source</a></p>
+            <p><em>${event.contribution}</em></p>
+          `;
+        };
+      });
+  </script>
+</body>
+</html>
