@@ -54,22 +54,40 @@
     }
 
     .years-column {
-  width: 100px;
-  padding-left: 2rem;
-  background: white;
-  border-right: 1px solid #ddd;
-  overflow-y: auto;
-  max-height: calc(2.5rem * 10); /* garde celui-ci, remplace l'ancien */
-  position: relative;
-}
+      width: 100px;
+      padding-left: 2rem;
+      background: white;
+      border-right: 1px solid #ddd;
+      overflow-y: auto;
+      max-height: 30rem; /* ✅ 12 dates visibles */
+      position: relative;
+    }
 
-   .year-btn {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  height: 2.5rem; /* fixe la hauteur précise */
-  box-sizing: border-box;
-  position: relative;
-}
+    .years-column::before {
+      content: "";
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gray);
+    }
+
+    .year-btn {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      height: 2.5rem;
+      box-sizing: border-box;
+      position: relative;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .year-btn:hover {
+      background-color: #f0f0f0;
+    }
 
     .year-btn::before {
       content: "";
@@ -82,10 +100,7 @@
       border-radius: 50%;
       background: var(--gray);
     }
-.years-column {
-  max-height: calc(2.5rem * 10); /* 10 lignes = 25rem */
-  overflow-y: auto;
-}
+
     .year-btn.active {
       font-weight: bold;
       font-size: 1.2rem;
@@ -181,9 +196,9 @@
   <main>
     <div class="timeline-layout">
       <div class="years-container">
-        <button id="scroll-up" aria-label="Remonter">↑</button>
+        <button id="scroll-up" aria-label="Année précédente" title="Année précédente">↑</button>
         <div class="years-column" id="years-column"></div>
-        <button id="scroll-down" aria-label="Descendre">↓</button>
+        <button id="scroll-down" aria-label="Année suivante" title="Année suivante">↓</button>
       </div>
       <div class="events-column">
         <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
@@ -225,7 +240,7 @@
             yearCol.appendChild(btn);
           });
 
-          const yearButtons = document.querySelectorAll(".year-btn");
+          const yearButtons = Array.from(document.querySelectorAll(".year-btn"));
 
           yearButtons.forEach(btn => {
             btn.addEventListener("click", () => {
@@ -284,18 +299,25 @@
             });
           });
 
-          // Scroll vers active year
+          function selectYearByOffset(offset) {
+            const currentIndex = yearButtons.findIndex(btn => btn.classList.contains("active"));
+            const newIndex = currentIndex + offset;
+            if (newIndex >= 0 && newIndex < yearButtons.length) {
+              yearButtons[newIndex].click();
+              yearButtons[newIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+          }
+
           document.getElementById("scroll-up").addEventListener("click", () => {
-            const active = document.querySelector(".year-btn.active");
-            if (active) active.scrollIntoView({ behavior: "smooth", block: "start" });
+            selectYearByOffset(-1);
           });
 
           document.getElementById("scroll-down").addEventListener("click", () => {
-            const active = document.querySelector(".year-btn.active");
-            if (active) active.scrollIntoView({ behavior: "smooth", block: "end" });
+            selectYearByOffset(1);
           });
         });
     });
   </script>
 </body>
 </html>
+
