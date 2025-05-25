@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="fr">
  <head>
   <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contribuer - Paana</title>
-  <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
-  <link href="header-footer.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française"/>
+  <link rel="stylesheet" href="header-footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     body {
       margin: 0;
@@ -22,22 +21,7 @@
       flex-grow: 1;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1.5rem 2rem 2rem 2rem;
-    }
-    h1 {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      color: #007b7f;
-      font-weight: bold;
-      margin-top: 2rem;
-    }
-    p, main ul li {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: #050505;
+      padding: 1.5rem 2rem 2rem;
     }
     .timeline-layout {
       display: flex;
@@ -66,8 +50,8 @@
     }
     .year {
       padding: 0.75rem 1rem;
-      position: relative;
       cursor: pointer;
+      position: relative;
     }
     .year::before {
       content: "";
@@ -180,14 +164,10 @@
       const ficheContent = document.getElementById("fiche-content");
       const messageAttente = document.getElementById("message-attente");
 
-      let eventsData = [];
-
       fetch("events.json")
         .then(res => res.json())
         .then(data => {
-          eventsData = data;
-
-          const allYears = [...new Set(eventsData.flatMap(e =>
+          const allYears = [...new Set(data.flatMap(e =>
             Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
           ))].sort((a, b) => a - b);
 
@@ -210,20 +190,22 @@
               let anyVisible = false;
               eventList.innerHTML = "";
 
-              eventsData.forEach(e => {
+              const relevantEvents = data
+                .filter(e => selectedYear >= e.start - 2 && selectedYear <= e.end + 2)
+                .sort((a, b) => a.start - b.start);
+
+              relevantEvents.forEach(e => {
                 const inRange = selectedYear >= e.start && selectedYear <= e.end;
-                const nearby = !inRange && (
-                  selectedYear >= e.start - 2 && selectedYear <= e.end + 2
-                );
-                if (!inRange && !nearby) return;
+                const nearby = !inRange;
 
                 const ev = document.createElement("div");
                 ev.className = "event" + (nearby ? " nearby" : "");
                 ev.innerHTML = `
-                  ${inRange ? '' : `<div class="event-date">${e.start}</div>`}
+                  ${nearby ? `<div class="event-date">${e.start}</div>` : ""}
                   <div>
-                    <strong>${e.title}${e.start != e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</strong>
-                    ${e.start != e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
+                    <strong>${e.title}</strong>
+                    ${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
+                    ${e.start !== e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
                   </div>
                 `;
                 ev.onclick = () => {
