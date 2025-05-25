@@ -171,12 +171,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then(data => {
       eventsData = data;
 
-      // Générer toutes les années utilisées dans les événements
       const allYears = [...new Set(eventsData.flatMap(e =>
         Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
       ))].sort((a, b) => a - b);
 
-      // Créer les boutons des années
       allYears.forEach(y => {
         const yEl = document.createElement("div");
         yEl.className = "year";
@@ -195,7 +193,6 @@ document.addEventListener("DOMContentLoaded", function () {
           const selectedYear = parseInt(yearEl.dataset.year);
           eventList.innerHTML = "";
 
-          // Trier tous les événements par leur date de début
           const sortedEvents = [...eventsData].sort((a, b) => a.start - b.start);
 
           const prev = [], current = [], next = [];
@@ -210,33 +207,40 @@ document.addEventListener("DOMContentLoaded", function () {
             else if (isAfter) next.push(e);
           });
 
-          const renderEvent = (e, nearby) => {
-            const div = document.createElement("div");
-            div.className = "event" + (nearby ? " nearby" : "");
-            div.innerHTML = `
-              ${nearby ? `<div class="event-date">${e.start}</div>` : ""}
-              <div>
-                <span>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</span>
-                ${e.start !== e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
-              </div>
-            `;
-            div.onclick = () => {
-              ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
-              ficheContent.innerHTML = `
-                <p><strong>Catégories :</strong> ${e.maincat || ""} / ${e.subcat || ""}</p>
-                <p><strong>Thèmes :</strong> ${e.themes || ""}</p>
-                <p><strong>Mots-clés :</strong> ${e.keywords || ""}</p>
-                <p>${e.description || ""}</p>
-                ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
+          const renderSection = (title, events, nearby = false) => {
+            if (events.length === 0) return;
+
+            const section = document.createElement("div");
+            section.innerHTML = `<h4 style="margin-bottom: 1rem;">${title}</h4>`;
+            eventList.appendChild(section);
+
+            events.forEach(e => {
+              const div = document.createElement("div");
+              div.className = "event" + (nearby ? " nearby" : "");
+              div.innerHTML = `
+                ${nearby ? `<div class="event-date">${e.start}</div>` : ""}
+                <div>
+                  <span>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</span>
+                  ${e.start !== e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
+                </div>
               `;
-            };
-            eventList.appendChild(div);
+              div.onclick = () => {
+                ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
+                ficheContent.innerHTML = `
+                  <p><strong>Catégories :</strong> ${e.maincat || ""} / ${e.subcat || ""}</p>
+                  <p><strong>Thèmes :</strong> ${e.themes || ""}</p>
+                  <p><strong>Mots-clés :</strong> ${e.keywords || ""}</p>
+                  <p>${e.description || ""}</p>
+                  ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
+                `;
+              };
+              section.appendChild(div);
+            });
           };
 
-          // Ordre visuel : avant (gris) > pendant (noir) > après (gris)
-          prev.forEach(e => renderEvent(e, true));
-          current.forEach(e => renderEvent(e, false));
-          next.forEach(e => renderEvent(e, true));
+          renderSection("Événements voisins précédents", prev, true);
+          renderSection(`Événements de ${selectedYear}`, current, false);
+          renderSection("Événements voisins suivants", next, true);
 
           messageAttente.style.display = (prev.length + current.length + next.length > 0) ? "none" : "block";
         });
