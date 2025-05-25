@@ -222,8 +222,10 @@
               eventList.innerHTML = "";
 
               const range = [selectedYear - 2, selectedYear - 1, selectedYear, selectedYear + 1, selectedYear + 2];
-
-              eventsData.forEach(e => {
+              const sortedEvents = eventsData
+              .filter(e => selectedYear >= e.start - 2 && selectedYear <= e.end + 2)
+              .sort((a, b) => a.start - b.start);
+              sortedEvents.forEach(e => {
                 const inRange = selectedYear >= e.start && selectedYear <= e.end;
                 const nearby = !inRange && range.some(y => y >= e.start && y <= e.end);
                 if (!inRange && !nearby) return;
