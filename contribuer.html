@@ -197,12 +197,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const prev = [], current = [], next = [];
 
-sortedEvents.forEach(e => {
+eventsData.forEach(e => {
   if (e.start === selectedYear) {
     current.push(e);
-  } else if (e.end >= selectedYear - 2 && e.start < selectedYear) {
+  } else if (e.end >= selectedYear - 2 && e.end < selectedYear) {
     prev.push(e);
-  } else if (e.start <= selectedYear + 2 && e.start > selectedYear) {
+  } else if (e.start > selectedYear && e.start <= selectedYear + 2) {
     next.push(e);
   }
 });
