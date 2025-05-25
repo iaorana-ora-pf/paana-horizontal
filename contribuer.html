@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contribuer - Paana</title>
-  <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
-  <link href="header-footer.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
+  <link rel="stylesheet" href="header-footer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       margin: 0;
@@ -151,8 +151,8 @@
       }
     }
   </style>
- </head>
- <body>
+</head>
+<body>
   <header>
     <div class="logo">
       <span class="brand">Paana</span>
@@ -191,15 +191,13 @@
       const ficheContent = document.getElementById("fiche-content");
       const messageAttente = document.getElementById("message-attente");
 
-      let eventsData = [];
-
       fetch("events.json")
         .then(res => res.json())
         .then(data => {
-          eventsData = data;
+          const eventsData = data;
 
           const allYears = [...new Set(eventsData.flatMap(e =>
-            Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
+            Array.from({ length: e.end - e.start + 1 }, (_, i) => Number(e.start) + i)
           ))].sort((a, b) => a - b);
 
           allYears.forEach(y => {
@@ -207,6 +205,8 @@
             yEl.className = "year";
             yEl.dataset.year = y;
             yEl.textContent = y;
+            yEl.setAttribute("role", "button");
+            yEl.setAttribute("tabindex", "0");
             yearCol.appendChild(yEl);
           });
 
@@ -231,7 +231,7 @@
                 const ev = document.createElement("div");
                 ev.className = "event" + (nearby ? " nearby" : "");
                 ev.innerHTML = `
-                  <div class="event-date">${inRange ? selectedYear : e.start}</div>
+                  <div class="event-date">${inRange ? selectedYear : `<span style="opacity:0.6">${e.start}</span>`}</div>
                   <div>
                     <strong>${e.title}${e.start != e.end ? ` (${e.start}–${e.end})` : ""}</strong>
                     ${e.start != e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
@@ -254,8 +254,13 @@
               messageAttente.style.display = anyVisible ? "none" : "block";
             });
           });
+
+          // Auto-clique sur la première année
+          setTimeout(() => {
+            document.querySelector(".year")?.click();
+          }, 100);
         });
     });
   </script>
- </body>
+</body>
 </html>
