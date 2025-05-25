@@ -55,7 +55,7 @@
     .years-column {
       flex: 0 0 120px; /* ✅ largeur fixe */
       max-height: 25rem;
-      overflow-y: auto;width: 100px;
+      overflow-y: auto;
       padding-left: 2rem;
       background: white;
       border-right: 1px solid #ddd;
@@ -158,7 +158,7 @@
     }
 
     .fiche-column {
-      flex: 0 0 400px;;
+      flex: 0 0 400px;
       background: #fff;
       padding: 1.5rem;
       border-left: 1px solid #ddd;
@@ -199,9 +199,9 @@
   <main>
     <div class="timeline-layout">
       <div class="years-container">
-        <button id="scroll-up" aria-label="Année précédente" title="Année précédente">↑</button>
+        <button id="scroll-up" type="button"aria-label="Année précédente" title="Année précédente">↑</button>
         <div class="years-column" id="years-column"></div>
-        <button id="scroll-down" aria-label="Année suivante" title="Année suivante">↓</button>
+        <button id="scroll-down" type="button" aria-label="Année suivante" title="Année suivante">↓</button>
       </div>
       <div class="events-column">
         <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
