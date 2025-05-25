@@ -231,7 +231,7 @@
                 const ev = document.createElement("div");
                 ev.className = "event" + (nearby ? " nearby" : "");
                 ev.innerHTML = `
-                  <div class="event-date">${selectedYear}</div>
+                  <div class="event-date">${inRange ? selectedYear : e.start}</div>
                   <div>
                     <strong>${e.title}${e.start != e.end ? ` (${e.start}–${e.end})` : ""}</strong>
                     ${e.start != e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
