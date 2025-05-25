@@ -1,54 +1,70 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contribuer - Paana</title>
-  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française"/>
-  <link href="header-footer.css" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
+  <link href="header-footer.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
+    :root {
+      --primary: #007b7f;
+      --background: #fdfdf0;
+      --light: #f9f9f9;
+      --text: #050505;
+      --gray: #ccc;
+      --gray-dark: #555;
+    }
+
     body {
       margin: 0;
       font-family: 'League Spartan', sans-serif;
-      background-color: #fdfdf0;
-      color: #050505;
+      background-color: var(--background);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
+
     main {
       flex-grow: 1;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 1.5rem 2rem 2rem;
+      padding: 1.5rem 2rem;
     }
+
     h1, h2, h4 {
-      color: #007b7f;
+      color: var(--primary);
       font-weight: bold;
     }
+
     h1 { font-size: 1.8rem; margin-bottom: 2rem; }
     h2, h4 { margin-top: 2rem; }
-    p, main ul li {
+
+    p, ul li {
       font-size: 1rem;
       line-height: 1.7;
     }
+
     .timeline-layout {
       display: flex;
       height: 100vh;
       max-width: 95vw;
-      overflow: hidden;
       margin: 0 auto;
+      overflow: hidden;
     }
+
     .years-column {
       width: 100px;
       padding-left: 2rem;
-      background: #fff;
+      background: white;
       border-right: 1px solid #ddd;
       overflow-y: auto;
       max-height: 600px;
       position: relative;
     }
+
     .years-column::before {
       content: "";
       position: absolute;
@@ -56,14 +72,21 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #ccc;
+      background: var(--gray);
     }
-    .year {
+
+    .year-btn {
       padding: 0.75rem 1rem;
       cursor: pointer;
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
       position: relative;
+      font-size: 1rem;
     }
-    .year::before {
+
+    .year-btn::before {
       content: "";
       position: absolute;
       left: -1rem;
@@ -72,42 +95,49 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #ccc;
+      background: var(--gray);
     }
-    .year.active {
+
+    .year-btn.active {
       font-weight: bold;
       font-size: 1.2rem;
-      color: #007b7f;
+      color: var(--primary);
     }
-    .year.active::before {
-      background: #007b7f;
+
+    .year-btn.active::before {
+      background: var(--primary);
       width: 12px;
       height: 12px;
     }
+
     .events-column {
       flex: 3;
-      background: #f9f9f9;
+      background: var(--light);
       overflow-y: auto;
       padding: 1.5rem;
     }
+
     .event {
-      background: #fff;
+      background: white;
       border-radius: 6px;
       margin-bottom: 1rem;
       padding: 1rem;
       display: flex;
       gap: 1rem;
-      border-left: 4px solid #ccc;
+      border-left: 4px solid var(--gray);
     }
+
     .event.nearby {
       opacity: 0.5;
       font-style: italic;
     }
+
     .event-date {
       font-weight: bold;
-      color: #555;
+      color: var(--gray-dark);
       min-width: 70px;
     }
+
     .fiche-column {
       flex: 2;
       background: #fff;
@@ -115,19 +145,22 @@
       border-left: 1px solid #ddd;
       overflow-y: auto;
     }
+
     .fiche-column h3 {
       margin-top: 0;
     }
+
     .fiche-column img {
       width: 100%;
       height: auto;
       border-radius: 6px;
       margin: 1rem 0;
     }
+
     .pluriannuel-badge {
       display: inline-block;
-      background: #007b7f;
-      color: #fff;
+      background-color: var(--primary);
+      color: white;
       font-size: 0.7rem;
       padding: 2px 6px;
       margin-left: 6px;
@@ -153,9 +186,10 @@
   </header>
   <main>
     <div class="timeline-layout">
-      <div class="years-column"></div>
+      <div class="years-column" id="years-column"></div>
       <div class="events-column">
-        <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">
+        <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+        <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666; display:none;">
           Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.
         </div>
         <div id="event-list"></div>
@@ -168,51 +202,53 @@
   </main>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const yearCol = document.querySelector(".years-column");
+      const yearCol = document.getElementById("years-column");
       const eventList = document.getElementById("event-list");
       const ficheTitre = document.getElementById("fiche-titre");
       const ficheContent = document.getElementById("fiche-content");
+      const loader = document.getElementById("loader");
       const messageAttente = document.getElementById("message-attente");
 
       fetch("events.json")
         .then(res => res.json())
         .then(data => {
-          const allYears = [...new Set(data.flatMap(e =>
+          loader.style.display = "none";
+          const years = [...new Set(data.flatMap(e =>
             Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
           ))].sort((a, b) => a - b);
 
-          allYears.forEach(y => {
-            const yEl = document.createElement("div");
-            yEl.className = "year";
-            yEl.dataset.year = y;
-            yEl.textContent = y;
-            yearCol.appendChild(yEl);
+          years.forEach(y => {
+            const btn = document.createElement("button");
+            btn.className = "year-btn";
+            btn.dataset.year = y;
+            btn.textContent = y;
+            yearCol.appendChild(btn);
           });
 
-          document.querySelectorAll(".year").forEach(yearEl => {
-            yearEl.addEventListener("click", () => {
-              document.querySelectorAll(".year").forEach(e => e.classList.remove("active"));
-              yearEl.classList.add("active");
+          document.querySelectorAll(".year-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+              document.querySelectorAll(".year-btn").forEach(b => b.classList.remove("active"));
+              btn.classList.add("active");
 
-              const Y = parseInt(yearEl.dataset.year);
+              const year = parseInt(btn.dataset.year);
               eventList.innerHTML = "";
 
               const prev = [], current = [], next = [];
 
               data.forEach(e => {
-                if (e.start <= Y && e.end >= Y) current.push(e);
-                else if (e.end >= Y - 2 && e.end < Y) prev.push(e);
-                else if (e.start > Y && e.start <= Y + 2) next.push(e);
+                if (e.start <= year && e.end >= year) current.push(e);
+                else if (e.end >= year - 2 && e.end < year) prev.push(e);
+                else if (e.start > year && e.start <= year + 2) next.push(e);
               });
 
-              const createBlock = (title, list, isNearby = false) => {
-                if (!list.length) return;
+              const createBlock = (title, events, isNearby = false) => {
+                if (!events.length) return;
                 const section = document.createElement("div");
                 const h4 = document.createElement("h4");
                 h4.textContent = title;
                 section.appendChild(h4);
 
-                list.sort((a, b) => a.start - b.start).forEach(e => {
+                events.sort((a, b) => a.start - b.start).forEach(e => {
                   const ev = document.createElement("div");
                   ev.className = "event" + (isNearby ? " nearby" : "");
                   ev.innerHTML = `
@@ -239,7 +275,7 @@
               };
 
               createBlock("Événements voisins précédents", prev, true);
-              createBlock(`Événements de ${Y}`, current);
+              createBlock(`Événements de ${year}`, current);
               createBlock("Événements voisins suivants", next, true);
 
               messageAttente.style.display = (prev.length || current.length || next.length) ? "none" : "block";
