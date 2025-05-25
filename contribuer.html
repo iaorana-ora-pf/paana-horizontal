@@ -59,8 +59,10 @@
       background: white;
       border-right: 1px solid #ddd;
       overflow-y: auto;
-      max-height: 30rem; /* ✅ 12 dates visibles */
+      max-height: 30rem; /* 12 années visibles */
       position: relative;
+      scroll-behavior: smooth;
+      overscroll-behavior: contain; /* ✅ empêche le scroll page */
     }
 
     .years-column::before {
@@ -304,7 +306,11 @@
             const newIndex = currentIndex + offset;
             if (newIndex >= 0 && newIndex < yearButtons.length) {
               yearButtons[newIndex].click();
-              yearButtons[newIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+              yearButtons[newIndex].scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+                inline: "nearest"
+              });
             }
           }
 
