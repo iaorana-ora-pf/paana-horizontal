@@ -1,0 +1,63 @@
+[
+  {
+    "id": "evt0001",
+    "title": "Révolution de Février",
+    "start_year": 1848,
+    "end_year": 1848,
+    "main_category": "Politique",
+    "secondary_category": "Révolution",
+    "themes": [
+      "République",
+      "Soulèvement"
+    ],
+    "keywords": [
+      "révolution",
+      "1848",
+      "monarchie"
+    ],
+    "description": "Soulèvement populaire à Paris ayant conduit à la chute de la monarchie de Juillet.",
+    "source": "https://fr.wikipedia.org/wiki/R%C3%A9volution_fran%C3%A7aise_de_1848",
+    "contribution": "J. Dupont",
+    "major_event": true
+  },
+  {
+    "id": "evt0002",
+    "title": "Découverte de Neptune",
+    "start_year": 1846,
+    "end_year": 1846,
+    "main_category": "Science",
+    "secondary_category": "Astronomie",
+    "themes": [
+      "Découverte"
+    ],
+    "keywords": [
+      "planète",
+      "astronomie",
+      "1846"
+    ],
+    "description": "La planète Neptune est découverte grâce aux calculs de Le Verrier.",
+    "source": "https://fr.wikipedia.org/wiki/Neptune_(plan%C3%A8te)",
+    "contribution": "Observatoire de Paris",
+    "major_event": true
+  },
+  {
+    "id": "evt0003",
+    "title": "Loi Falloux",
+    "start_year": 1850,
+    "end_year": 1850,
+    "main_category": "Politique",
+    "secondary_category": "Éducation",
+    "themes": [
+      "République"
+    ],
+    "keywords": [
+      "éducation",
+      "loi",
+      "1850"
+    ],
+    "description": "Loi organisant la liberté de l'enseignement en France.",
+    "source": "https://fr.wikipedia.org/wiki/Loi_Falloux",
+    "contribution": "Assemblée Nationale",
+    "major_event": false
+  }
+]

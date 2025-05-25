@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frise Chronologique Complète</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    .timeline-container { display: flex; flex-direction: row; height: 100vh; }
+    aside, main { overflow-y: auto; padding: 1rem; }
+    .year-column { width: 20%; border-right: 1px solid #ccc; background: #f8f8f8; }
+    .event-list { width: 40%; background: #fff; }
+    .event-details { width: 40%; border-left: 1px solid #ccc; background: #fafafa; }
+    .year-btn { display: block; width: 100%; padding: 0.5rem; background: none; border: none; cursor: pointer; text-align: left; }
+    .year-btn:hover, .year-btn.active { background-color: #d0e0f0; }
+    .event { padding: 0.5rem; border-bottom: 1px solid #ddd; cursor: pointer; }
+    .event:hover { background-color: #eef; }
+    .filters { padding: 0.5rem; background: #f0f0f0; margin-bottom: 1rem; }
+    .filters select, .filters input { margin-right: 1rem; }
+    .keyword { color: blue; cursor: pointer; margin-right: 5px; }
+  </style>
+</head>
+<body>
+  <div class="timeline-container">
+    <aside class="year-column" id="year-column"></aside>
+    <main class="event-list">
+      <div class="filters">
+        <select id="category-filter">
+          <option value="">Toutes catégories</option>
+          <option value="Politique">Politique</option>
+          <option value="Science">Science</option>
+        </select>
+        <select id="theme-filter">
+          <option value="">Tous thèmes</option>
+          <option value="République">République</option>
+          <option value="Découverte">Découverte</option>
+        </select>
+        <input type="text" id="search-keyword" placeholder="Rechercher un mot-clé...">
+      </div>
+      <div id="event-list"></div>
+    </main>
+    <aside class="event-details" id="event-details">Sélectionnez un événement pour voir les détails ici.</aside>
+  </div>
+  <script>
+    let eventsData = [];
+    fetch('events.json')
+      .then(res => res.json())
+      .then(data => {
+        eventsData = data;
+        const years = [...new Set(eventsData.flatMap(e => {
+          const range = [];
+          for (let y = e.start_year; y <= e.end_year; y++) range.push(y);
+          return range;
+        }))].sort((a, b) => a - b);
+
+        const yearColumn = document.getElementById('year-column');
+        const eventListContainer = document.getElementById('event-list');
+        const eventDetails = document.getElementById('event-details');
+        let currentYear = null;
+
+        years.forEach(year => {
+          const btn = document.createElement('button');
+          btn.textContent = year;
+          btn.className = 'year-btn';
+          btn.onclick = () => {
+            document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentYear = year;
+            loadEventsForYear(year);
+          };
+          yearColumn.appendChild(btn);
+        });
+
+        function loadEventsForYear(year) {
+          const category = document.getElementById('category-filter').value;
+          const theme = document.getElementById('theme-filter').value;
+          const keyword = document.getElementById('search-keyword').value.toLowerCase();
+
+          const contextYears = [year - 2, year - 1, year, year + 1, year + 2];
+          const events = eventsData.filter(e =>
+            contextYears.some(y => y >= e.start_year && y <= e.end_year) &&
+            (category === '' || e.main_category === category) &&
+            (theme === '' || e.themes.includes(theme)) &&
+            (keyword === '' || e.keywords.some(k => k.toLowerCase().includes(keyword)))
+          );
+
+          eventListContainer.innerHTML = events.map(e => `
+            <div class="event" onclick='showDetails(${JSON.stringify(e)})'>
+              <strong>${e.title}</strong><br>
+              <small>${e.start_year}${e.end_year !== e.start_year ? ' - ' + e.end_year : ''} | ${e.main_category}</small>
+            </div>
+          `).join('');
+
+          eventDetails.innerHTML = "Sélectionnez un événement pour voir les détails ici.";
+        }
+
+        window.showDetails = function(event) {
+          eventDetails.innerHTML = `
+            <h2>${event.title}</h2>
+            <p><strong>Période :</strong> ${event.start_year} - ${event.end_year}</p>
+            <p><strong>Catégories :</strong> ${event.main_category}, ${event.secondary_category}</p>
+            <p><strong>Thèmes :</strong> ${event.themes.join(', ')}</p>
+            <p><strong>Mots-clés :</strong> ${event.keywords.map(k => `<span class="keyword" onclick="filterByKeyword('${k}')">${k}</span>`).join(', ')}</p>
+            <p>${event.description}</p>
+            <p><strong>Source :</strong> <a href="${event.source}" target="_blank">Lien</a></p>
+            <p><em>${event.contribution}</em></p>
+          `;
+        };
+
+        window.filterByKeyword = function(keyword) {
+          document.getElementById('search-keyword').value = keyword;
+          if (currentYear) loadEventsForYear(currentYear);
+        };
+      });
+  </script>
+</body>
+</html>
