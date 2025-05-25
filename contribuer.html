@@ -476,8 +476,7 @@
     </div>
    </div>
   </main>
-  <script>
-  <script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
   const yearElements = document.querySelectorAll(".year");
   const eventList = document.getElementById("event-list");
@@ -520,10 +519,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ev.onclick = () => {
               ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
               ficheContent.innerHTML = `
-                <p><strong>Catégories :</strong> ${e.maincat} / ${e.subcat}</p>
-                <p><strong>Thèmes :</strong> ${e.themes}</p>
-                <p><strong>Mots-clés :</strong> ${e.keywords}</p>
-                <p>${e.description}</p>
+                <p><strong>Catégories :</strong> ${e.maincat || ""} / ${e.subcat || ""}</p>
+                <p><strong>Thèmes :</strong> ${e.themes || ""}</p>
+                <p><strong>Mots-clés :</strong> ${e.keywords || ""}</p>
+                <p>${e.description || ""}</p>
                 ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
               `;
             };
@@ -537,14 +536,5 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-
-  });
-
-  if (selectedYearEl) {
-    const initial = parseInt(selectedYearEl.dataset.year);
-    filterEvents(initial);
-  }
-});
-  </script>
  </body>
 </html>
