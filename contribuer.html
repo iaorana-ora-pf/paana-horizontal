@@ -53,16 +53,17 @@
     }
 
     .years-column {
-      flex: 0 0 60px; /* ✅ largeur fixe */
-      max-height: 25rem;
-      overflow-y: auto;
-      padding-left: 2rem;
-      background: white;
-      border-right: 1px solid #ddd;
-      position: relative;
-      scroll-behavior: smooth;
-      overscroll-behavior: contain; /* ✅ empêche le scroll page */
-    }
+  flex: 0 0 70px;     /* ✅ largeur fixe propre */
+  width: 70px;
+  max-height: 25rem;  /* pour 10 dates */
+  overflow-y: auto;
+  background: white;
+  border-right: 1px solid #ddd;
+  position: relative;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  padding: 0;         /* ❌ enlève le padding qui élargit */
+}
 
     .years-column::before {
       content: "";
