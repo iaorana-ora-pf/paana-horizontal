@@ -39,20 +39,18 @@
       font-weight: bold;
     }
 
-    h1 { font-size: 1.8rem; margin-bottom: 2rem; }
-    h2, h4 { margin-top: 2rem; }
-
-    p, ul li {
-      font-size: 1rem;
-      line-height: 1.7;
-    }
-
     .timeline-layout {
       display: flex;
       height: 100vh;
       max-width: 95vw;
       margin: 0 auto;
       overflow: hidden;
+    }
+
+    .years-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .years-column {
@@ -110,6 +108,19 @@
       height: 12px;
     }
 
+    #scroll-up, #scroll-down {
+      background: white;
+      border: 1px solid var(--gray);
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    #scroll-up:hover, #scroll-down:hover {
+      background: #eee;
+    }
+
     .events-column {
       flex: 3;
       background: var(--light);
@@ -150,13 +161,6 @@
       margin-top: 0;
     }
 
-    .fiche-column img {
-      width: 100%;
-      height: auto;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
-
     .pluriannuel-badge {
       display: inline-block;
       background-color: var(--primary);
@@ -186,7 +190,11 @@
   </header>
   <main>
     <div class="timeline-layout">
-      <div class="years-column" id="years-column"></div>
+      <div class="years-container">
+        <button id="scroll-up" aria-label="Remonter">↑</button>
+        <div class="years-column" id="years-column"></div>
+        <button id="scroll-down" aria-label="Descendre">↓</button>
+      </div>
       <div class="events-column">
         <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
         <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666; display:none;">
@@ -200,6 +208,7 @@
       </div>
     </div>
   </main>
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const yearCol = document.getElementById("years-column");
@@ -213,6 +222,7 @@
         .then(res => res.json())
         .then(data => {
           loader.style.display = "none";
+
           const years = [...new Set(data.flatMap(e =>
             Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
           ))].sort((a, b) => a - b);
@@ -225,9 +235,11 @@
             yearCol.appendChild(btn);
           });
 
-          document.querySelectorAll(".year-btn").forEach(btn => {
+          const yearButtons = document.querySelectorAll(".year-btn");
+
+          yearButtons.forEach(btn => {
             btn.addEventListener("click", () => {
-              document.querySelectorAll(".year-btn").forEach(b => b.classList.remove("active"));
+              yearButtons.forEach(b => b.classList.remove("active"));
               btn.classList.add("active");
 
               const year = parseInt(btn.dataset.year);
@@ -280,6 +292,17 @@
 
               messageAttente.style.display = (prev.length || current.length || next.length) ? "none" : "block";
             });
+          });
+
+          // Scroll vers active year
+          document.getElementById("scroll-up").addEventListener("click", () => {
+            const active = document.querySelector(".year-btn.active");
+            if (active) active.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+
+          document.getElementById("scroll-down").addEventListener("click", () => {
+            const active = document.querySelector(".year-btn.active");
+            if (active) active.scrollIntoView({ behavior: "smooth", block: "end" });
           });
         });
     });
