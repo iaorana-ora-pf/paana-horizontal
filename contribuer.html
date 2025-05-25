@@ -54,30 +54,21 @@
     }
 
     .years-column {
-      width: 100px;
-      padding-left: 2rem;
-      background: white;
-      border-right: 1px solid #ddd;
-      overflow-y: auto;
-      max-height: 600px;
-      position: relative;
-    }
-
-    .years-column::before {
-      content: "";
-      position: absolute;
-      left: 1rem;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--gray);
-    }
+  width: 100px;
+  padding-left: 2rem;
+  background: white;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  max-height: calc(2.5rem * 10); /* garde celui-ci, remplace l'ancien */
+  position: relative;
+}
 
    .year-btn {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   height: 2.5rem; /* fixe la hauteur précise */
   box-sizing: border-box;
+  position: relative;
 }
 
     .year-btn::before {
