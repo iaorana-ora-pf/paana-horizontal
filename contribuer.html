@@ -156,77 +156,93 @@
       </div>
     </div>
   </main>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const yearCol = document.querySelector(".years-column");
-      const eventList = document.getElementById("event-list");
-      const ficheTitre = document.getElementById("fiche-titre");
-      const ficheContent = document.getElementById("fiche-content");
-      const messageAttente = document.getElementById("message-attente");
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const yearCol = document.querySelector(".years-column");
+  const eventList = document.getElementById("event-list");
+  const ficheTitre = document.getElementById("fiche-titre");
+  const ficheContent = document.getElementById("fiche-content");
+  const messageAttente = document.getElementById("message-attente");
 
-      fetch("events.json")
-        .then(res => res.json())
-        .then(data => {
-          const allYears = [...new Set(data.flatMap(e =>
-            Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
-          ))].sort((a, b) => a - b);
+  let eventsData = [];
 
-          allYears.forEach(y => {
-            const yEl = document.createElement("div");
-            yEl.className = "year";
-            yEl.dataset.year = y;
-            yEl.textContent = y;
-            yearCol.appendChild(yEl);
+  fetch("events.json")
+    .then(res => res.json())
+    .then(data => {
+      eventsData = data;
+
+      // Générer toutes les années utilisées dans les événements
+      const allYears = [...new Set(eventsData.flatMap(e =>
+        Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
+      ))].sort((a, b) => a - b);
+
+      // Créer les boutons des années
+      allYears.forEach(y => {
+        const yEl = document.createElement("div");
+        yEl.className = "year";
+        yEl.dataset.year = y;
+        yEl.textContent = y;
+        yearCol.appendChild(yEl);
+      });
+
+      const yearElements = document.querySelectorAll(".year");
+
+      yearElements.forEach(yearEl => {
+        yearEl.addEventListener("click", () => {
+          yearElements.forEach(e => e.classList.remove("active"));
+          yearEl.classList.add("active");
+
+          const selectedYear = parseInt(yearEl.dataset.year);
+          eventList.innerHTML = "";
+
+          // Trier tous les événements par leur date de début
+          const sortedEvents = [...eventsData].sort((a, b) => a.start - b.start);
+
+          const prev = [], current = [], next = [];
+
+          sortedEvents.forEach(e => {
+            const isInSelectedYear = selectedYear >= e.start && selectedYear <= e.end;
+            const isBefore = selectedYear - 2 <= e.end && selectedYear > e.end;
+            const isAfter = selectedYear + 2 >= e.start && selectedYear < e.start;
+
+            if (isInSelectedYear) current.push(e);
+            else if (isBefore) prev.push(e);
+            else if (isAfter) next.push(e);
           });
 
-          const yearElements = document.querySelectorAll(".year");
+          const renderEvent = (e, nearby) => {
+            const div = document.createElement("div");
+            div.className = "event" + (nearby ? " nearby" : "");
+            div.innerHTML = `
+              ${nearby ? `<div class="event-date">${e.start}</div>` : ""}
+              <div>
+                <span>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</span>
+                ${e.start !== e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
+              </div>
+            `;
+            div.onclick = () => {
+              ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
+              ficheContent.innerHTML = `
+                <p><strong>Catégories :</strong> ${e.maincat || ""} / ${e.subcat || ""}</p>
+                <p><strong>Thèmes :</strong> ${e.themes || ""}</p>
+                <p><strong>Mots-clés :</strong> ${e.keywords || ""}</p>
+                <p>${e.description || ""}</p>
+                ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
+              `;
+            };
+            eventList.appendChild(div);
+          };
 
-          yearElements.forEach(yearEl => {
-            yearEl.addEventListener("click", () => {
-              yearElements.forEach(e => e.classList.remove("active"));
-              yearEl.classList.add("active");
+          // Ordre visuel : avant (gris) > pendant (noir) > après (gris)
+          prev.forEach(e => renderEvent(e, true));
+          current.forEach(e => renderEvent(e, false));
+          next.forEach(e => renderEvent(e, true));
 
-              const selectedYear = parseInt(yearEl.dataset.year);
-              let anyVisible = false;
-              eventList.innerHTML = "";
-
-              const relevantEvents = data
-                .filter(e => selectedYear >= e.start - 2 && selectedYear <= e.end + 2)
-                .sort((a, b) => a.start - b.start);
-
-              relevantEvents.forEach(e => {
-                const inRange = selectedYear >= e.start && selectedYear <= e.end;
-                const nearby = !inRange;
-
-                const ev = document.createElement("div");
-                ev.className = "event" + (nearby ? " nearby" : "");
-                ev.innerHTML = `
-                  ${nearby ? `<div class="event-date">${e.start}</div>` : ""}
-                  <div>
-                    <strong>${e.title}</strong>
-                    ${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
-                    ${e.start !== e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
-                  </div>
-                `;
-                ev.onclick = () => {
-                  ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
-                  ficheContent.innerHTML = `
-                    <p><strong>Catégories :</strong> ${e.maincat || ""} / ${e.subcat || ""}</p>
-                    <p><strong>Thèmes :</strong> ${e.themes || ""}</p>
-                    <p><strong>Mots-clés :</strong> ${e.keywords || ""}</p>
-                    <p>${e.description || ""}</p>
-                    ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
-                  `;
-                };
-                eventList.appendChild(ev);
-                anyVisible = true;
-              });
-
-              messageAttente.style.display = anyVisible ? "none" : "block";
-            });
-          });
+          messageAttente.style.display = (prev.length + current.length + next.length > 0) ? "none" : "block";
         });
+      });
     });
-  </script>
+});
+</script>
  </body>
 </html>
