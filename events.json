@@ -3,8 +3,6 @@
     "title": "Ouverture du premier hôpital à Papeete (1846)",
     "start_year": 1846,
     "end_year": 1846,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -19,14 +17,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0001"
+    "id": "evt0001",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1918)",
     "start_year": 1918,
     "end_year": 1919,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -42,14 +44,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0002"
+    "id": "evt0002",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1937)",
     "start_year": 1937,
     "end_year": 1937,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -64,14 +70,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0003"
+    "id": "evt0003",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1956)",
     "start_year": 1956,
     "end_year": 1957,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -86,14 +96,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0004"
+    "id": "evt0004",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2010)",
     "start_year": 2010,
     "end_year": 2010,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -108,14 +122,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0005"
+    "id": "evt0005",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1847)",
     "start_year": 1847,
     "end_year": 1847,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -130,14 +148,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0006"
+    "id": "evt0006",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1919)",
     "start_year": 1919,
     "end_year": 1920,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -153,14 +175,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0007"
+    "id": "evt0007",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1938)",
     "start_year": 1938,
     "end_year": 1938,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -175,14 +201,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0008"
+    "id": "evt0008",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1957)",
     "start_year": 1957,
     "end_year": 1958,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -197,14 +227,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0009"
+    "id": "evt0009",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2011)",
     "start_year": 2011,
     "end_year": 2011,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -219,14 +253,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0010"
+    "id": "evt0010",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1848)",
     "start_year": 1848,
     "end_year": 1848,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -241,14 +279,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0011"
+    "id": "evt0011",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1920)",
     "start_year": 1920,
     "end_year": 1921,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -264,14 +306,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0012"
+    "id": "evt0012",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1939)",
     "start_year": 1939,
     "end_year": 1939,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -286,14 +332,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0013"
+    "id": "evt0013",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1958)",
     "start_year": 1958,
     "end_year": 1959,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -308,14 +358,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0014"
+    "id": "evt0014",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2012)",
     "start_year": 2012,
     "end_year": 2012,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -330,14 +384,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0015"
+    "id": "evt0015",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1849)",
     "start_year": 1849,
     "end_year": 1849,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -352,14 +410,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0016"
+    "id": "evt0016",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1921)",
     "start_year": 1921,
     "end_year": 1922,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -375,14 +437,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0017"
+    "id": "evt0017",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1940)",
     "start_year": 1940,
     "end_year": 1940,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -397,14 +463,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0018"
+    "id": "evt0018",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1959)",
     "start_year": 1959,
     "end_year": 1960,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -419,14 +489,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0019"
+    "id": "evt0019",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2013)",
     "start_year": 2013,
     "end_year": 2013,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -441,14 +515,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0020"
+    "id": "evt0020",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1850)",
     "start_year": 1850,
     "end_year": 1850,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -463,14 +541,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0021"
+    "id": "evt0021",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1922)",
     "start_year": 1922,
     "end_year": 1923,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -486,14 +568,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0022"
+    "id": "evt0022",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1941)",
     "start_year": 1941,
     "end_year": 1941,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -508,14 +594,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0023"
+    "id": "evt0023",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1960)",
     "start_year": 1960,
     "end_year": 1961,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -530,14 +620,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0024"
+    "id": "evt0024",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2014)",
     "start_year": 2014,
     "end_year": 2014,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -552,14 +646,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0025"
+    "id": "evt0025",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1851)",
     "start_year": 1851,
     "end_year": 1851,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -574,14 +672,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0026"
+    "id": "evt0026",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1923)",
     "start_year": 1923,
     "end_year": 1924,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -597,14 +699,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0027"
+    "id": "evt0027",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1942)",
     "start_year": 1942,
     "end_year": 1942,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -619,14 +725,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0028"
+    "id": "evt0028",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1961)",
     "start_year": 1961,
     "end_year": 1962,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -641,14 +751,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0029"
+    "id": "evt0029",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2015)",
     "start_year": 2015,
     "end_year": 2015,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -663,14 +777,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0030"
+    "id": "evt0030",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1852)",
     "start_year": 1852,
     "end_year": 1852,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -685,14 +803,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0031"
+    "id": "evt0031",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1924)",
     "start_year": 1924,
     "end_year": 1925,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -708,14 +830,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0032"
+    "id": "evt0032",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1943)",
     "start_year": 1943,
     "end_year": 1943,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -730,14 +856,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0033"
+    "id": "evt0033",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1962)",
     "start_year": 1962,
     "end_year": 1963,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -752,14 +882,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0034"
+    "id": "evt0034",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2016)",
     "start_year": 2016,
     "end_year": 2016,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -774,14 +908,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0035"
+    "id": "evt0035",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1853)",
     "start_year": 1853,
     "end_year": 1853,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -796,14 +934,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0036"
+    "id": "evt0036",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1925)",
     "start_year": 1925,
     "end_year": 1926,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -819,14 +961,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0037"
+    "id": "evt0037",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1944)",
     "start_year": 1944,
     "end_year": 1944,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -841,14 +987,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0038"
+    "id": "evt0038",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1963)",
     "start_year": 1963,
     "end_year": 1964,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -863,14 +1013,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0039"
+    "id": "evt0039",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2017)",
     "start_year": 2017,
     "end_year": 2017,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -885,14 +1039,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0040"
+    "id": "evt0040",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1854)",
     "start_year": 1854,
     "end_year": 1854,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -907,14 +1065,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0041"
+    "id": "evt0041",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1926)",
     "start_year": 1926,
     "end_year": 1927,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -930,14 +1092,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0042"
+    "id": "evt0042",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1945)",
     "start_year": 1945,
     "end_year": 1945,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -952,14 +1118,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0043"
+    "id": "evt0043",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1964)",
     "start_year": 1964,
     "end_year": 1965,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -974,14 +1144,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0044"
+    "id": "evt0044",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2018)",
     "start_year": 2018,
     "end_year": 2018,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -996,14 +1170,18 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0045"
+    "id": "evt0045",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Ouverture du premier hôpital à Papeete (1855)",
     "start_year": 1855,
     "end_year": 1855,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Établissements",
       "Colonisation"
@@ -1018,14 +1196,18 @@
     "source": "https://fr.wikipedia.org/wiki/Histoire_de_la_santé_en_Polynésie",
     "contribution": "Sources historiques – Archives territoriales",
     "major_event": true,
-    "id": "evt0046"
+    "id": "evt0046",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   },
   {
     "title": "Épidémie de grippe espagnole (1927)",
     "start_year": 1927,
     "end_year": 1928,
-    "main_category": "Santé publique",
-    "secondary_category": "Épidémies",
     "themes": [
       "Grippe",
       "Population",
@@ -1041,14 +1223,18 @@
     "source": "https://fr.wikipedia.org/wiki/Grippe_espagnole",
     "contribution": "Rapport médical colonial – 1919",
     "major_event": true,
-    "id": "evt0047"
+    "id": "evt0047",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Épidémies"
+    ]
   },
   {
     "title": "Création du service d’hygiène territoriale (1946)",
     "start_year": 1946,
     "end_year": 1946,
-    "main_category": "Santé publique",
-    "secondary_category": "Institutions",
     "themes": [
       "Hygiène",
       "Administration"
@@ -1063,14 +1249,18 @@
     "source": "https://www.polynesie-francaise.pref.gouv.fr/",
     "contribution": "Gouvernement de l’époque",
     "major_event": false,
-    "id": "evt0048"
+    "id": "evt0048",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Institutions"
+    ]
   },
   {
     "title": "Campagne de vaccination contre la polio (1965)",
     "start_year": 1965,
     "end_year": 1966,
-    "main_category": "Santé publique",
-    "secondary_category": "Prévention",
     "themes": [
       "Vaccination",
       "Poliomyélite"
@@ -1085,14 +1275,18 @@
     "source": "https://inpes.santepubliquefrance.fr/",
     "contribution": "OMS – Service de santé territoriale",
     "major_event": true,
-    "id": "evt0049"
+    "id": "evt0049",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Prévention"
+    ]
   },
   {
     "title": "Ouverture du CHPF de Taaone (2019)",
     "start_year": 2019,
     "end_year": 2019,
-    "main_category": "Santé publique",
-    "secondary_category": "Infrastructure médicale",
     "themes": [
       "Hôpital",
       "Modernisation"
@@ -1107,6 +1301,12 @@
     "source": "https://www.chpf.pf/",
     "contribution": "Ministère de la Santé de Polynésie",
     "major_event": true,
-    "id": "evt0050"
+    "id": "evt0050",
+    "main_categories": [
+      "Santé publique"
+    ],
+    "secondary_categories": [
+      "Infrastructure médicale"
+    ]
   }
 ]
