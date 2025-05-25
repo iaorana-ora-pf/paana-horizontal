@@ -1,0 +1,628 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contribuer - Paana
+  </title>
+  <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
+  <link href="header-footer.css" rel="stylesheet"/>
+  <style>
+   /* === BASE === */
+    body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #fdfdf0;
+      color: #050505;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* === MAIN CONTENT === */
+    main {
+      flex-grow: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem 2rem;
+      background-color: #fdfdf0;
+      color: #050505;
+    }
+
+    main h2:first-of-type {
+      margin-top: 0.5rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #007b7f;
+      font-weight: bold;
+      margin-top: 2rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      color: #050505;
+    }
+
+    main ul li {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+      color: #050505;
+    }
+  
+
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #fafafa;
+    }
+
+    .timeline-layout {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .years-column {
+      width: 120px;
+      background: white;
+      border-right: 1px solid #ddd;
+      position: relative;
+      padding-left: 2rem;
+      overflow-y: auto;
+    }
+
+    .years-column::before {
+      content: "";
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ccc;
+    }
+
+    .year {
+      padding: 0.75rem 1rem;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .year::before {
+      content: "";
+      position: absolute;
+      left: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+    }
+
+    .year.active {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #007bff;
+    }
+
+    .year.active::before {
+      background: #007bff;
+      width: 12px;
+      height: 12px;
+    }
+
+    .events-column {
+      flex: 2;
+      background: #f9f9f9;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+
+    .event {
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      display: flex;
+      gap: 1rem;
+      border-left: 4px solid #ccc;
+    }
+
+    .event.nearby {
+      opacity: 0.6;
+      font-style: italic;
+    }
+
+    .event-date {
+      font-weight: bold;
+      color: #555;
+      min-width: 70px;
+    }
+
+    .fiche-column {
+      width: 300px;
+      background: #fff;
+      padding: 1rem;
+      border-left: 1px solid #ddd;
+      overflow-y: auto;
+    }
+
+    .fiche-column h3 {
+      margin-top: 0;
+    }
+
+    .fiche-column img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-layout {
+        flex-direction: column;
+      }
+
+      .fiche-column {
+        width: 100%;
+      }
+
+      .years-column {
+        flex-direction: row;
+        width: 100%;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .events-column {
+        flex: unset;
+      }
+    }
+  
+
+
+.timeline-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  max-width: 95vw;
+  margin: 0 auto;
+}
+
+.years-column {
+  width: 100px;
+  flex-shrink: 0;
+  padding-left: 2rem;
+  background: white;
+  border-right: 1px solid #ddd;
+  position: relative;
+  overflow-y: auto;
+}
+
+.events-column {
+  flex: 3;
+  background: #f9f9f9;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.fiche-column {
+  flex: 2;
+  background: #fff;
+  padding: 1.5rem;
+  border-left: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+
+
+.timeline-layout {
+  max-width: 100vw;
+  margin: 0;
+}
+
+.years-column {
+  max-height: 600px;
+  overflow-y: auto;
+}
+.year.active {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #007b7f;
+}
+
+/* 🎨 Theme colors */
+.theme-nutrition::before { background-color: hsl(0.0, 70%, 60%); }
+.theme-technologies-médicales::before { background-color: hsl(137.5, 70%, 60%); }
+.theme-vaccination::before { background-color: hsl(275.0, 70%, 60%); }
+.theme-éducation-à-la-santé::before { background-color: hsl(52.5, 70%, 60%); }
+.theme-épidémie::before { background-color: hsl(190.0, 70%, 60%); }
+
+/* Atténuation visuelle des événements des années voisines */
+.event.nearby {
+  opacity: 0.5;
+  font-style: italic;
+}
+
+/* Points de couleur pour les thèmes */
+.event span[class^="theme-"] {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.pluriannuel-badge {
+  display: inline-block;
+  background-color: #007b7f;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 4px;
+}
+  </style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header>
+   <div class="logo">
+    <span class="brand">
+     Paana
+    </span>
+    <div class="trait">
+    </div>
+    <div class="signature">
+     Emmanuelle RUPP-TERRIS
+    </div>
+   </div>
+   <nav>
+    <a href="a-propos.html">
+     A PROPOS
+    </a>
+    <a href="contribuer.html">
+     CONTRIBUER
+    </a>
+    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">
+     SOUMETTRE
+    </a>
+    <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail">
+     <i class="fas fa-envelope fa-lg">
+     </i>
+    </a>
+   </nav>
+  </header>
+  <main>
+   <div class="timeline-layout">
+    <div class="years-column">
+     <div class="year" data-year="1834">
+      1834
+     </div>
+     <div class="year" data-year="1835">
+      1835
+     </div>
+     <div class="year" data-year="1836">
+      1836
+     </div>
+     <div class="year" data-year="1837">
+      1837
+     </div>
+     <div class="year" data-year="1850">
+      1850
+     </div>
+     <div class="year" data-year="1851">
+      1851
+     </div>
+     <div class="year" data-year="1852">
+      1852
+     </div>
+     <div class="year" data-year="1853">
+      1853
+     </div>
+     <div class="year" data-year="1875">
+      1875
+     </div>
+     <div class="year" data-year="1876">
+      1876
+     </div>
+     <div class="year" data-year="1877">
+      1877
+     </div>
+     <div class="year" data-year="1901">
+      1901
+     </div>
+     <div class="year" data-year="1902">
+      1902
+     </div>
+     <div class="year" data-year="1903">
+      1903
+     </div>
+     <div class="year" data-year="1904">
+      1904
+     </div>
+     <div class="year" data-year="1923">
+      1923
+     </div>
+     <div class="year" data-year="1924">
+      1924
+     </div>
+     <div class="year" data-year="1925">
+      1925
+     </div>
+     <div class="year" data-year="1926">
+      1926
+     </div>
+     <div class="year" data-year="1935">
+      1935
+     </div>
+     <div class="year" data-year="1936">
+      1936
+     </div>
+     <div class="year" data-year="1950">
+      1950
+     </div>
+     <div class="year" data-year="1951">
+      1951
+     </div>
+     <div class="year" data-year="1952">
+      1952
+     </div>
+     <div class="year" data-year="1965">
+      1965
+     </div>
+     <div class="year" data-year="1966">
+      1966
+     </div>
+     <div class="year" data-year="1967">
+      1967
+     </div>
+     <div class="year" data-year="1980">
+      1980
+     </div>
+     <div class="year" data-year="1981">
+      1981
+     </div>
+     <div class="year" data-year="1982">
+      1982
+     </div>
+     <div class="year" data-year="1983">
+      1983
+     </div>
+     <div class="year" data-year="1995">
+      1995
+     </div>
+     <div class="year" data-year="1996">
+      1996
+     </div>
+     <div class="year" data-year="1997">
+      1997
+     </div>
+     <div class="year" data-year="2005">
+      2005
+     </div>
+     <div class="year" data-year="2006">
+      2006
+     </div>
+     <div class="year" data-year="2010">
+      2010
+     </div>
+     <div class="year" data-year="2011">
+      2011
+     </div>
+     <div class="year" data-year="2012">
+      2012
+     </div>
+     <div class="year" data-year="2015">
+      2015
+     </div>
+     <div class="year" data-year="2016">
+      2016
+     </div>
+     <div class="year" data-year="2017">
+      2017
+     </div>
+     <div class="year" data-year="2018">
+      2018
+     </div>
+     <div class="year" data-year="2019">
+      2019
+     </div>
+     <div class="year" data-year="2020">
+      2020
+     </div>
+     <div class="year" data-year="2022">
+      2022
+     </div>
+     <div class="year" data-year="2023">
+      2023
+     </div>
+     <div class="year" data-year="2024">
+      2024
+     </div>
+     <div class="year" data-year="2025">
+      2025
+     </div>
+    </div>
+    <div class="events-column">
+     <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">
+      Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.
+     </div>
+     <div id="event-list">
+     </div>
+    </div>
+    <div class="fiche-column">
+     <h3 id="fiche-titre">
+      Détails
+     </h3>
+     <div id="fiche-content">
+      Cliquez sur un événement pour voir sa fiche complète.
+     </div>
+    </div>
+   </div>
+  </main>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+  const yearElements = document.querySelectorAll(".year");
+  const eventElements = document.querySelectorAll(".event");
+
+  let selectedYearEl = document.querySelector(".year.active");
+
+  function filterEvents(selectedYear) {
+    eventElements.forEach(ev => {
+      const years = ev.dataset.years ? ev.dataset.years.split(",").map(Number) : [];
+      const isExact = years.includes(selectedYear);
+      const inRange = years.some(y => Math.abs(y - selectedYear) <= 3);
+      ev.style.display = inRange ? "block" : "none";
+      ev.classList.toggle("nearby", inRange && !isExact);
+    });
+  }
+
+  yearElements.forEach(yearEl => {
+    yearEl.addEventListener("click", () => {
+      if (selectedYearEl) selectedYearEl.classList.remove("active");
+      yearEl.classList.add("active");
+      selectedYearEl = yearEl;
+      const selected = parseInt(yearEl.dataset.year);
+      filterEvents(selected);
+    });
+  });
+
+  if (selectedYearEl) {
+    const initial = parseInt(selectedYearEl.dataset.year);
+    filterEvents(initial);
+  }
+});
+  </script>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+  const yearElements = document.querySelectorAll(".year");
+  const eventElements = document.querySelectorAll(".event");
+  const messageAttente = document.getElementById("message-attente");
+
+  eventElements.forEach(ev => ev.style.display = "none");
+
+  yearElements.forEach(yearEl => {
+    yearEl.addEventListener("click", () => {
+      document.querySelectorAll(".year.active").forEach(e => e.classList.remove("active"));
+      yearEl.classList.add("active");
+
+      const selected = parseInt(yearEl.dataset.year);
+      let anyVisible = false;
+
+      eventElements.forEach(ev => {
+        const displayFor = parseInt(ev.dataset.visibleFor);
+        const fullYears = ev.dataset.years ? ev.dataset.years.split(",").map(Number) : [];
+        const isExact = displayFor === selected;
+        const inRange = fullYears.includes(selected);
+        const dateEl = ev.querySelector(".event-date");
+        const rangeInfo = ev.querySelector(".range-info");
+
+        if (inRange) {
+          ev.style.display = "block";
+          ev.classList.toggle("nearby", !isExact);
+          if (dateEl) dateEl.style.display = isExact ? "none" : "block";
+          if (rangeInfo) rangeInfo.style.display = isExact ? "block" : "none";
+          anyVisible = true;
+        } else {
+          ev.style.display = "none";
+        }
+      });
+
+      if (messageAttente) {
+        messageAttente.style.display = anyVisible ? "none" : "block";
+      }
+    });
+  });
+
+  if (messageAttente) {
+    messageAttente.style.display = "block";
+  }
+});
+  </script>
+  <script>
+   document.addEventListener("DOMContentLoaded", function () {
+  const yearCol = document.querySelector(".years-column");
+  const eventList = document.getElementById("event-list");
+  const ficheTitre = document.getElementById("fiche-titre");
+  const ficheContent = document.getElementById("fiche-content");
+
+  let currentYear = null;
+  let eventsData = [];
+
+  fetch("events.json")
+    .then(res => res.json())
+    .then(data => {
+      eventsData = data;
+
+      const allYears = [...new Set(data.flatMap(e => {
+        const start = parseInt(e.start);
+        const end = parseInt(e.end);
+        return Array.from({length: end - start + 1}, (_, i) => start + i);
+      }))].sort((a, b) => a - b);
+
+      allYears.forEach(y => {
+        const yEl = document.createElement("div");
+        yEl.className = "year";
+        yEl.dataset.year = y;
+        yEl.textContent = y;
+        yEl.onclick = () => {
+          document.querySelectorAll(".year").forEach(e => e.classList.remove("active"));
+          yEl.classList.add("active");
+          currentYear = parseInt(y);
+          renderEvents();
+        };
+        yearCol.appendChild(yEl);
+      });
+
+      function renderEvents() {
+        eventList.innerHTML = "";
+        const range = [currentYear - 2, currentYear - 1, currentYear, currentYear + 1, currentYear + 2];
+
+        eventsData.forEach(e => {
+          const inRange = currentYear >= e.start && currentYear <= e.end;
+          const nearby = !inRange && range.some(y => y >= e.start && y <= e.end);
+          if (!inRange && !nearby) return;
+
+          const ev = document.createElement("div");
+          ev.className = "event" + (nearby ? " nearby" : "");
+          ev.innerHTML = `
+            <div class="event-date">${currentYear}</div>
+            <div>
+              <strong>${e.title}${e.start != e.end ? ` (${e.start}–${e.end})` : ""}</strong>
+              ${e.start != e.end ? `<span class="pluriannuel-badge">Pluriannuel</span>` : ""}
+            </div>
+          `;
+          ev.onclick = () => {
+            ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
+            ficheContent.innerHTML = `
+              <p><strong>Catégories :</strong> ${e.maincat} / ${e.subcat}</p>
+              <p><strong>Thèmes :</strong> ${e.themes}</p>
+              <p><strong>Mots-clés :</strong> ${e.keywords}</p>
+              <p>${e.description}</p>
+              ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
+            `;
+          };
+          eventList.appendChild(ev);
+        });
+      }
+    });
+});
+  </script>
+ </body>
+</html>
