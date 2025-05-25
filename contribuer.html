@@ -195,17 +195,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
           const sortedEvents = [...eventsData].sort((a, b) => a.start - b.start);
 
-          const prev = [], current = [], next = [];
+const prev = [], current = [], next = [];
 
-          sortedEvents.forEach(e => {
-            const isInSelectedYear = selectedYear >= e.start && selectedYear <= e.end;
-            const isBefore = selectedYear - 2 <= e.end && selectedYear > e.end;
-            const isAfter = selectedYear + 2 >= e.start && selectedYear < e.start;
-
-            if (isInSelectedYear) current.push(e);
-            else if (isBefore) prev.push(e);
-            else if (isAfter) next.push(e);
-          });
+sortedEvents.forEach(e => {
+  if (e.start === selectedYear) {
+    current.push(e);
+  } else if (e.end >= selectedYear - 2 && e.start < selectedYear) {
+    prev.push(e);
+  } else if (e.start <= selectedYear + 2 && e.start > selectedYear) {
+    next.push(e);
+  }
+});
 
           const renderSection = (title, events, nearby = false) => {
             if (events.length === 0) return;
