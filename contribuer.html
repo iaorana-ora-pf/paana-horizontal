@@ -189,12 +189,12 @@
             btn.classList.add("active");
 
             const selectedYear = parseInt(btn.dataset.year);
-            // renderEvents(selectedYear); // à faire ensuite
+            // renderEvents(selectedYear);
           });
         });
-      }) // 👈 FIN DU .then
-      .catch(error => {
-        console.error("Erreur de chargement JSON :", error);
+      })
+      .catch(err => {
+        console.error("Erreur de chargement JSON :", err);
       });
   });
 </script>
