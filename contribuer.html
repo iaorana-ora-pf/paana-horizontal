@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -214,14 +215,14 @@
   </div>
 `;
               ev.onclick = () => {
-                ficheTitre.textContent = \`\${e.title} (\${e.start} – \${e.end})\`;
-                ficheContent.innerHTML = \`
-                  <p><strong>Catégories :</strong> \${e.maincat || ""} / \${e.subcat || ""}</p>
-                  <p><strong>Thèmes :</strong> \${e.themes || ""}</p>
-                  <p><strong>Mots-clés :</strong> \${e.keywords || ""}</p>
-                  <p>\${e.description || ""}</p>
-                  \${e.source ? \`<p><a href="\${e.source}" target="_blank">Source</a></p>\` : ""}
-                \`;
+                ficheTitre.textContent = `${e.title} (${e.start} – ${e.end})`;
+                ficheContent.innerHTML = `
+                  <p><strong>Catégories :</strong> ${e.maincat || ""} / ${e.subcat || ""}</p>
+                  <p><strong>Thèmes :</strong> ${e.themes || ""}</p>
+                  <p><strong>Mots-clés :</strong> ${e.keywords || ""}</p>
+                  <p>${e.description || ""}</p>
+                  ${e.source ? `<p><a href="${e.source}" target="_blank">Source</a></p>` : ""}
+                `;
               };
               eventList.appendChild(ev);
             });
@@ -264,4 +265,5 @@
   </script>
 </body>
 </html>
+
 
