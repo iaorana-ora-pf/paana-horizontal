@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer 2- Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -93,6 +93,20 @@
       overflow-y: auto;
       padding: 1.5rem;
     }
+.events-column h5 {
+  margin-bottom: 0.2rem;
+  color: var(--gray-dark);
+  font-weight: bold;
+  text-decoration: underline;
+}
+.events-column ul {
+  margin-top: 0;
+  padding-left: 1.2rem;
+}
+.events-column li {
+  margin-bottom: 0.3rem;
+}
+    
     .fiche-column {
       flex: 0 0 400px;
       background: #fff;
@@ -274,9 +288,44 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.start <= year && e.end >= year)
         centerList.appendChild(makeEvent(e, year, false));
 
-      for (let y = year - 2; y < year; y++)
-        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
-          top.appendChild(makeEvent(e, y, true));
+const groupByYear = (events, from, to) => {
+  const map = {};
+  for (let y = from; y <= to; y++) {
+    const evts = events.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
+    if (evts.length) map[y] = evts;
+  }
+  return map;
+};
+
+// ⬆️ Antérieurs
+const beforeMap = groupByYear(eventData, year - 2, year - 1);
+for (const [y, events] of Object.entries(beforeMap)) {
+  const title = document.createElement("h5");
+  title.textContent = y;
+  top.appendChild(title);
+  const ul = document.createElement("ul");
+  for (const e of events) {
+    const li = document.createElement("li");
+    li.innerHTML = `${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}`;
+    ul.appendChild(li);
+  }
+  top.appendChild(ul);
+}
+
+// ⬇️ Postérieurs
+const afterMap = groupByYear(eventData, year + 1, year + 2);
+for (const [y, events] of Object.entries(afterMap)) {
+  const title = document.createElement("h5");
+  title.textContent = y;
+  bottom.appendChild(title);
+  const ul = document.createElement("ul");
+  for (const e of events) {
+    const li = document.createElement("li");
+    li.innerHTML = `${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}`;
+    ul.appendChild(li);
+  }
+  bottom.appendChild(ul);
+}
 
       for (let y = year + 1; y <= year + 2; y++)
         if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
