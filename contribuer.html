@@ -60,11 +60,7 @@
   font-size: 1.3rem;
   border-radius: 4px;
 }
-    .years-column {
-  background: none;
-  border: none;
-  scrollbar-width: thin;
-}
+  
     .timeline-layout {
       display: flex;
       width: 100%;
@@ -87,16 +83,21 @@
     #scroll-up:hover, #scroll-down:hover {
       background: #eee;
     }
-    .years-column {
-      width: 80px;
-      height: calc(2.5rem * 10);
-      overflow-y: scroll;
-      background: white;
-      border-right: 1px solid #ddd;
-      position: relative;
-      scroll-behavior: smooth;
-      overscroll-behavior: contain;
-    }
+    
+
+.years-column {
+  width: 80px;
+  height: calc(2.5rem * 10);
+  overflow-y: scroll;
+  background: white;
+  border-right: 1px solid #ddd;
+  position: relative;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+
+    
     .events-column {
       width: 600px;
       flex: 0 0 600px;
@@ -170,13 +171,27 @@
         const uniqueYears = [...new Set(allYears)].sort((a, b) => a - b);
 
         uniqueYears.forEach(year => {
-          const btn = document.createElement("button");
-          btn.className = "year-btn";
-          btn.textContent = year;
-          btn.dataset.year = year;
-          yearCol.appendChild(btn);
-        });
-      });
+  const btn = document.createElement("button");
+  btn.className = "year-btn";
+  btn.textContent = year;
+  btn.dataset.year = year;
+  yearCol.appendChild(btn);
+});
+
+// 👉 Ajoute ici après que tous les boutons soient créés
+const yearButtons = document.querySelectorAll(".year-btn");
+
+yearButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    yearButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const selectedYear = parseInt(btn.dataset.year);
+    // 🔧 Tu pourras appeler la fonction d'affichage ici (à faire plus tard)
+    // renderEvents(selectedYear);
+  });
+});
+       
   });
 </script> 
 </body>
