@@ -33,7 +33,6 @@
       margin: 0 auto;
       padding: 1.5rem 2rem;
     }
-
     .year-btn {
       width: 100%;
       height: 2.5rem;
@@ -47,18 +46,15 @@
       margin: 2px 0;
       transition: background 0.2s, font-size 0.2s;
     }
-
     .year-btn:hover {
       background-color: #fee58c;
     }
-
     .year-btn.active {
       color: #007b7f;
       font-weight: bold;
       font-size: 1.3rem;
       border-radius: 4px;
     }
-
     .timeline-layout {
       display: flex;
       width: 100%;
@@ -81,7 +77,6 @@
     #scroll-up:hover, #scroll-down:hover {
       background: #eee;
     }
-
     .years-column {
       width: 80px;
       height: calc(2.5rem * 10);
@@ -93,13 +88,37 @@
       overscroll-behavior: contain;
       scrollbar-width: thin;
     }
-
     .events-column {
       width: 600px;
       flex: 0 0 600px;
       background: var(--light);
       overflow-y: auto;
       padding: 1.5rem;
+    }
+    .event {
+      background: white;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-left: 4px solid var(--gray);
+    }
+    .event.nearby {
+      opacity: 0.6;
+      font-style: italic;
+    }
+    .event-date {
+      font-weight: bold;
+      color: var(--gray-dark);
+      min-width: 70px;
+    }
+    .pluriannuel-badge {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      margin-left: 6px;
+      border-radius: 4px;
     }
     .fiche-column {
       flex: 0 0 400px;
@@ -111,103 +130,120 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <span class="brand">Paana</span>
-      <div class="trait"></div>
-      <div class="signature">Emmanuelle RUPP-TERRIS</div>
+<header>
+  <div class="logo">
+    <span class="brand">Paana</span>
+    <div class="trait"></div>
+    <div class="signature">Emmanuelle RUPP-TERRIS</div>
+  </div>
+  <nav>
+    <a href="a-propos.html">A PROPOS</a>
+    <a href="contribuer.html">CONTRIBUER</a>
+    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
+    <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail">
+      <i class="fas fa-envelope fa-lg"></i>
+    </a>
+  </nav>
+</header>
+<main>
+  <div class="timeline-layout">
+    <div class="years-container">
+      <button id="scroll-up" type="button">↑</button>
+      <div class="years-column" id="years-column"></div>
+      <button id="scroll-down" type="button">↓</button>
     </div>
-    <nav>
-      <a href="a-propos.html">A PROPOS</a>
-      <a href="contribuer.html">CONTRIBUER</a>
-      <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
-      <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail">
-        <i class="fas fa-envelope fa-lg"></i>
-      </a>
-    </nav>
-  </header>
-  <main>
-    <div class="timeline-layout">
-      <div class="years-container">
-        <button id="scroll-up" type="button">↑</button>
-        <div class="years-column" id="years-column"></div>
-        <button id="scroll-down" type="button">↓</button>
-      </div>
-      <div class="events-column">
-        <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
-        <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">
-          Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.
-        </div>
-        <div id="event-list"></div>
-      </div>
-      <div class="fiche-column">
-        <h3 id="fiche-titre">Détails</h3>
-        <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
-      </div>
+    <div class="events-column">
+      <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+      <div id="bloc-superieur"></div>
+      <div id="bloc-central"></div>
+      <div id="bloc-inferieur"></div>
     </div>
-  </main>
+    <div class="fiche-column">
+      <h3 id="fiche-titre">Détails</h3>
+      <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
+    </div>
+  </div>
+</main>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const yearCol = document.getElementById("years-column");
+document.addEventListener("DOMContentLoaded", () => {
+  const yearCol = document.getElementById("years-column");
+  let eventData = [];
 
-    fetch("events.json")
-      .then(res => res.json())
-      .then(data => {
-        if (!Array.isArray(data)) {
-          console.error("Format JSON invalide.");
-          return;
-        }
+  fetch("events.json")
+    .then(res => res.json())
+    .then(data => {
+      if (!Array.isArray(data)) throw new Error("Format JSON invalide.");
+      eventData = data;
 
-        const allYears = data.flatMap(e =>
-          Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
-        );
-        const uniqueYears = [...new Set(allYears)].sort((a, b) => a - b);
+      const years = [...new Set(data.flatMap(e =>
+        Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
+      ))].sort((a, b) => a - b);
 
-        uniqueYears.forEach(year => {
-          const btn = document.createElement("button");
-          btn.className = "year-btn";
-          btn.textContent = year;
-          btn.dataset.year = year;
-          yearCol.appendChild(btn);
-        });
-
-        const yearButtons = document.querySelectorAll(".year-btn");
-
-        yearButtons.forEach(btn => {
-          btn.addEventListener("click", () => {
-            yearButtons.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
-
-            const selectedYear = parseInt(btn.dataset.year);
-            // renderEvents(selectedYear);
-          });
-        });
-
-        function selectYearByOffset(offset) {
-          const currentIndex = [...yearButtons].findIndex(btn => btn.classList.contains("active"));
-          const newIndex = currentIndex + offset;
-
-          if (newIndex >= 0 && newIndex < yearButtons.length) {
-            yearButtons[newIndex].click();
-            yearButtons[newIndex].scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
-        }
-
-        document.getElementById("scroll-up").addEventListener("click", () => {
-          selectYearByOffset(-1);
-        });
-
-        document.getElementById("scroll-down").addEventListener("click", () => {
-          selectYearByOffset(1);
-        });
-      })
-      .catch(err => {
-        console.error("Erreur de chargement JSON :", err);
+      years.forEach(year => {
+        const btn = document.createElement("button");
+        btn.className = "year-btn";
+        btn.textContent = year;
+        btn.dataset.year = year;
+        yearCol.appendChild(btn);
       });
-  });
+
+      const yearButtons = document.querySelectorAll(".year-btn");
+
+      yearButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          yearButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderEvents(parseInt(btn.dataset.year));
+        });
+      });
+
+      function selectYearByOffset(offset) {
+        const currentIndex = [...yearButtons].findIndex(btn => btn.classList.contains("active"));
+        const newIndex = currentIndex + offset;
+        if (newIndex >= 0 && newIndex < yearButtons.length) {
+          yearButtons[newIndex].click();
+          yearButtons[newIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
+      document.getElementById("scroll-up").addEventListener("click", () => selectYearByOffset(-1));
+      document.getElementById("scroll-down").addEventListener("click", () => selectYearByOffset(1));
+    });
+
+  function renderEvents(year) {
+    const top = document.getElementById("bloc-superieur");
+    const center = document.getElementById("bloc-central");
+    const bottom = document.getElementById("bloc-inferieur");
+    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
+
+    const makeEvent = (e, y, isContext) => {
+      const div = document.createElement("div");
+      div.className = "event" + (isContext ? " nearby" : "");
+      div.innerHTML = `
+        <div class="event-date">${y}</div>
+        <div><strong>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</strong>
+        ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}</div>
+      `;
+      return div;
+    };
+
+    eventData.forEach(e => {
+      // Bloc central
+      if (e.start <= year && e.end >= year)
+        center.appendChild(makeEvent(e, year, false));
+
+      // Bloc supérieur
+      for (let y = year - 2; y < year; y++)
+        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
+          top.appendChild(makeEvent(e, y, true));
+
+      // Bloc inférieur
+      for (let y = year + 1; y <= year + 2; y++)
+        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
+          bottom.appendChild(makeEvent(e, y, true));
+    });
+  }
+});
 </script>
 </body>
 </html>
