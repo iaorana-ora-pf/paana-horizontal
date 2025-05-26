@@ -123,5 +123,29 @@
       </div>
     </div>
   </main>
+
+ <script>
+  // ⬇️ colle ici le code JS fourni
+  document.addEventListener("DOMContentLoaded", () => {
+    const yearCol = document.getElementById("years-column");
+
+    fetch("events.json")
+      .then(res => res.json())
+      .then(data => {
+        const allYears = data.flatMap(e =>
+          Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
+        );
+        const uniqueYears = [...new Set(allYears)].sort((a, b) => a - b);
+
+        uniqueYears.forEach(year => {
+          const btn = document.createElement("button");
+          btn.className = "year-btn";
+          btn.textContent = year;
+          btn.dataset.year = year;
+          yearCol.appendChild(btn);
+        });
+      });
+  });
+</script> 
 </body>
 </html>
