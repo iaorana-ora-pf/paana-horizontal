@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer 3 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -230,7 +230,7 @@ fetch("events.json?" + Date.now())
     div.innerHTML = `
       ${isContext ? `<div class="event-date">${y}</div>` : ""}
       <div>
-        <strong>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</strong>
+<span>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</span>
         ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
       </div>
     `;
