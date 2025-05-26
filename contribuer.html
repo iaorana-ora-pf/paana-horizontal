@@ -55,7 +55,6 @@
 
   .year-btn.active {
   color: #007b7f;
-  background-color: var(--primary);
   font-weight: bold;
   font-size: 1.3rem;
   border-radius: 4px;
@@ -165,6 +164,11 @@
     fetch("events.json")
       .then(res => res.json())
       .then(data => {
+
+        if (!Array.isArray(data)) {
+  console.error("Format JSON invalide.");
+  return;
+}
         const allYears = data.flatMap(e =>
           Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
         );
