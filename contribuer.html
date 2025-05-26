@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer 1 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -94,13 +94,17 @@
       padding: 1.5rem;
       
     }
-
-    .events-column h4 {
-  color: var(--gray-dark);
-  text-decoration: underline;
+.titre-bloc {
   margin-top: 2rem;
   margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 }
+
+.titre-gris {
+  color: var(--gray-dark);
+  text-decoration: underline;
+}
+
     .event {
       background: white;
       border-radius: 6px;
@@ -161,11 +165,13 @@
     <div class="events-column">
        <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
   <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
-  <h4>Événements antérieurs</h4>
+ <h4 class="titre-bloc titre-gris">Événements antérieurs</h4>
 <div id="bloc-superieur"></div>
-<h4>Événements de l'année</h4>
+
+<h4 class="titre-bloc">Événements de l'année</h4>
 <div id="bloc-central"></div>
-<h4>Événements postérieurs</h4>
+
+<h4 class="titre-bloc titre-gris">Événements postérieurs</h4>
 <div id="bloc-inferieur"></div>
     </div>
     <div class="fiche-column">
