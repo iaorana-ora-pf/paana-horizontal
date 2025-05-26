@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -158,7 +156,7 @@
   <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
   <h4>Événements antérieurs</h4>
 <div id="bloc-superieur"></div>
-<h4>Événements en ${year}</h4>
+<h4>Événements de l'année</h4>
 <div id="bloc-central"></div>
 <h4>Événements postérieurs</h4>
 <div id="bloc-inferieur"></div>
@@ -174,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearCol = document.getElementById("years-column");
   let eventData = [];
 
-  fetch("events.json")
+fetch("events.json?" + Date.now())
     .then(res => res.json())
     .then(data => {
       if (!Array.isArray(data)) throw new Error("Format JSON invalide.");
@@ -200,6 +198,10 @@ document.addEventListener("DOMContentLoaded", () => {
           btn.classList.add("active");
           renderEvents(parseInt(btn.dataset.year));
         });
+
+        if (yearButtons.length) {
+  yearButtons[0].click(); // Sélection automatique
+}
       });
 
       function selectYearByOffset(offset) {
