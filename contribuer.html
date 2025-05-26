@@ -262,8 +262,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const makeEventText = e => {
       const icon = categoryIcons[e.maincat] 
-        ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}"></i> ` 
-        : '';
+  ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right: 0.4rem;"></i>` 
+  : '';
       const themeColor = stringToColor(e.themes || "");
       return `
         <div class="event" style="border-left: 5px solid ${themeColor}">
