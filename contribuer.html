@@ -245,7 +245,7 @@ fetch("events.json?" + Date.now())
   const bottom = document.getElementById("bloc-inferieur");
   top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 
- const makeEvent = (e, y, isContext) => {
+const makeEvent = (e, y, isContext) => {
   const div = document.createElement("div");
   div.className = "event" + (isContext ? " nearby" : "");
   div.innerHTML = `
