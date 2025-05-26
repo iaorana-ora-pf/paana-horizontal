@@ -94,6 +94,7 @@
       background: var(--light);
       overflow-y: auto;
       padding: 1.5rem;
+      
     }
     .event {
       background: white;
@@ -153,10 +154,14 @@
       <button id="scroll-down" type="button">↓</button>
     </div>
     <div class="events-column">
-      <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
-      <div id="bloc-superieur"></div>
-      <div id="bloc-central"></div>
-      <div id="bloc-inferieur"></div>
+       <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+  <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
+  <h4>Événements antérieurs</h4>
+<div id="bloc-superieur"></div>
+<h4>Événements en ${year}</h4>
+<div id="bloc-central"></div>
+<h4>Événements postérieurs</h4>
+<div id="bloc-inferieur"></div>
     </div>
     <div class="fiche-column">
       <h3 id="fiche-titre">Détails</h3>
@@ -211,38 +216,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   function renderEvents(year) {
-    const top = document.getElementById("bloc-superieur");
-    const center = document.getElementById("bloc-central");
-    const bottom = document.getElementById("bloc-inferieur");
-    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
+  console.log("Affichage des événements pour l'année :", year);
+  const top = document.getElementById("bloc-superieur");
+  const center = document.getElementById("bloc-central");
+  const bottom = document.getElementById("bloc-inferieur");
+  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 
-    const makeEvent = (e, y, isContext) => {
-      const div = document.createElement("div");
-      div.className = "event" + (isContext ? " nearby" : "");
-      div.innerHTML = `
-        <div class="event-date">${y}</div>
-        <div><strong>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</strong>
-        ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}</div>
-      `;
-      return div;
-    };
+  const makeEvent = (e, y, isContext) => {
+    const div = document.createElement("div");
+    div.className = "event" + (isContext ? " nearby" : "");
+    div.innerHTML = `
+      <div class="event-date">${y}</div>
+      <div><strong>${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}</strong>
+      ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}</div>
+    `;
+    return div;
+  };
 
-    eventData.forEach(e => {
-      // Bloc central
-      if (e.start <= year && e.end >= year)
-        center.appendChild(makeEvent(e, year, false));
+  eventData.forEach(e => {
+    if (e.start <= year && e.end >= year)
+      center.appendChild(makeEvent(e, year, false));
+    for (let y = year - 2; y < year; y++)
+      if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
+        top.appendChild(makeEvent(e, y, true));
+    for (let y = year + 1; y <= year + 2; y++)
+      if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
+        bottom.appendChild(makeEvent(e, y, true));
+  });
 
-      // Bloc supérieur
-      for (let y = year - 2; y < year; y++)
-        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
-          top.appendChild(makeEvent(e, y, true));
-
-      // Bloc inférieur
-      for (let y = year + 1; y <= year + 2; y++)
-        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
-          bottom.appendChild(makeEvent(e, y, true));
-    });
-  }
+  const totalEvents = top.children.length + center.children.length + bottom.children.length;
+  document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
+  document.getElementById("loader").style.display = "none";
+}
 });
 </script>
 </body>
