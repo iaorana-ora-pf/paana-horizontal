@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer 2 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -96,6 +96,9 @@
     }
     .event:hover {
   background-color: #f0fdfd;
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
 }
 .titre-bloc {
   margin-top: 2rem;
@@ -127,7 +130,21 @@
   min-width: 70px;
   margin-bottom: 0.25rem;
 }
+.event-box {
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: white;
+  margin-bottom: 1.5rem;
+}
 
+.title-central {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--text); /* reste en noir */
+  text-decoration: underline;
+  font-weight: bold;
+}
     
     .pluriannuel-badge {
       display: inline-block;
@@ -176,8 +193,10 @@
  <h4 class="titre-bloc titre-gris">Événements antérieurs</h4>
 <div id="bloc-superieur"></div>
 
-<h4 class="titre-bloc">Événements de l'année</h4>
-<div id="bloc-central"></div>
+<div id="bloc-central" class="event-box">
+  <h4 class="title-central">Événements de l'année</h4>
+  <!-- événements seront injectés ici -->
+</div>
 
 <h4 class="titre-bloc titre-gris">Événements postérieurs</h4>
 <div id="bloc-inferieur"></div>
@@ -242,9 +261,12 @@ fetch("events.json?" + Date.now())
   console.log("Affichage des événements pour l'année :", year);
   const top = document.getElementById("bloc-superieur");
   const center = document.getElementById("bloc-central");
+
+
+   
   const bottom = document.getElementById("bloc-inferieur");
   top.innerHTML = center.innerHTML = bottom.innerHTML = "";
-
+const title = document.createElement("h4");
 const makeEvent = (e, y, isContext) => {
   const div = document.createElement("div");
   div.className = "event" + (isContext ? " nearby" : "");
