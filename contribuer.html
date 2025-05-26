@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer 2- Paana</title>
+  <title>Contribuer 2 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -93,20 +93,19 @@
       overflow-y: auto;
       padding: 1.5rem;
     }
-.events-column h5 {
-  margin-bottom: 0.2rem;
-  color: var(--gray-dark);
-  font-weight: bold;
-  text-decoration: underline;
-}
-.events-column ul {
-  margin-top: 0;
-  padding-left: 1.2rem;
-}
-.events-column li {
-  margin-bottom: 0.3rem;
-}
-    
+    .events-column h5 {
+      margin-bottom: 0.2rem;
+      color: var(--gray-dark);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .events-column ul {
+      margin-top: 0;
+      padding-left: 1.2rem;
+    }
+    .events-column li {
+      margin-bottom: 0.3rem;
+    }
     .fiche-column {
       flex: 0 0 400px;
       background: #fff;
@@ -136,27 +135,6 @@
       color: var(--text);
       text-decoration: underline;
       font-weight: bold;
-    }
-    .event {
-      background: white;
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  padding: 1rem;  
-    }
-    .event.nearby {
-      opacity: 0.6;
-      font-style: italic;
-    }
-    .event:hover {
-      background-color: #f0fdfd;
-      transform: scale(1.01);
-      transition: all 0.2s ease;
-    }
-    .event-date {
-      font-weight: bold;
-      color: var(--gray-dark);
-      min-width: 70px;
-      margin-bottom: 0.25rem;
     }
     .pluriannuel-badge {
       display: inline-block;
@@ -245,13 +223,16 @@ document.addEventListener("DOMContentLoaded", () => {
           btn.classList.add("active");
           renderEvents(parseInt(btn.dataset.year));
         });
-
-        if (yearButtons.length) {
-          yearButtons[0].click();
-        }
       });
 
-      function selectYearByOffset(offset) {
+      if (yearButtons.length) {
+        yearButtons[0].click();
+      }
+
+      document.getElementById("scroll-up").addEventListener("click", () => scrollYear(-1));
+      document.getElementById("scroll-down").addEventListener("click", () => scrollYear(1));
+
+      function scrollYear(offset) {
         const currentIndex = [...yearButtons].findIndex(btn => btn.classList.contains("active"));
         const newIndex = currentIndex + offset;
         if (newIndex >= 0 && newIndex < yearButtons.length) {
@@ -259,78 +240,52 @@ document.addEventListener("DOMContentLoaded", () => {
           yearButtons[newIndex].scrollIntoView({ behavior: "smooth", block: "center" });
         }
       }
-
-      document.getElementById("scroll-up").addEventListener("click", () => selectYearByOffset(-1));
-      document.getElementById("scroll-down").addEventListener("click", () => selectYearByOffset(1));
     });
 
   function renderEvents(year) {
-    console.log("Affichage des événements pour l'année :", year);
     const top = document.getElementById("bloc-superieur");
     const centerList = document.getElementById("events-central-list");
     const bottom = document.getElementById("bloc-inferieur");
     top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
 
-    const makeEvent = (e, y, isContext) => {
-      const div = document.createElement("div");
-      div.className = "event" + (isContext ? " nearby" : "");
-      div.innerHTML = `
-        <div class="event-date">${isContext ? y : ""}</div>
-        <div>
-          ${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
-          ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
-        </div>
-      `;
-      return div;
+    const makeEventText = e => {
+      return `${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}`;
     };
 
     eventData.forEach(e => {
-      if (e.start <= year && e.end >= year)
-        centerList.appendChild(makeEvent(e, year, false));
-
-const groupByYear = (events, from, to) => {
-  const map = {};
-  for (let y = from; y <= to; y++) {
-    const evts = events.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
-    if (evts.length) map[y] = evts;
-  }
-  return map;
-};
-
-// ⬆️ Antérieurs
-const beforeMap = groupByYear(eventData, year - 2, year - 1);
-for (const [y, events] of Object.entries(beforeMap)) {
-  const title = document.createElement("h5");
-  title.textContent = y;
-  top.appendChild(title);
-  const ul = document.createElement("ul");
-  for (const e of events) {
-    const li = document.createElement("li");
-    li.innerHTML = `${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}`;
-    ul.appendChild(li);
-  }
-  top.appendChild(ul);
-}
-
-// ⬇️ Postérieurs
-const afterMap = groupByYear(eventData, year + 1, year + 2);
-for (const [y, events] of Object.entries(afterMap)) {
-  const title = document.createElement("h5");
-  title.textContent = y;
-  bottom.appendChild(title);
-  const ul = document.createElement("ul");
-  for (const e of events) {
-    const li = document.createElement("li");
-    li.innerHTML = `${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}`;
-    ul.appendChild(li);
-  }
-  bottom.appendChild(ul);
-}
-
-      for (let y = year + 1; y <= year + 2; y++)
-        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
-          bottom.appendChild(makeEvent(e, y, true));
+      if (e.start <= year && e.end >= year) {
+        const div = document.createElement("div");
+        div.innerHTML = makeEventText(e);
+        centerList.appendChild(div);
+      }
     });
+
+    const groupByYear = (from, to) => {
+      const map = {};
+      for (let y = from; y <= to; y++) {
+        const evts = eventData.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
+        if (evts.length) map[y] = evts;
+      }
+      return map;
+    };
+
+    const renderContextual = (container, map) => {
+      for (const [y, events] of Object.entries(map)) {
+        const title = document.createElement("h5");
+        title.textContent = y;
+        container.appendChild(title);
+        const ul = document.createElement("ul");
+        events.forEach(e => {
+          const li = document.createElement("li");
+          li.innerHTML = makeEventText(e);
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+    };
+
+    renderContextual(top, groupByYear(year - 2, year - 1));
+    renderContextual(bottom, groupByYear(year + 1, year + 2));
 
     const totalEvents = top.children.length + centerList.children.length + bottom.children.length;
     document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
