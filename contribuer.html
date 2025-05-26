@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer 2 - Paana</title>
+  <title>Contribuer - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
       background-color: #fee58c;
     }
     .year-btn.active {
-      color: #007b7f;
+      color: var(--primary);
       font-weight: bold;
       font-size: 1.3rem;
       border-radius: 4px;
@@ -92,60 +92,60 @@
       background: var(--light);
       overflow-y: auto;
       padding: 1.5rem;
-      
     }
-    .event:hover {
-  background-color: #f0fdfd;
-  transform: scale(1.01);
-  transition: all 0.2s ease;
-}
-}
-.titre-bloc {
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.titre-gris {
-  color: var(--gray-dark);
-  text-decoration: underline;
-}
-
-  .event {
-  background: white;
-  border: 2px solid var(--primary);
-  border-radius: 6px;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
+    .fiche-column {
+      flex: 0 0 400px;
+      background: #fff;
+      padding: 1.5rem;
+      border-left: 1px solid #ddd;
+      overflow-y: auto;
+    }
+    .titre-bloc {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .titre-gris {
+      color: var(--gray-dark);
+      text-decoration: underline;
+    }
+    .event-box {
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      padding: 1rem;
+      background-color: white;
+      margin-bottom: 1.5rem;
+    }
+    .title-central {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--text);
+      text-decoration: underline;
+      font-weight: bold;
+    }
+    .event {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
     .event.nearby {
       opacity: 0.6;
       font-style: italic;
     }
-   
-.event-date {
-  font-weight: bold;
-  color: var(--gray-dark);
-  min-width: 70px;
-  margin-bottom: 0.25rem;
-}
-.event-box {
-  border: 2px solid var(--primary);
-  border-radius: 8px;
-  padding: 1rem;
-  background-color: white;
-  margin-bottom: 1.5rem;
-}
-
-.title-central {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: var(--text); /* reste en noir */
-  text-decoration: underline;
-  font-weight: bold;
-}
-    
+    .event:hover {
+      background-color: #f0fdfd;
+      transform: scale(1.01);
+      transition: all 0.2s ease;
+    }
+    .event-date {
+      font-weight: bold;
+      color: var(--gray-dark);
+      min-width: 70px;
+      margin-bottom: 0.25rem;
+    }
     .pluriannuel-badge {
       display: inline-block;
       background-color: var(--primary);
@@ -154,13 +154,6 @@
       padding: 2px 6px;
       margin-left: 6px;
       border-radius: 4px;
-    }
-    .fiche-column {
-      flex: 0 0 400px;
-      background: #fff;
-      padding: 1.5rem;
-      border-left: 1px solid #ddd;
-      overflow-y: auto;
     }
   </style>
 </head>
@@ -188,19 +181,21 @@
       <button id="scroll-down" type="button">↓</button>
     </div>
     <div class="events-column">
-       <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
-  <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
- <h4 class="titre-bloc titre-gris">Événements antérieurs</h4>
-<div id="bloc-superieur"></div>
+      <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+      <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
 
-<div id="bloc-central" class="event-box">
-  <h4 class="title-central">Événements de l'année</h4>
-  <!-- événements seront injectés ici -->
-</div>
+      <h4 class="titre-bloc titre-gris">Événements antérieurs</h4>
+      <div id="bloc-superieur"></div>
 
-<h4 class="titre-bloc titre-gris">Événements postérieurs</h4>
-<div id="bloc-inferieur"></div>
+      <div class="event-box">
+        <h4 class="title-central">Événements de l'année</h4>
+        <div id="events-central-list"></div>
+      </div>
+
+      <h4 class="titre-bloc titre-gris">Événements postérieurs</h4>
+      <div id="bloc-inferieur"></div>
     </div>
+
     <div class="fiche-column">
       <h3 id="fiche-titre">Détails</h3>
       <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
@@ -212,7 +207,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearCol = document.getElementById("years-column");
   let eventData = [];
 
-fetch("events.json?" + Date.now())
+  fetch("events.json?" + Date.now())
     .then(res => res.json())
     .then(data => {
       if (!Array.isArray(data)) throw new Error("Format JSON invalide.");
@@ -240,8 +235,8 @@ fetch("events.json?" + Date.now())
         });
 
         if (yearButtons.length) {
-  yearButtons[0].click(); // Sélection automatique
-}
+          yearButtons[0].click();
+        }
       });
 
       function selectYearByOffset(offset) {
@@ -257,46 +252,43 @@ fetch("events.json?" + Date.now())
       document.getElementById("scroll-down").addEventListener("click", () => selectYearByOffset(1));
     });
 
- function renderEvents(year) {
-  console.log("Affichage des événements pour l'année :", year);
-  const top = document.getElementById("bloc-superieur");
-  const center = document.getElementById("bloc-central");
+  function renderEvents(year) {
+    console.log("Affichage des événements pour l'année :", year);
+    const top = document.getElementById("bloc-superieur");
+    const centerList = document.getElementById("events-central-list");
+    const bottom = document.getElementById("bloc-inferieur");
+    top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
 
+    const makeEvent = (e, y, isContext) => {
+      const div = document.createElement("div");
+      div.className = "event" + (isContext ? " nearby" : "");
+      div.innerHTML = `
+        <div class="event-date">${isContext ? y : ""}</div>
+        <div>
+          ${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
+          ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
+        </div>
+      `;
+      return div;
+    };
 
-   
-  const bottom = document.getElementById("bloc-inferieur");
-  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
-const title = document.createElement("h4");
-const makeEvent = (e, y, isContext) => {
-  const div = document.createElement("div");
-  div.className = "event" + (isContext ? " nearby" : "");
-  div.innerHTML = `
-    <div class="event-date">${isContext ? y : ""}</div>
-    <div>
-      ${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
-      ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
-    </div>
-  `;
-  return div;
-};
+    eventData.forEach(e => {
+      if (e.start <= year && e.end >= year)
+        centerList.appendChild(makeEvent(e, year, false));
 
-  eventData.forEach(e => {
-    if (e.start <= year && e.end >= year)
-      center.appendChild(makeEvent(e, year, false));
+      for (let y = year - 2; y < year; y++)
+        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
+          top.appendChild(makeEvent(e, y, true));
 
-    for (let y = year - 2; y < year; y++)
-      if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
-        top.appendChild(makeEvent(e, y, true));
+      for (let y = year + 1; y <= year + 2; y++)
+        if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
+          bottom.appendChild(makeEvent(e, y, true));
+    });
 
-    for (let y = year + 1; y <= year + 2; y++)
-      if ((e.start === e.end && e.start === y) || (e.start <= y && e.end >= y))
-        bottom.appendChild(makeEvent(e, y, true));
-  });
-
-  const totalEvents = top.children.length + center.children.length + bottom.children.length;
-  document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
-  document.getElementById("loader").style.display = "none";
-}
+    const totalEvents = top.children.length + centerList.children.length + bottom.children.length;
+    document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
+    document.getElementById("loader").style.display = "none";
+  }
 });
 </script>
 </body>
