@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer 3 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -106,6 +106,43 @@
     .events-column li {
       margin-bottom: 0.3rem;
     }
+
+    .collapsible-box {
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  background-color: white;
+  margin-bottom: 1.5rem;
+  color: var(--gray-dark);
+}
+
+.collapsible-toggle {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  user-select: none;
+}
+
+.collapsible-toggle i {
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.collapsible-content {
+  display: none;
+  margin-top: 0.5rem;
+}
+
+.collapsible-box.open .collapsible-content {
+  display: block;
+}
+
+.collapsible-box.open .collapsible-toggle i {
+  transform: rotate(90deg);
+}
+
     .fiche-column {
       flex: 0 0 400px;
       background: #fff;
@@ -189,6 +226,14 @@
     <div class="fiche-column">
       <h3 id="fiche-titre">Détails</h3>
       <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
+
+      <div class="collapsible-box" id="box-superieur">
+  <div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')">
+    <i class="fas fa-chevron-right"></i>
+    Événements antérieurs
+  </div>
+  <div class="collapsible-content" id="bloc-superieur"></div>
+</div>
     </div>
   </div>
 </main>
@@ -291,6 +336,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
     document.getElementById("loader").style.display = "none";
   }
+  function toggleCollapse(id) {
+  const box = document.getElementById(id);
+  box.classList.toggle("open");
 });
 </script>
 </body>
