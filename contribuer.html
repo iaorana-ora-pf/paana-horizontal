@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer 1 - Paana</title>
+  <title>Contribuer 3 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -224,6 +224,100 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearCol = document.getElementById("years-column");
   let eventData = [];
 
+  // Catégories → icônes FontAwesome
+  const categoryIcons = {
+    "Éducation": "fa-graduation-cap",
+    "Nutrition": "fa-apple-whole",
+    "Infrastructure": "fa-building",
+    "Ressources humaines": "fa-users",
+    "Législation": "fa-scale-balanced",
+    "Communication": "fa-bullhorn",
+    "Recherche": "fa-flask",
+    "Hygiène": "fa-soap",
+    "Technologie": "fa-microchip",
+    "Vaccination": "fa-syringe",
+    "Environnement": "fa-leaf",
+    "Santé publique": "fa-heart-pulse",
+    "Financement": "fa-hand-holding-dollar"
+  };
+
+  function stringToColor(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    let color = '#';
+    for (let i = 0; i < 3; i++) {
+      const value = (hash >> (i * 8)) & 0xff;
+      color += ('00' + value.toString(16)).slice(-2);
+    }
+    return color;
+  }
+
+  function renderEvents(year) {
+    const top = document.getElementById("bloc-superieur");
+    const centerList = document.getElementById("events-central-list");
+    const bottom = document.getElementById("bloc-inferieur");
+    top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
+
+    const makeEventText = e => {
+      const icon = categoryIcons[e.maincat] 
+        ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}"></i> ` 
+        : '';
+      const themeColor = stringToColor(e.themes || "");
+      return `
+        <div class="event" style="border-left: 5px solid ${themeColor}">
+          <div>
+            ${icon}${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
+            ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
+          </div>
+        </div>
+      `;
+    };
+
+    eventData.forEach(e => {
+      if (e.start <= year && e.end >= year) {
+        centerList.insertAdjacentHTML("beforeend", makeEventText(e));
+      }
+    });
+
+    const groupByYear = (from, to) => {
+      const map = {};
+      for (let y = from; y <= to; y++) {
+        const evts = eventData.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
+        if (evts.length) map[y] = evts;
+      }
+      return map;
+    };
+
+    const renderContextual = (container, map) => {
+      for (const [y, events] of Object.entries(map)) {
+        const title = document.createElement("h5");
+        title.textContent = y;
+        container.appendChild(title);
+        const ul = document.createElement("ul");
+        events.forEach(e => {
+          const li = document.createElement("li");
+          li.innerHTML = makeEventText(e);
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+    };
+
+    renderContextual(top, groupByYear(year - 2, year - 1));
+    renderContextual(bottom, groupByYear(year + 1, year + 2));
+
+    const totalEvents = top.children.length + centerList.children.length + bottom.children.length;
+    document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
+    document.getElementById("loader").style.display = "none";
+  }
+
+  window.toggleCollapse = function(id) {
+    document.getElementById(id).classList.toggle("open");
+  };
+
+  // Charger les données
   fetch("events.json?" + Date.now())
     .then(res => res.json())
     .then(data => {
@@ -265,59 +359,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-
-  function renderEvents(year) {
-    const top = document.getElementById("bloc-superieur");
-    const centerList = document.getElementById("events-central-list");
-    const bottom = document.getElementById("bloc-inferieur");
-    top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
-
-    const makeEventText = e =>
-      `${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}`;
-
-    eventData.forEach(e => {
-      if (e.start <= year && e.end >= year) {
-        const div = document.createElement("div");
-        div.innerHTML = makeEventText(e);
-        centerList.appendChild(div);
-      }
-    });
-
-    const groupByYear = (from, to) => {
-      const map = {};
-      for (let y = from; y <= to; y++) {
-        const evts = eventData.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
-        if (evts.length) map[y] = evts;
-      }
-      return map;
-    };
-
-    const renderContextual = (container, map) => {
-      for (const [y, events] of Object.entries(map)) {
-        const title = document.createElement("h5");
-        title.textContent = y;
-        container.appendChild(title);
-        const ul = document.createElement("ul");
-        events.forEach(e => {
-          const li = document.createElement("li");
-          li.innerHTML = makeEventText(e);
-          ul.appendChild(li);
-        });
-        container.appendChild(ul);
-      }
-    };
-
-    renderContextual(top, groupByYear(year - 2, year - 1));
-    renderContextual(bottom, groupByYear(year + 1, year + 2));
-
-    const totalEvents = top.children.length + centerList.children.length + bottom.children.length;
-    document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
-    document.getElementById("loader").style.display = "none";
-  }
-
-  window.toggleCollapse = function(id) {
-    document.getElementById(id).classList.toggle("open");
-  };
 });
 </script>
 </body>
