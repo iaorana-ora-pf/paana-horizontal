@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer3 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -32,7 +32,8 @@
       padding: 1.5rem 2rem;
     }
     .year-btn {
-      width: 100%; height: 2.5rem;
+      width: 100%;
+      height: 2.5rem;
       font-size: 1rem;
       background: none;
       border: none;
@@ -40,13 +41,17 @@
       cursor: pointer;
       color: var(--text);
       margin: 2px 0;
+      transition: background 0.2s, font-size 0.2s;
     }
-    .year-btn:hover { background-color: #fee58c; }
+    .year-btn:hover {
+      background-color: #fee58c;
+    }
     .year-btn.active {
       color: var(--primary);
       font-weight: bold;
       font-size: 1.3rem;
       border-radius: 4px;
+      background-color: #e0f7f7;
     }
     .timeline-layout {
       display: flex;
@@ -102,6 +107,34 @@
       margin-left: 6px;
       border-radius: 4px;
     }
+    .collapsible-box {
+      border: 1px solid var(--gray);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      background-color: white;
+      margin-bottom: 1.5rem;
+      color: var(--gray-dark);
+    }
+    .collapsible-toggle {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .collapsible-toggle i {
+      margin-right: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    .collapsible-content {
+      display: none;
+      margin-top: 0.5rem;
+    }
+    .collapsible-box.open .collapsible-content {
+      display: block;
+    }
+    .collapsible-box.open .collapsible-toggle i {
+      transform: rotate(90deg);
+    }
     .fiche-column {
       flex: 0 0 400px;
       background: #fff;
@@ -109,144 +142,73 @@
       border-left: 1px solid #ddd;
       overflow-y: auto;
     }
-    .event {
-      margin: 0.4rem 0;
-      padding-left: 0.6rem;
-      border-left: 5px solid var(--primary);
-      cursor: pointer;
-    }
-    .event.selected {
-      background-color: #fff8d0;
-      font-weight: bold;
-    }
-    .keywords a {
-      margin-right: 6px;
-      color: var(--primary);
-      text-decoration: underline;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <span class="brand">Paana</span>
-      <div class="trait"></div>
-      <div class="signature">Emmanuelle RUPP-TERRIS</div>
+<header>
+  <div class="logo">
+    <span class="brand">Paana</span>
+    <div class="trait"></div>
+    <div class="signature">Emmanuelle RUPP-TERRIS</div>
+  </div>
+  <nav>
+    <a href="a-propos.html">A PROPOS</a>
+    <a href="contribuer.html">CONTRIBUER</a>
+    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
+    <a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+  </nav>
+</header>
+<main>
+  <div class="timeline-layout">
+    <div class="years-container">
+      <button id="scroll-up">↑</button>
+      <div class="years-column" id="years-column"></div>
+      <button id="scroll-down">↓</button>
     </div>
-    <nav>
-      <a href="a-propos.html">A PROPOS</a>
-      <a href="contribuer.html">CONTRIBUER</a>
-      <a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
-    </nav>
-  </header>
-  <main>
-    <div class="timeline-layout">
-      <div class="years-container">
-        <button id="scroll-up">↑</button>
-        <div class="years-column" id="years-column"></div>
-        <button id="scroll-down">↓</button>
-      </div>
-      <div class="events-column">
-        <div class="event-box">
-          <h4 class="title-central">Événements de l'année</h4>
-          <div id="events-central-list"></div>
+    <div class="events-column">
+      <div id="loader">Chargement...</div>
+      <div id="message-attente" style="display:none;">Aucun événement affiché.</div>
+      <div class="collapsible-box" id="box-superieur">
+        <div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')">
+          <i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années précédentes
         </div>
+        <div class="collapsible-content" id="bloc-superieur"></div>
       </div>
-      <div class="fiche-column">
-        <h3 id="fiche-titre">Détails</h3>
-        <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
+      <div class="event-box">
+        <h4 class="title-central">Événements de l'année</h4>
+        <div id="events-central-list"></div>
+      </div>
+      <div class="collapsible-box" id="box-inferieur">
+        <div class="collapsible-toggle" onclick="toggleCollapse('box-inferieur')">
+          <i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années suivantes
+        </div>
+        <div class="collapsible-content" id="bloc-inferieur"></div>
       </div>
     </div>
-  </main>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const yearCol = document.getElementById("years-column");
-      const centerList = document.getElementById("events-central-list");
-      const ficheTitle = document.getElementById("fiche-titre");
-      const ficheContent = document.getElementById("fiche-content");
-      let eventData = [];
-      let currentIndex = -1;
-
-      const categoryIcons = {
-        "Santé publique": "fa-heart-pulse",
-        "Communication": "fa-bullhorn",
-        "Infrastructure": "fa-building"
-      };
-
-      function stringToColor(str) {
-        let hash = 0;
-        for (let i = 0; i < str.length; i++) {
-          hash = str.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        let color = '#';
-        for (let i = 0; i < 3; i++) {
-          const value = (hash >> (i * 8)) & 0xff;
-          color += ('00' + value.toString(16)).slice(-2);
-        }
-        return color;
-      }
-
-      function displayFiche(event, index) {
-        currentIndex = index;
-        ficheTitle.textContent = event.title;
-        const icon = categoryIcons[event.maincat] ? `<i class="fas ${categoryIcons[event.maincat]}"></i> ` : "";
-        ficheContent.innerHTML = `
-          <p><strong>Catégorie principale :</strong> ${icon}${event.maincat}</p>
-          <p><strong>Catégories secondaires :</strong> ${event.subcats?.join(", ") || "-"}</p>
-          <p><strong>Thème :</strong> ${event.themes || "-"}</p>
-          <p><strong>Mots clés :</strong> <span class="keywords">${(event.keywords || []).map(k => `<a href="#">${k}</a>`).join(" ")}</span></p>
-          <p><strong>Description :</strong><br>${event.description || "-"}</p>
-          <p><strong>Source :</strong> ${event.source || "-"}</p>
-          <p><strong>Pour aller plus loin :</strong> ${event.lien ? `<a href="${event.lien}" target="_blank">${event.lien}</a>` : "-"}</p>
-          <div style="margin-top:1rem;"><button onclick="selectAdjacent(-1)">Précédent</button> <button onclick="selectAdjacent(1)">Suivant</button></div>
-        `;
-
-        document.querySelectorAll(".event").forEach(div => div.classList.remove("selected"));
-        document.querySelector(`.event[data-index='${index}']`)?.classList.add("selected");
-      }
-
-      function selectAdjacent(offset) {
-        const newIndex = currentIndex + offset;
-        if (newIndex >= 0 && newIndex < eventData.length) displayFiche(eventData[newIndex], newIndex);
-      }
-
-      fetch("events.json?" + Date.now())
-        .then(res => res.json())
-        .then(data => {
-          if (!Array.isArray(data)) throw new Error("Format JSON invalide");
-          eventData = data;
-
-          const years = [...new Set(data.flatMap(e => Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)))].sort((a, b) => a - b);
-
-          years.forEach(year => {
-            const btn = document.createElement("button");
-            btn.className = "year-btn";
-            btn.textContent = year;
-            btn.dataset.year = year;
-            btn.onclick = () => renderEvents(year);
-            yearCol.appendChild(btn);
-          });
-
-          renderEvents(years[0]);
-        });
-
-      function renderEvents(year) {
-        centerList.innerHTML = "";
-        const relevant = eventData.filter(e => e.start <= year && e.end >= year);
-        relevant.forEach((e, i) => {
-          const themeColor = stringToColor(e.themes || "");
-          const icon = categoryIcons[e.maincat] ? `<i class='fas ${categoryIcons[e.maincat]}'></i> ` : "";
-          const div = document.createElement("div");
-          div.className = "event";
-          div.dataset.index = eventData.indexOf(e);
-          div.style.borderLeft = `5px solid ${themeColor}`;
-          div.innerHTML = `${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}`;
-          div.onclick = () => displayFiche(e, eventData.indexOf(e));
-          centerList.appendChild(div);
-        });
-      }
-    });
-  </script>
+    <div class="fiche-column">
+      <h3 id="fiche-titre">Détails</h3>
+      <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
+    </div>
+  </div>
+</main>
+<script>
+// Catégories → icônes FontAwesome
+const categoryIcons = {
+  "Éducation": "fa-graduation-cap",
+  "Nutrition": "fa-apple-whole",
+  "Infrastructure": "fa-building",
+  "Ressources humaines": "fa-users",
+  "Législation": "fa-scale-balanced",
+  "Communication": "fa-bullhorn",
+  "Recherche": "fa-flask",
+  "Hygiène": "fa-soap",
+  "Technologie": "fa-microchip",
+  "Vaccination": "fa-syringe",
+  "Environnement": "fa-leaf",
+  "Santé publique": "fa-heart-pulse",
+  "Financement": "fa-hand-holding-dollar"
+};
+</script>
+<!-- JS logic à intégrer ici (événements + clics) -->
 </body>
 </html>
