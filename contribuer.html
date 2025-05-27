@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer 4- Paana</title>
+  <title>Contribuer - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
   : '';
       const themeColor = stringToColor(e.themes || "");
       return `
-  <div class="event" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem;">
+  <div class="event" style="padding: 0.6rem; background-color: white;" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem;">
     <div>
       ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
       ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
@@ -364,12 +364,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // === FICHE DESCRIPTIVE ENRICHIE ===
 function renderFiche(e, index) {
-  document.querySelectorAll('.event').forEach(el => el.style.background = '');
+  // Réinitialiser tous les fonds blancs
+  document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
   const allEvents = document.querySelectorAll('.event[data-id]');
-  if (allEvents[index]) allEvents[index].style.background = '#fee58c';
+  if (allEvents[index]) allEvents[index].style.backgroundColor = '#fee58c';
+
   document.getElementById('fiche-titre').textContent = e.title;
-  const keywords = (e.keywords || []).map(k => `<a href="https://decs.pf/fiche?q=${encodeURIComponent(k)}" target="_blank">${k}</a>`).join(', ');
+
+  const keywords = (e.keywords || []).map(k => 
+    `<a href="https://decs.pf/fiche?q=${encodeURIComponent(k)}" target="_blank">${k}</a>`
+  ).join(', ');
+
   const related = eventData.filter(x => x.themes === e.themes);
+
   document.getElementById('fiche-content').innerHTML = `
     <ul>
       <li><strong>Catégorie principale :</strong> ${e.maincat || ''}</li>
