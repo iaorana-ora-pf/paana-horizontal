@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer3 - Paana</title>
+  <title>Contribuer 2- Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -51,7 +52,6 @@
       font-weight: bold;
       font-size: 1.3rem;
       border-radius: 4px;
-      background-color: #e0f7f7;
     }
     .timeline-layout {
       display: flex;
@@ -72,12 +72,17 @@
       background: white;
       cursor: pointer;
     }
+    #scroll-up:hover, #scroll-down:hover {
+      background: #eee;
+    }
     .years-column {
       width: 80px;
       height: calc(2.5rem * 10);
       overflow-y: scroll;
       background: white;
       border-right: 1px solid #ddd;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
     }
     .events-column {
       width: 600px;
@@ -85,6 +90,7 @@
       overflow-y: auto;
       padding: 1.5rem;
     }
+
     .event-box {
       border: 2px solid var(--primary);
       border-radius: 8px;
@@ -93,11 +99,12 @@
       margin-bottom: 1.5rem;
     }
     .title-central {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      color: var(--primary);
-      font-weight: bold;
-    }
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: var(--primary); /* couleur bandeau */
+  font-weight: bold;
+  text-decoration: none; /* retire le souligné */
+}
     .pluriannuel-badge {
       display: inline-block;
       background-color: var(--primary);
@@ -107,6 +114,7 @@
       margin-left: 6px;
       border-radius: 4px;
     }
+
     .collapsible-box {
       border: 1px solid var(--gray);
       border-radius: 6px;
@@ -120,6 +128,7 @@
       align-items: center;
       cursor: pointer;
       font-weight: bold;
+      user-select: none;
     }
     .collapsible-toggle i {
       margin-right: 0.5rem;
@@ -134,6 +143,19 @@
     }
     .collapsible-box.open .collapsible-toggle i {
       transform: rotate(90deg);
+    }
+    .events-column h5 {
+      margin-bottom: 0.2rem;
+      color: var(--gray-dark);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    .events-column ul {
+      margin-top: 0;
+      padding-left: 1.2rem;
+    }
+    .events-column li {
+      margin-bottom: 0.3rem;
     }
     .fiche-column {
       flex: 0 0 400px;
@@ -158,6 +180,7 @@
     <a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
   </nav>
 </header>
+
 <main>
   <div class="timeline-layout">
     <div class="years-container">
@@ -165,19 +188,23 @@
       <div class="years-column" id="years-column"></div>
       <button id="scroll-down">↓</button>
     </div>
+
     <div class="events-column">
-      <div id="loader">Chargement...</div>
-      <div id="message-attente" style="display:none;">Aucun événement affiché.</div>
+      <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+      <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
+
       <div class="collapsible-box" id="box-superieur">
         <div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')">
           <i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années précédentes
         </div>
         <div class="collapsible-content" id="bloc-superieur"></div>
       </div>
+
       <div class="event-box">
         <h4 class="title-central">Événements de l'année</h4>
         <div id="events-central-list"></div>
       </div>
+
       <div class="collapsible-box" id="box-inferieur">
         <div class="collapsible-toggle" onclick="toggleCollapse('box-inferieur')">
           <i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années suivantes
@@ -185,30 +212,155 @@
         <div class="collapsible-content" id="bloc-inferieur"></div>
       </div>
     </div>
+
     <div class="fiche-column">
       <h3 id="fiche-titre">Détails</h3>
       <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
     </div>
   </div>
 </main>
+
 <script>
-// Catégories → icônes FontAwesome
-const categoryIcons = {
-  "Éducation": "fa-graduation-cap",
-  "Nutrition": "fa-apple-whole",
-  "Infrastructure": "fa-building",
-  "Ressources humaines": "fa-users",
-  "Législation": "fa-scale-balanced",
-  "Communication": "fa-bullhorn",
-  "Recherche": "fa-flask",
-  "Hygiène": "fa-soap",
-  "Technologie": "fa-microchip",
-  "Vaccination": "fa-syringe",
-  "Environnement": "fa-leaf",
-  "Santé publique": "fa-heart-pulse",
-  "Financement": "fa-hand-holding-dollar"
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const yearCol = document.getElementById("years-column");
+  let eventData = [];
+
+  // Catégories → icônes FontAwesome
+  const categoryIcons = {
+    "Éducation": "fa-graduation-cap",
+    "Nutrition": "fa-apple-whole",
+    "Infrastructure": "fa-building",
+    "Ressources humaines": "fa-users",
+    "Législation": "fa-scale-balanced",
+    "Communication": "fa-bullhorn",
+    "Recherche": "fa-flask",
+    "Hygiène": "fa-soap",
+    "Technologie": "fa-microchip",
+    "Vaccination": "fa-syringe",
+    "Environnement": "fa-leaf",
+    "Santé publique": "fa-heart-pulse",
+    "Financement": "fa-hand-holding-dollar"
+  };
+
+  function stringToColor(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    let color = '#';
+    for (let i = 0; i < 3; i++) {
+      const value = (hash >> (i * 8)) & 0xff;
+      color += ('00' + value.toString(16)).slice(-2);
+    }
+    return color;
+  }
+
+  function renderEvents(year) {
+    const top = document.getElementById("bloc-superieur");
+    const centerList = document.getElementById("events-central-list");
+    const bottom = document.getElementById("bloc-inferieur");
+    top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
+
+    const makeEventText = e => {
+      const icon = categoryIcons[e.maincat] 
+  ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right: 0.4rem;"></i>` 
+  : '';
+      const themeColor = stringToColor(e.themes || "");
+      return `
+  <div class="event" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem;">
+    <div>
+      ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
+      ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
+    </div>
+  </div>
+      `;
+    };
+
+    eventData.forEach(e => {
+      if (e.start <= year && e.end >= year) {
+        centerList.insertAdjacentHTML("beforeend", makeEventText(e));
+      }
+    });
+
+    const groupByYear = (from, to) => {
+      const map = {};
+      for (let y = from; y <= to; y++) {
+        const evts = eventData.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
+        if (evts.length) map[y] = evts;
+      }
+      return map;
+    };
+
+    const renderContextual = (container, map) => {
+      for (const [y, events] of Object.entries(map)) {
+        const title = document.createElement("h5");
+        title.textContent = y;
+        container.appendChild(title);
+        const ul = document.createElement("ul");
+        events.forEach(e => {
+          const li = document.createElement("li");
+          li.innerHTML = makeEventText(e);
+          ul.appendChild(li);
+        });
+        container.appendChild(ul);
+      }
+    };
+
+    renderContextual(top, groupByYear(year - 2, year - 1));
+    renderContextual(bottom, groupByYear(year + 1, year + 2));
+
+    const totalEvents = top.children.length + centerList.children.length + bottom.children.length;
+    document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
+    document.getElementById("loader").style.display = "none";
+  }
+
+  window.toggleCollapse = function(id) {
+    document.getElementById(id).classList.toggle("open");
+  };
+
+  // Charger les données
+  fetch("events.json?" + Date.now())
+    .then(res => res.json())
+    .then(data => {
+      if (!Array.isArray(data)) throw new Error("Format JSON invalide.");
+      eventData = data;
+
+      const years = [...new Set(data.flatMap(e =>
+        Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
+      ))].sort((a, b) => a - b);
+
+      years.forEach(year => {
+        const btn = document.createElement("button");
+        btn.className = "year-btn";
+        btn.textContent = year;
+        btn.dataset.year = year;
+        yearCol.appendChild(btn);
+      });
+
+      const yearButtons = document.querySelectorAll(".year-btn");
+      yearButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          yearButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderEvents(parseInt(btn.dataset.year));
+        });
+      });
+
+      if (yearButtons.length) yearButtons[0].click();
+
+      document.getElementById("scroll-up").addEventListener("click", () => scrollYear(-1));
+      document.getElementById("scroll-down").addEventListener("click", () => scrollYear(1));
+
+      function scrollYear(offset) {
+        const currentIndex = [...yearButtons].findIndex(btn => btn.classList.contains("active"));
+        const newIndex = currentIndex + offset;
+        if (newIndex >= 0 && newIndex < yearButtons.length) {
+          yearButtons[newIndex].click();
+          yearButtons[newIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+    });
+});
 </script>
-<!-- JS logic à intégrer ici (événements + clics) -->
 </body>
 </html>
