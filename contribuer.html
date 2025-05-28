@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer2- Paana</title>
+<title>Contribuer 1- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -351,7 +351,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     fiche.innerHTML = `
       ${e.start && e.end ? `<p><strong>Année ou période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
-     ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat} <a href="categories-expliquées.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a></p>` : ''}
+     ${e.maincat ? `<p><strong>Catégorie principale  <a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> : </strong> ${e.maincat}</p>` : ''}
 ${(e.subcats || []).length ? `<p><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')} <a href="categories-expliquées.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a></p>` : ''}
       ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
       ${mots ? `<p><strong>Mots-clefs (issus du DeCS) :</strong> ${mots}</p>` : ''}
