@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer 2- Paana</title>
+  <title>Contribuer 5- Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -267,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
   : '';
       const themeColor = stringToColor(e.themes || "");
       return `
-  <div class="event" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem;">
+  <div class="event" style="padding: 0.6rem; background-color: white;" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem;">
     <div>
       ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
       ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
@@ -361,6 +361,59 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 });
+
+// === FICHE DESCRIPTIVE ENRICHIE ===
+function renderFiche(e, index) {
+  // Réinitialiser tous les fonds blancs
+  document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
+  const allEvents = document.querySelectorAll('.event[data-id]');
+  if (allEvents[index]) allEvents[index].style.backgroundColor = '#fee58c';
+
+  document.getElementById('fiche-titre').textContent = e.title;
+
+  const keywords = (e.keywords || []).map(k => 
+    `<a href="https://decs.pf/fiche?q=${encodeURIComponent(k)}" target="_blank">${k}</a>`
+  ).join(', ');
+
+  const related = eventData.filter(x => x.themes === e.themes);
+
+  document.getElementById('fiche-content').innerHTML = `
+    <ul>
+      <li><strong>Catégorie principale :</strong> ${e.maincat || ''}</li>
+      ${e.subcats?.length ? `<li><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</li>` : ''}
+      ${e.themes ? `<li><strong>Thème :</strong> ${e.themes}</li>` : ''}
+      ${keywords ? `<li><strong>Mots clefs :</strong> ${keywords}</li>` : ''}
+      <li><strong>Description :</strong> ${e.description || ''}</li>
+      <li><strong>Source :</strong> ${e.source || ''}</li>
+    </ul>
+    <h4>Autres événements du même thème</h4>
+    <ul>
+      ${related.map(r => `<li${r.title === e.title ? ' style="font-weight:bold;"' : ''}>
+        <a href="#" onclick="renderFiche(eventData[${eventData.indexOf(r)}], ${eventData.indexOf(r)}); return false;">${r.title}</a>
+      </li>`).join('')}
+    </ul>
+    <div style="margin-top:1rem; display:flex; justify-content:space-between;">
+      <button onclick="renderFiche(eventData[${index - 1}], ${index - 1})" ${index <= 0 ? 'disabled' : ''}>Précédent</button>
+      <button onclick="renderFiche(eventData[${index + 1}], ${index + 1})" ${index >= eventData.length - 1 ? 'disabled' : ''}>Suivant</button>
+    </div>
+  `;
+}
+
+function attachEventClicks() {
+  const all = document.querySelectorAll('.event');
+  all.forEach((el, idx) => {
+    el.setAttribute('data-id', idx);
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => renderFiche(eventData[idx], idx));
+  });
+}
+
+const originalRender = renderEvents;
+renderEvents = function(year) {
+  originalRender(year);
+  setTimeout(attachEventClicks, 50);
+};
+
 </script>
 </body>
 </html>
