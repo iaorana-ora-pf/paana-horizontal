@@ -1,10 +1,11 @@
 
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 3- Paana</title>
+<title>Contribuer 2- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -331,7 +332,6 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("loader").style.display = "none";
   }
 
-  
   window.renderFiche = function(e, index) {
     document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
     const current = document.querySelectorAll('.event[data-id="' + index + '"]')[0];
@@ -340,32 +340,29 @@ window.addEventListener("DOMContentLoaded", () => {
     const titre = document.getElementById("fiche-titre");
     const fiche = document.getElementById("fiche-content");
 
-    // Titre bleu et gras
     titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
 
     const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
     const related = window.eventData.filter(x => x.themes === e.themes);
     const other = related.map(r =>
-      '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') + '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' + r.title + '</a></li>'
+      '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') + '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' + r.title + '</a></div>'
     ).join('');
 
     fiche.innerHTML = `
-      ${e.start && e.end ? `<p><strong>Année ou période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
-      ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat}</p>` : ''}
-      ${(e.subcats || []).length ? `<p><strong>Catégorie secondaire :</strong> ${e.subcats.join(', ')}</p>` : ''}
-      ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
-      ${mots ? `<p><strong>Mots clefs :</strong> ${mots}</p>` : ''}
-      ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
-      ${e.source ? `<p><strong>Source :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
+  ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat}</p>` : ''}
+  ${(e.subcats || []).length ? `<p><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</p>` : ''}
+  ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
+  ${mots ? `<p><strong>Mots clefs :</strong> ${mots}</p>` : ''}
+  ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
+  ${e.source ? `<p><strong>Source :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}`.trim();
       <h4>Autres événements du même thème</h4>
-      <ul>${other}</ul>
+      ${other}
       <div id="fiche-navigation">
         <button onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})" ${index <= 0 ? 'disabled' : ''}>Précédent</button>
         <button onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})" ${index >= window.eventData.length - 1 ? 'disabled' : ''}>Suivant</button>
       </div>
     `;
   };
-
 
   window.toggleCollapse = function(id) {
     document.getElementById(id).classList.toggle("open");
@@ -409,4 +406,3 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
-
