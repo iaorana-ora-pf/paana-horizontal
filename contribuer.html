@@ -350,12 +350,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     fiche.innerHTML = `
       <ul>
-        <strong>Catégorie principale :</strong> ${e.maincat || ''}
-        ${(e.subcats || []).length ? `<li><strong>Catégorie secondaire :</strong> ${e.subcats.join(', ')}</li>` : ''}
-        ${e.themes ? `<li><strong>Thème :</strong> ${e.themes}</li>` : ''}
-        ${mots ? `<li><strong>Mots clefs :</strong> ${mots}</li>` : ''}
-        <li><strong>Description :</strong> ${e.description || ''}</li>
-        <li><strong>Source :</strong> ${e.source || ''}</li>
+        <p><strong>Catégorie principale :</strong> ${e.maincat || ''}</p>
+        <p>${(e.subcats || []).length ? `<li><strong>Catégorie secondaire :</strong> ${e.subcats.join(', ')} : ''}</p>
+       <p> ${e.themes ? `<li><strong>Thème :</strong> ${e.themes} : ''}</p>
+        <p>${mots ? `<li><strong>Mots clefs :</strong> ${mots}` : ''}</p>
+        <p><strong>Description :</strong> ${e.description || ''}</p>
+        <p><strong>Source :</strong> ${e.source || ''}</p>
       </ul>
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
