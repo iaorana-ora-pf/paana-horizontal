@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
+  <title>Contribuer 3 - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -89,7 +89,6 @@
       overflow-y: auto;
       padding: 1.5rem;
     }
-
     .event-box {
       border: 2px solid var(--primary);
       border-radius: 8px;
@@ -98,12 +97,12 @@
       margin-bottom: 1.5rem;
     }
     .title-central {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: var(--primary); /* couleur bandeau */
-  font-weight: bold;
-  text-decoration: none; /* retire le souligné */
-}
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+    }
     .pluriannuel-badge {
       display: inline-block;
       background-color: var(--primary);
@@ -113,7 +112,6 @@
       margin-left: 6px;
       border-radius: 4px;
     }
-
     .collapsible-box {
       border: 1px solid var(--gray);
       border-radius: 6px;
@@ -164,40 +162,36 @@
       overflow-y: auto;
     }
     .event.selected {
-  background-color: #fff8b0;
-  font-weight: bold;
-}
-
-#fiche-content .fiche-section {
-  margin-bottom: 1rem;
-}
-
-#fiche-content a {
-  color: var(--primary);
-  text-decoration: none;
-}
-#fiche-content a:hover {
-  text-decoration: underline;
-}
-
-#fiche-navigation {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
-}
-
-#fiche-navigation button {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  cursor: pointer;
-  border-radius: 5px;
-}
-#fiche-navigation button:hover {
-  background-color: #005f62;
-}
+      background-color: #fff8b0;
+      font-weight: bold;
+    }
+    #fiche-content .fiche-section {
+      margin-bottom: 1rem;
+    }
+    #fiche-content a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    #fiche-content a:hover {
+      text-decoration: underline;
+    }
+    #fiche-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+    #fiche-navigation button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    #fiche-navigation button:hover {
+      background-color: #005f62;
+    }
   </style>
 </head>
 <body>
@@ -259,9 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearCol = document.getElementById("years-column");
   let eventData = [];
 
-  onclick="renderFiche(eventData[${eventData.indexOf(e)}], ${eventData.indexOf(e)})"
-  
-  // Catégories → icônes FontAwesome
   const categoryIcons = {
     "Éducation": "fa-graduation-cap",
     "Nutrition": "fa-apple-whole",
@@ -297,44 +288,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const bottom = document.getElementById("bloc-inferieur");
     top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
 
-  
     const makeEventText = (e, idx) => {
-  const icon = categoryIcons[e.maincat] 
-    ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right: 0.4rem;"></i>` 
-    : '';
-  const themeColor = stringToColor(e.themes || "");
-  return `
-    <div class="event" data-id="${idx}" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem; background-color: white; cursor:pointer;" onclick="renderFiche(eventData[${idx}], ${idx})">
-      <div>
-        ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
-        ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
-      </div>
-    </div>
-  `;
-};
+      const icon = categoryIcons[e.maincat] 
+        ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right: 0.4rem;"></i>` 
+        : '';
       const themeColor = stringToColor(e.themes || "");
       return `
- return `
-  <div class="event" data-id="${e.id}" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem; background-color: white; cursor: pointer;" onclick="showFiche(${JSON.stringify(e).replace(/"/g, '&quot;')})">
-    <div>
-      ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
-      ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
-    </div>
-  </div>
-`;
-    <div>
-      ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
-      ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
-    </div>
-  </div>
+        <div class="event" data-id="${idx}" style="border-left: 5px solid ${themeColor}; padding-left: 0.6rem; background-color: white; cursor:pointer;" onclick="renderFiche(eventData[${idx}], ${idx})">
+          <div>
+            ${icon}&nbsp;&nbsp;${e.title}${e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : ""}
+            ${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
+          </div>
+        </div>
       `;
     };
 
-  eventData.forEach((e, idx) => {
-  if (e.start <= year && e.end >= year) {
-    centerList.insertAdjacentHTML("beforeend", makeEventText(e, idx));
-  }
-});
+    eventData.forEach((e, idx) => {
+      if (e.start <= year && e.end >= year) {
+        centerList.insertAdjacentHTML("beforeend", makeEventText(e, idx));
+      }
+    });
 
     const groupByYear = (from, to) => {
       const map = {};
@@ -372,7 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(id).classList.toggle("open");
   };
 
-  // Charger les données
   fetch("events.json?" + Date.now())
     .then(res => res.json())
     .then(data => {
@@ -416,9 +388,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// === FICHE DESCRIPTIVE ENRICHIE ===
 function renderFiche(e, index) {
-  // Réinitialiser tous les fonds blancs
   document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
   const allEvents = document.querySelectorAll('.event[data-id]');
   if (allEvents[index]) allEvents[index].style.backgroundColor = '#fee58c';
@@ -452,22 +422,6 @@ function renderFiche(e, index) {
     </div>
   `;
 }
-
-function attachEventClicks() {
-  const all = document.querySelectorAll('.event');
-  all.forEach((el, idx) => {
-    el.setAttribute('data-id', idx);
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', () => renderFiche(eventData[idx], idx));
-  });
-}
-
-const originalRender = renderEvents;
-renderEvents = function(year) {
-  originalRender(year);
-  setTimeout(attachEventClicks, 50);
-};
-
 </script>
 </body>
 </html>
