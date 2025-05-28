@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer 1- Paana</title>
+  <title>Contribuer - Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -350,8 +350,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     fiche.innerHTML = `
       <ul>
-        <li><strong>Catégorie principale :</strong> ${e.maincat || ''}</li>
-        ${(e.subcats || []).length ? `<li><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</li>` : ''}
+        <strong>Catégorie principale :</strong> ${e.maincat || ''}
+        ${(e.subcats || []).length ? `<li><strong>Catégorie secondaire :</strong> ${e.subcats.join(', ')}</li>` : ''}
         ${e.themes ? `<li><strong>Thème :</strong> ${e.themes}</li>` : ''}
         ${mots ? `<li><strong>Mots clefs :</strong> ${mots}</li>` : ''}
         <li><strong>Description :</strong> ${e.description || ''}</li>
