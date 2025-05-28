@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer A - Paana</title>
+  <title>Contribuer 1- Paana</title>
   <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
   <link href="header-footer.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -244,9 +244,9 @@
 <!-- SCRIPT will be appended below -->
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
   const yearCol = document.getElementById("years-column");
-  let eventData = [];
+  window.eventData = [];
 
   const categoryIcons = {
     "Éducation": "fa-graduation-cap",
@@ -279,35 +279,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderEvents(year) {
     const top = document.getElementById("bloc-superieur");
-    const centerList = document.getElementById("events-central-list");
+    const center = document.getElementById("events-central-list");
     const bottom = document.getElementById("bloc-inferieur");
-    top.innerHTML = centerList.innerHTML = bottom.innerHTML = "";
+    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 
     const makeEventText = (e, idx) => {
-      const icon = categoryIcons[e.maincat] 
-        ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right: 0.4rem;"></i>` 
-        : '';
-      const themeColor = stringToColor(e.themes || "");
-      return \`
-        <div class="event" data-id="\${idx}" style="border-left: 5px solid \${themeColor}; padding-left: 0.6rem; background-color: white; cursor:pointer;" onclick="renderFiche(eventData[\${idx}], \${idx})">
-          <div>
-            \${icon}&nbsp;&nbsp;\${e.title}\${e.start !== e.end ? \` <em>(\${e.start}–\${e.end})</em>\` : ""}
-            \${e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : ""}
-          </div>
-        </div>
-      \`;
+      const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+      const color = stringToColor(e.themes || "");
+      return '<div class="event" data-id="' + idx + '" style="border-left:5px solid ' + color + ';padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[' + idx + '],' + idx + ')">' +
+               '<div>' + icon + '&nbsp;&nbsp;' + e.title + 
+               (e.start !== e.end ? ' <em>(' + e.start + '–' + e.end + ')</em>' : '') +
+               (e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : '') +
+               '</div></div>';
     };
 
-    eventData.forEach((e, idx) => {
+    window.eventData.forEach((e, idx) => {
       if (e.start <= year && e.end >= year) {
-        centerList.insertAdjacentHTML("beforeend", makeEventText(e, idx));
+        center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
       }
     });
 
     const groupByYear = (from, to) => {
       const map = {};
       for (let y = from; y <= to; y++) {
-        const evts = eventData.filter(e => (e.start === e.end && e.start === y) || (e.start <= y && e.end >= y));
+        const evts = window.eventData.filter(e => (e.start <= y && e.end >= y));
         if (evts.length) map[y] = evts;
       }
       return map;
@@ -321,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const ul = document.createElement("ul");
         events.forEach(e => {
           const li = document.createElement("li");
-          li.innerHTML = makeEventText(e, eventData.indexOf(e));
+          li.innerHTML = makeEventText(e, window.eventData.indexOf(e));
           ul.appendChild(li);
         });
         container.appendChild(ul);
@@ -331,25 +326,54 @@ document.addEventListener("DOMContentLoaded", () => {
     renderContextual(top, groupByYear(year - 2, year - 1));
     renderContextual(bottom, groupByYear(year + 1, year + 2));
 
-    const totalEvents = top.children.length + centerList.children.length + bottom.children.length;
-    document.getElementById("message-attente").style.display = totalEvents ? "none" : "block";
+    const total = top.children.length + center.children.length + bottom.children.length;
+    document.getElementById("message-attente").style.display = total ? "none" : "block";
     document.getElementById("loader").style.display = "none";
   }
+
+  window.renderFiche = function(e, index) {
+    document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
+    const current = document.querySelectorAll('.event[data-id="' + index + '"]')[0];
+    if (current) current.style.backgroundColor = "#fff8b0";
+
+    const titre = document.getElementById("fiche-titre");
+    const fiche = document.getElementById("fiche-content");
+
+    titre.textContent = e.title;
+
+    const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
+    const related = window.eventData.filter(x => x.themes === e.themes);
+    const other = related.map(r =>
+      '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') + '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' + r.title + '</a></li>'
+    ).join('');
+
+    fiche.innerHTML = `
+      <ul>
+        <li><strong>Catégorie principale :</strong> ${e.maincat || ''}</li>
+        ${(e.subcats || []).length ? `<li><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</li>` : ''}
+        ${e.themes ? `<li><strong>Thème :</strong> ${e.themes}</li>` : ''}
+        ${mots ? `<li><strong>Mots clefs :</strong> ${mots}</li>` : ''}
+        <li><strong>Description :</strong> ${e.description || ''}</li>
+        <li><strong>Source :</strong> ${e.source || ''}</li>
+      </ul>
+      <h4>Autres événements du même thème</h4>
+      <ul>${other}</ul>
+      <div id="fiche-navigation">
+        <button onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})" ${index <= 0 ? 'disabled' : ''}>Précédent</button>
+        <button onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})" ${index >= window.eventData.length - 1 ? 'disabled' : ''}>Suivant</button>
+      </div>
+    `;
+  };
 
   window.toggleCollapse = function(id) {
     document.getElementById(id).classList.toggle("open");
   };
 
   fetch("events.json?" + Date.now())
-    .then(res => res.json())
-    .then(data => {
-      if (!Array.isArray(data)) throw new Error("Format JSON invalide.");
-      eventData = data;
-
-      const years = [...new Set(data.flatMap(e =>
-        Array.from({ length: e.end - e.start + 1 }, (_, i) => e.start + i)
-      ))].sort((a, b) => a - b);
-
+    .then(r => r.json())
+    .then(d => {
+      window.eventData = d;
+      const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
       years.forEach(year => {
         const btn = document.createElement("button");
         btn.className = "year-btn";
@@ -357,7 +381,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.dataset.year = year;
         yearCol.appendChild(btn);
       });
-
       const yearButtons = document.querySelectorAll(".year-btn");
       yearButtons.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -366,7 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
           renderEvents(parseInt(btn.dataset.year));
         });
       });
-
       if (yearButtons.length) yearButtons[0].click();
 
       document.getElementById("scroll-up").addEventListener("click", () => scrollYear(-1));
@@ -381,41 +403,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     });
-
-  window.renderFiche = function(e, index) {
-    document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
-    const allEvents = document.querySelectorAll('.event[data-id]');
-    if (allEvents[index]) allEvents[index].style.backgroundColor = '#fee58c';
-
-    document.getElementById('fiche-titre').textContent = e.title;
-
-    const keywords = (e.keywords || []).map(k => 
-      \`<a href="https://decs.pf/fiche?q=\${encodeURIComponent(k)}" target="_blank">\${k}</a>\`
-    ).join(', ');
-
-    const related = eventData.filter(x => x.themes === e.themes);
-
-    document.getElementById('fiche-content').innerHTML = \`
-      <ul>
-        <li><strong>Catégorie principale :</strong> \${e.maincat || ''}</li>
-        \${e.subcats?.length ? \`<li><strong>Catégories secondaires :</strong> \${e.subcats.join(', ')}</li>\` : ''}
-        \${e.themes ? \`<li><strong>Thème :</strong> \${e.themes}</li>\` : ''}
-        \${keywords ? \`<li><strong>Mots clefs :</strong> \${keywords}</li>\` : ''}
-        <li><strong>Description :</strong> \${e.description || ''}</li>
-        <li><strong>Source :</strong> \${e.source || ''}</li>
-      </ul>
-      <h4>Autres événements du même thème</h4>
-      <ul>
-        \${related.map(r => \`<li\${r.title === e.title ? ' style="font-weight:bold;"' : ''}>
-          <a href="#" onclick="renderFiche(eventData[\${eventData.indexOf(r)}], \${eventData.indexOf(r)}); return false;">\${r.title}</a>
-        </li>\`).join('')}
-      </ul>
-      <div style="margin-top:1rem; display:flex; justify-content:space-between;">
-        <button onclick="renderFiche(eventData[\${index - 1}], \${index - 1})" \${index <= 0 ? 'disabled' : ''}>Précédent</button>
-        <button onclick="renderFiche(eventData[\${index + 1}], \${index + 1})" \${index >= eventData.length - 1 ? 'disabled' : ''}>Suivant</button>
-      </div>
-    \`;
-  };
 });
 </script>
 
