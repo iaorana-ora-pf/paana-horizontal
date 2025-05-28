@@ -3,475 +3,475 @@
     "title": "Événement de santé publique #1",
     "start": 1930,
     "end": 1930,
-    "maincat": "Éducation",
+    "maincat": "Gouvernance en santé publique (stewardship)",
     "themes": "Innovationn",
     "keywords": [
-      "épidémie",
-      "hygiène"
+      "Santé publique",
+      "Innovationn"
     ],
     "source": "https://source.org/event-1",
     "more": "https://info.org/more-1",
     "contributor": "Contributeur #1",
     "major": false,
     "subcats": [
-      "Financement"
+      "Engagement communautaire et participation sociale"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de gouvernance en santé publique (stewardship) en Polynésie française."
   },
   {
     "title": "Événement de santé publique #2",
     "start": 1959,
     "end": 1962,
-    "maincat": "Nutrition",
+    "maincat": "Engagement communautaire et participation sociale",
     "themes": "Innovationn",
     "keywords": [
-      "infrastructure",
-      "hygiène"
+      "Santé publique",
+      "Innovationn"
     ],
     "source": "https://source.org/event-2",
     "more": "https://info.org/more-2",
     "contributor": "Contributeur #2",
     "major": false,
     "subcats": [
-      "Nutrition"
+      "Planification, financement et gestion multisectorielle"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de engagement communautaire et participation sociale en Polynésie française."
   },
   {
     "title": "Événement de santé publique #3",
     "start": 1968,
     "end": 1968,
-    "maincat": "Éducation",
-    "themes": "Équipements, Nutrition infantile",
+    "maincat": "Planification, financement et gestion multisectorielle",
+    "themes": "Équipements",
     "keywords": [
-      "éducation",
-      "infrastructure"
+      "Santé publique",
+      "Équipements"
     ],
     "source": "https://source.org/event-3",
     "more": "https://info.org/more-3",
     "contributor": "Contributeur #3",
     "major": false,
     "subcats": [
-      "Hygiène"
+      "Prévention et détection précoce des maladies"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de planification, financement et gestion multisectorielle en Polynésie française."
   },
   {
     "title": "Événement de santé publique #4",
     "start": 1947,
     "end": 1947,
-    "maincat": "Infrastructure",
-    "themes": "Campagne, Crise sanitaire",
+    "maincat": "Prévention et détection précoce des maladies",
+    "themes": "Campagne",
     "keywords": [
-      "éducation",
-      "malnutrition"
+      "Santé publique",
+      "Campagne"
     ],
     "source": "https://source.org/event-4",
     "more": "https://info.org/more-4",
     "contributor": "Contributeur #4",
     "major": false,
     "subcats": [
-      "Vaccination"
+      "Accès aux produits et technologies de santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de prévention et détection précoce des maladies en Polynésie française."
   },
   {
     "title": "Événement de santé publique #5",
     "start": 1923,
     "end": 1923,
-    "maincat": "Ressources humaines",
-    "themes": "Sensibilisation, Campagne",
+    "maincat": "Accès aux produits et technologies de santé",
+    "themes": "Sensibilisation",
     "keywords": [
-      "contrôle",
-      "malnutrition"
+      "Santé publique",
+      "Sensibilisation"
     ],
     "source": "https://source.org/event-5",
     "more": "https://info.org/more-5",
     "contributor": "Contributeur #5",
     "major": true,
     "subcats": [
-      "Infrastructure"
+      "Promotion de la santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de accès aux produits et technologies de santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #6",
     "start": 1981,
     "end": 1981,
-    "maincat": "Nutrition",
-    "themes": "Vaccins, Nutrition infantile",
+    "maincat": "Promotion de la santé",
+    "themes": "Vaccins",
     "keywords": [
-      "formation",
-      "vaccin"
+      "Santé publique",
+      "Vaccins"
     ],
     "source": "https://source.org/event-6",
     "more": "https://info.org/more-6",
     "contributor": "Contributeur #6",
     "major": true,
     "subcats": [
-      "Communication"
+      "Protection de la santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de promotion de la santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #7",
     "start": 1999,
     "end": 1999,
-    "maincat": "Infrastructure",
-    "themes": "Vaccins, Équipements",
+    "maincat": "Protection de la santé",
+    "themes": "Vaccins",
     "keywords": [
-      "malnutrition",
-      "contrôle"
+      "Santé publique",
+      "Vaccins"
     ],
     "source": "https://source.org/event-7",
     "more": "https://info.org/more-7",
     "contributor": "Contributeur #7",
     "major": true,
     "subcats": [
-      "Environnement"
+      "Qualité et équité des services de santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de protection de la santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #8",
     "start": 1925,
     "end": 1925,
-    "maincat": "Législation",
-    "themes": "Accès aux soins, Vaccins",
+    "maincat": "Qualité et équité des services de santé",
+    "themes": "Accès aux soins",
     "keywords": [
-      "infrastructure",
-      "épidémie"
+      "Santé publique",
+      "Accès aux soins"
     ],
     "source": "https://source.org/event-8",
     "more": "https://info.org/more-8",
     "contributor": "Contributeur #8",
     "major": true,
     "subcats": [
-      "Technologie"
+      "Recherche, évaluation et développement des connaissances"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de qualité et équité des services de santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #9",
     "start": 2019,
     "end": 2019,
-    "maincat": "Santé publique",
-    "themes": "Sensibilisation, Équipements",
+    "maincat": "Recherche, évaluation et développement des connaissances",
+    "themes": "Sensibilisation",
     "keywords": [
-      "contrôle",
-      "hôpital"
+      "Santé publique",
+      "Sensibilisation"
     ],
     "source": "https://source.org/event-9",
     "more": "https://info.org/more-9",
     "contributor": "Contributeur #9",
     "major": true,
     "subcats": [
-      "Technologie"
+      "Développement de la main-d’œuvre en santé publique"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de recherche, évaluation et développement des connaissances en Polynésie française."
   },
   {
     "title": "Événement de santé publique #10",
     "start": 1926,
     "end": 1926,
-    "maincat": "Communication",
-    "themes": "Innovation, Campagne",
+    "maincat": "Développement de la main-d’œuvre en santé publique",
+    "themes": "Innovation",
     "keywords": [
-      "infrastructure",
-      "éducation"
+      "Santé publique",
+      "Innovation"
     ],
     "source": "https://source.org/event-10",
     "more": "https://info.org/more-10",
     "contributor": "Contributeur #10",
     "major": false,
     "subcats": [
-      "Environnement"
+      "Surveillance et suivi de la santé publique"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de développement de la main-d’œuvre en santé publique en Polynésie française."
   },
   {
     "title": "Événement de santé publique #11",
     "start": 1960,
     "end": 1960,
-    "maincat": "Environnement",
-    "themes": "Crise sanitaire, Accès aux soins",
+    "maincat": "Surveillance et suivi de la santé publique",
+    "themes": "Crise sanitaire",
     "keywords": [
-      "contrôle",
-      "hygiène"
+      "Santé publique",
+      "Crise sanitaire"
     ],
     "source": "https://source.org/event-11",
     "more": "https://info.org/more-11",
     "contributor": "Contributeur #11",
     "major": false,
     "subcats": [
-      "Vaccination"
+      "Gestion des urgences de santé publique"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de surveillance et suivi de la santé publique en Polynésie française."
   },
   {
     "title": "Événement de santé publique #12",
     "start": 1925,
     "end": 1928,
-    "maincat": "Recherche",
-    "themes": "Sensibilisation, Modernisation",
+    "maincat": "Gestion des urgences de santé publique",
+    "themes": "Sensibilisation",
     "keywords": [
-      "formation",
-      "épidémie"
+      "Santé publique",
+      "Sensibilisation"
     ],
     "source": "https://source.org/event-12",
     "more": "https://info.org/more-12",
     "contributor": "Contributeur #12",
     "major": true,
     "subcats": [
-      "Hygiène"
+      "Contexte"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de gestion des urgences de santé publique en Polynésie française."
   },
   {
     "title": "Événement de santé publique #13",
     "start": 1988,
     "end": 1988,
-    "maincat": "Santé publique",
-    "themes": "Campagne, Innovation",
+    "maincat": "Contexte",
+    "themes": "Campagne",
     "keywords": [
-      "malnutrition",
-      "vaccin"
+      "Santé publique",
+      "Campagne"
     ],
     "source": "https://source.org/event-13",
     "more": "https://info.org/more-13",
     "contributor": "Contributeur #13",
     "major": false,
     "subcats": [
-      "Nutrition"
+      "Gouvernance en santé publique (stewardship)"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de contexte en Polynésie française."
   },
   {
     "title": "Événement de santé publique #14",
     "start": 1938,
     "end": 1938,
-    "maincat": "Communication",
-    "themes": "Crise sanitaire, Campagne",
+    "maincat": "Gouvernance en santé publique (stewardship)",
+    "themes": "Crise sanitaire",
     "keywords": [
-      "hygiène",
-      "éducation"
+      "Santé publique",
+      "Crise sanitaire"
     ],
     "source": "https://source.org/event-14",
     "more": "https://info.org/more-14",
     "contributor": "Contributeur #14",
     "major": true,
     "subcats": [
-      "Vaccination"
+      "Engagement communautaire et participation sociale"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de gouvernance en santé publique (stewardship) en Polynésie française."
   },
   {
     "title": "Événement de santé publique #15",
     "start": 1923,
     "end": 1923,
-    "maincat": "Financement",
-    "themes": "Équipements, Innovation",
+    "maincat": "Engagement communautaire et participation sociale",
+    "themes": "Équipements",
     "keywords": [
-      "vaccin",
-      "formation"
+      "Santé publique",
+      "Équipements"
     ],
     "source": "https://source.org/event-15",
     "more": "https://info.org/more-15",
     "contributor": "Contributeur #15",
     "major": true,
     "subcats": [
-      "Éducation"
+      "Planification, financement et gestion multisectorielle"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de engagement communautaire et participation sociale en Polynésie française."
   },
   {
     "title": "Événement de santé publique #16",
     "start": 1924,
     "end": 1928,
-    "maincat": "Nutrition",
-    "themes": "Innovation, Crise sanitaire",
+    "maincat": "Planification, financement et gestion multisectorielle",
+    "themes": "Innovation",
     "keywords": [
-      "santé mentale",
-      "éducation"
+      "Santé publique",
+      "Innovation"
     ],
     "source": "https://source.org/event-16",
     "more": "https://info.org/more-16",
     "contributor": "Contributeur #16",
     "major": false,
     "subcats": [
-      "Technologie"
+      "Prévention et détection précoce des maladies"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de planification, financement et gestion multisectorielle en Polynésie française."
   },
   {
     "title": "Événement de santé publique #17",
     "start": 1917,
     "end": 1922,
-    "maincat": "Hygiène",
+    "maincat": "Prévention et détection précoce des maladies",
     "themes": "Innovationn",
     "keywords": [
-      "malnutrition",
-      "éducation"
+      "Santé publique",
+      "Innovationn"
     ],
     "source": "https://source.org/event-17",
     "more": "https://info.org/more-17",
     "contributor": "Contributeur #17",
     "major": true,
     "subcats": [
-      "Hygiène"
+      "Accès aux produits et technologies de santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de prévention et détection précoce des maladies en Polynésie française."
   },
   {
     "title": "Événement de santé publique #18",
     "start": 1996,
     "end": 1996,
-    "maincat": "Communication",
-    "themes": "Modernisation, Sensibilisation",
+    "maincat": "Accès aux produits et technologies de santé",
+    "themes": "Modernisation",
     "keywords": [
-      "éducation",
-      "vaccin"
+      "Santé publique",
+      "Modernisation"
     ],
     "source": "https://source.org/event-18",
     "more": "https://info.org/more-18",
     "contributor": "Contributeur #18",
     "major": true,
     "subcats": [
-      "Législation"
+      "Promotion de la santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de accès aux produits et technologies de santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #19",
     "start": 2010,
     "end": 2010,
-    "maincat": "Financement",
-    "themes": "Accès aux soins, Vaccins",
+    "maincat": "Promotion de la santé",
+    "themes": "Accès aux soins",
     "keywords": [
-      "malnutrition",
-      "hôpital"
+      "Santé publique",
+      "Accès aux soins"
     ],
     "source": "https://source.org/event-19",
     "more": "https://info.org/more-19",
     "contributor": "Contributeur #19",
     "major": true,
     "subcats": [
-      "Santé publique"
+      "Protection de la santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de promotion de la santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #20",
     "start": 1934,
     "end": 1936,
-    "maincat": "Nutrition",
-    "themes": "Vaccins, Campagne",
+    "maincat": "Protection de la santé",
+    "themes": "Vaccins",
     "keywords": [
-      "malnutrition",
-      "vaccin"
+      "Santé publique",
+      "Vaccins"
     ],
     "source": "https://source.org/event-20",
     "more": "https://info.org/more-20",
     "contributor": "Contributeur #20",
     "major": true,
     "subcats": [
-      "Nutrition"
+      "Qualité et équité des services de santé"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de protection de la santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #21",
     "start": 1958,
     "end": 1958,
-    "maincat": "Législation",
-    "themes": "Vaccins, Sensibilisation",
+    "maincat": "Qualité et équité des services de santé",
+    "themes": "Vaccins",
     "keywords": [
-      "hôpital",
-      "infrastructure"
+      "Santé publique",
+      "Vaccins"
     ],
     "source": "https://source.org/event-21",
     "more": "https://info.org/more-21",
     "contributor": "Contributeur #21",
     "major": false,
     "subcats": [
-      "Environnement"
+      "Recherche, évaluation et développement des connaissances"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de qualité et équité des services de santé en Polynésie française."
   },
   {
     "title": "Événement de santé publique #22",
     "start": 1901,
     "end": 1901,
-    "maincat": "Vaccination",
-    "themes": "Modernisation, Vaccins",
+    "maincat": "Recherche, évaluation et développement des connaissances",
+    "themes": "Modernisation",
     "keywords": [
-      "vaccin",
-      "hôpital"
+      "Santé publique",
+      "Modernisation"
     ],
     "source": "https://source.org/event-22",
     "more": "https://info.org/more-22",
     "contributor": "Contributeur #22",
     "major": true,
     "subcats": [
-      "Environnement"
+      "Développement de la main-d’œuvre en santé publique"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de recherche, évaluation et développement des connaissances en Polynésie française."
   },
   {
     "title": "Événement de santé publique #23",
     "start": 1981,
     "end": 1981,
-    "maincat": "Technologie",
-    "themes": "Crise sanitaire, Prévention",
+    "maincat": "Développement de la main-d’œuvre en santé publique",
+    "themes": "Crise sanitaire",
     "keywords": [
-      "santé mentale",
-      "formation"
+      "Santé publique",
+      "Crise sanitaire"
     ],
     "source": "https://source.org/event-23",
     "more": "https://info.org/more-23",
     "contributor": "Contributeur #23",
     "major": false,
     "subcats": [
-      "Ressources humaines"
+      "Surveillance et suivi de la santé publique"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de développement de la main-d’œuvre en santé publique en Polynésie française."
   },
   {
     "title": "Événement de santé publique #24",
     "start": 1930,
     "end": 1932,
-    "maincat": "Éducation",
-    "themes": "Modernisation, Crise sanitaire",
+    "maincat": "Surveillance et suivi de la santé publique",
+    "themes": "Modernisation",
     "keywords": [
-      "épidémie",
-      "formation"
+      "Santé publique",
+      "Modernisation"
     ],
     "source": "https://source.org/event-24",
     "more": "https://info.org/more-24",
     "contributor": "Contributeur #24",
     "major": false,
     "subcats": [
-      "Financement"
+      "Gestion des urgences de santé publique"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de surveillance et suivi de la santé publique en Polynésie française."
   },
   {
     "title": "Événement de santé publique #25",
     "start": 1975,
     "end": 1975,
-    "maincat": "Ressources humaines",
-    "themes": "Nutrition infantile, Équipements",
+    "maincat": "Gestion des urgences de santé publique",
+    "themes": "Nutrition infantile",
     "keywords": [
-      "formation",
-      "hygiène"
+      "Santé publique",
+      "Nutrition infantile"
     ],
     "source": "https://source.org/event-25",
     "more": "https://info.org/more-25",
     "contributor": "Contributeur #25",
     "major": false,
     "subcats": [
-      "Technologie"
+      "Contexte"
     ],
-    "description": ""
+    "description": "Événement marquant dans le domaine de gestion des urgences de santé publique en Polynésie française."
   }
 ]
