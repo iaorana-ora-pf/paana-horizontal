@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 4- Paana</title>
+<title>Contribuer 1- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -351,17 +351,21 @@ window.addEventListener("DOMContentLoaded", () => {
     fiche.innerHTML = `
       ${e.start && e.end ? `<p><strong>Année ou période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
      ${e.maincat ? `<p><strong>Catégorie principale<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> : </strong> ${e.maincat}</p>` : ''}
-${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a>:</strong> ${e.subcats.join(', ')} </p>` : ''}
-      ${e.themes ? `<p><strong>Thème :</strong> <span style="display:inline-block; width:12px; height:12px; background-color:${stringToColor(e.themes)}; margin-right:6px; vertical-align:middle; border-radius:2px;"></span>${e.themes}</p>` : ''}
+${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> :</strong> ${e.subcats.join(', ')} </p>` : ''}
+      ${e.themes ? `<p><strong>Thème :</strong> <span title="Thème : ${e.themes}" style="display:inline-block; width:12px; height:12px; background-color:${stringToColor(e.themes)}; margin-right:6px; vertical-align:middle; border-radius:2px;"></span>${e.themes}</p>` : ''}
       ${mots ? `<p><strong>Mots-clefs (issus du DeCS) :</strong> ${mots}</p>` : ''}
       ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
       ${e.source ? `<p><strong>Source(s) :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
       <div id="fiche-navigation">
-        <button onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})" ${index <= 0 ? 'disabled' : ''}>Précédent</button>
-        <button onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})" ${index >= window.eventData.length - 1 ? 'disabled' : ''}>Suivant</button>
-      </div>
+  <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
+    Précédent
+  </button>
+  <button ${index < window.eventData.length - 1 ? `onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})"` : 'disabled'}>
+    Suivant
+  </button>
+</div>
     `;
   };
 
@@ -373,7 +377,8 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
   fetch("events.json?" + Date.now())
     .then(r => r.json())
     .then(d => {
-      window.eventData = d;
+      d.sort((a, b) => a.start - b.start);
+    window.eventData = d;
       const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
       years.forEach(year => {
         const btn = document.createElement("button");
