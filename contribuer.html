@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
@@ -330,6 +332,7 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("loader").style.display = "none";
   }
 
+  
   window.renderFiche = function(e, index) {
     document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
     const current = document.querySelectorAll('.event[data-id="' + index + '"]')[0];
@@ -338,21 +341,27 @@ window.addEventListener("DOMContentLoaded", () => {
     const titre = document.getElementById("fiche-titre");
     const fiche = document.getElementById("fiche-content");
 
+    // Titre en bleu et gras
     titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
 
-    const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
+    const mots = (e.keywords || []).map(k =>
+      `<a href="https://decs.pf/fiche?q=${encodeURIComponent(k)}" target="_blank">${k}</a>`
+    ).join(', ');
+
     const related = window.eventData.filter(x => x.themes === e.themes);
     const other = related.map(r =>
-      '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') + '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' + r.title + '</a></li>'
+      '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') +
+      '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' +
+      r.title + '</a></li>'
     ).join('');
 
     fiche.innerHTML = `
-  ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat}</p>` : ''}
-  ${(e.subcats || []).length ? `<p><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</p>` : ''}
-  ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
-  ${mots ? `<p><strong>Mots clefs :</strong> ${mots}</p>` : ''}
-  ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
-  ${e.source ? `<p><strong>Source :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}`.trim();
+      <div><strong>Catégorie principale :</strong> ${e.maincat || ''}</div>
+      ${(e.subcats || []).length ? `<div><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</div>` : ''}
+      ${e.themes ? `<div><strong>Thème :</strong> ${e.themes}</div>` : ''}
+      ${mots ? `<div><strong>Mots clefs :</strong> ${mots}</div>` : ''}
+      <div><strong>Description :</strong> ${e.description || ''}</div>
+      <div><strong>Source :</strong> ${e.source || ''}</div>
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
       <div id="fiche-navigation">
@@ -361,6 +370,7 @@ window.addEventListener("DOMContentLoaded", () => {
       </div>
     `;
   };
+
 
   window.toggleCollapse = function(id) {
     document.getElementById(id).classList.toggle("open");
@@ -404,4 +414,3 @@ window.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
-
