@@ -339,7 +339,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const titre = document.getElementById("fiche-titre");
     const fiche = document.getElementById("fiche-content");
 
-    titre.textContent = e.title;
+    titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
 
     const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
     const related = window.eventData.filter(x => x.themes === e.themes);
