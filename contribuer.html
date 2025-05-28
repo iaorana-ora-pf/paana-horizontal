@@ -350,9 +350,9 @@ window.addEventListener("DOMContentLoaded", () => {
     ).join('');
 
     fiche.innerHTML = `
-      ${e.start && e.end ? `<p><strong>Période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
+      ${e.start && e.end ? `<p><strong>Année ou période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
       ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat}</p>` : ''}
-      ${(e.subcats || []).length ? `<p><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</p>` : ''}
+      ${(e.subcats || []).length ? `<p><strong>Catégorie secondaire :</strong> ${e.subcats.join(', ')}</p>` : ''}
       ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
       ${mots ? `<p><strong>Mots clefs :</strong> ${mots}</p>` : ''}
       ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
