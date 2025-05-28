@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 1- Paana</title>
+<title>Contribuer 4- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -249,20 +249,20 @@ window.addEventListener("DOMContentLoaded", () => {
   window.eventData = [];
 
   const categoryIcons = {
-    "Éducation": "fa-graduation-cap",
-    "Nutrition": "fa-apple-whole",
-    "Infrastructure": "fa-building",
-    "Ressources humaines": "fa-users",
-    "Législation": "fa-scale-balanced",
-    "Communication": "fa-bullhorn",
-    "Recherche": "fa-flask",
-    "Hygiène": "fa-soap",
-    "Technologie": "fa-microchip",
-    "Vaccination": "fa-syringe",
-    "Environnement": "fa-leaf",
-    "Santé publique": "fa-heart-pulse",
-    "Financement": "fa-hand-holding-dollar"
-  };
+  "Contexte": "fa-globe",
+  "Gouvernance en santé publique (stewardship)": "fa-gavel",
+  "Engagement communautaire et participation sociale": "fa-users-line",
+  "Planification, financement et gestion multisectorielle": "fa-sitemap",
+  "Prévention et détection précoce des maladies": "fa-stethoscope",
+  "Accès aux produits et technologies de santé": "fa-pills",
+  "Promotion de la santé": "fa-heart",
+  "Protection de la santé": "fa-shield-heart",
+  "Qualité et équité des services de santé": "fa-scale-balanced",
+  "Recherche, évaluation et développement des connaissances": "fa-flask",
+  "Développement de la main-d’œuvre en santé publique": "fa-user-graduate",
+  "Surveillance et suivi de la santé publique": "fa-eye",
+  "Gestion des urgences de santé publique": "fa-triangle-exclamation"
+};
 
   function stringToColor(str) {
     let hash = 0;
@@ -350,11 +350,11 @@ window.addEventListener("DOMContentLoaded", () => {
     ).join('');
 
     fiche.innerHTML = `
-      ${e.start && e.end ? `<p><strong>Période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
+      ${e.start && e.end ? `<p><strong>Année ou période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
       ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat}</p>` : ''}
-      ${(e.subcats || []).length ? `<p><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</p>` : ''}
+      ${(e.subcats || []).length ? `<p><strong>Catégorie secondaire :</strong> ${e.subcats.join(', ')}</p>` : ''}
       ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
-      ${mots ? `<p><strong>Mots clefs :</strong> ${mots}</p>` : ''}
+      ${mots ? `<p><strong>Mots-clefs (issus du DeCS) :</strong> ${mots}</p>` : ''}
       ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
       ${e.source ? `<p><strong>Source :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
       <h4>Autres événements du même thème</h4>
