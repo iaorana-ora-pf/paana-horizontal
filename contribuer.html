@@ -1,14 +1,16 @@
 
+
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contribuer - Paana</title>
-  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française" />
-  <link href="header-footer.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contribuer - Paana</title>
+<meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
+<link href="header-footer.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
     :root {
       --primary: #007b7f;
       --background: #fdfdf0;
@@ -197,53 +199,52 @@
 </head>
 <body>
 <header>
-  <div class="logo">
-    <span class="brand">Paana</span>
-    <div class="trait"></div>
-    <div class="signature">Emmanuelle RUPP-TERRIS</div>
-  </div>
-  <nav>
-    <a href="a-propos.html">A PROPOS</a>
-    <a href="contribuer.html">CONTRIBUER</a>
-    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
-    <a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
-  </nav>
+<div class="logo">
+<span class="brand">Paana</span>
+<div class="trait"></div>
+<div class="signature">Emmanuelle RUPP-TERRIS</div>
+</div>
+<nav>
+<a href="a-propos.html">A PROPOS</a>
+<a href="contribuer.html">CONTRIBUER</a>
+<a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
+<a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+</nav>
 </header>
 <main>
-  <div class="timeline-layout">
-    <div class="years-container">
-      <button id="scroll-up">↑</button>
-      <div class="years-column" id="years-column"></div>
-      <button id="scroll-down">↓</button>
-    </div>
-    <div class="events-column">
-      <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
-      <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
-      <div class="collapsible-box" id="box-superieur">
-        <div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')">
-          <i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années précédentes
+<div class="timeline-layout">
+<div class="years-container">
+<button id="scroll-up">↑</button>
+<div class="years-column" id="years-column"></div>
+<button id="scroll-down">↓</button>
+</div>
+<div class="events-column">
+<div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+<div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
+<div class="collapsible-box" id="box-superieur">
+<div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')">
+<i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années précédentes
         </div>
-        <div class="collapsible-content" id="bloc-superieur"></div>
-      </div>
-      <div class="event-box">
-        <h4 class="title-central">Événements de l'année</h4>
-        <div id="events-central-list"></div>
-      </div>
-      <div class="collapsible-box" id="box-inferieur">
-        <div class="collapsible-toggle" onclick="toggleCollapse('box-inferieur')">
-          <i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années suivantes
+<div class="collapsible-content" id="bloc-superieur"></div>
+</div>
+<div class="event-box">
+<h4 class="title-central">Événements de l'année</h4>
+<div id="events-central-list"></div>
+</div>
+<div class="collapsible-box" id="box-inferieur">
+<div class="collapsible-toggle" onclick="toggleCollapse('box-inferieur')">
+<i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années suivantes
         </div>
-        <div class="collapsible-content" id="bloc-inferieur"></div>
-      </div>
-    </div>
-    <div class="fiche-column">
-      <h3 id="fiche-titre">Détails</h3>
-      <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
-    </div>
-  </div>
+<div class="collapsible-content" id="bloc-inferieur"></div>
+</div>
+</div>
+<div class="fiche-column">
+<h3 id="fiche-titre">Détails</h3>
+<div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
+</div>
+</div>
 </main>
 <!-- SCRIPT will be appended below -->
-
 <script>
 window.addEventListener("DOMContentLoaded", () => {
   const yearCol = document.getElementById("years-column");
@@ -340,7 +341,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const titre = document.getElementById("fiche-titre");
     const fiche = document.getElementById("fiche-content");
 
-    titre.textContent = e.title;
+    titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
 
     const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
     const related = window.eventData.filter(x => x.themes === e.themes);
@@ -349,14 +350,12 @@ window.addEventListener("DOMContentLoaded", () => {
     ).join('');
 
     fiche.innerHTML = `
-      <ul>
-        <li><strong>Catégorie principale :</strong> ${e.maincat || ''}</li>
-        ${(e.subcats || []).length ? `<li><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</li>` : ''}
-        ${e.themes ? `<li><strong>Thème :</strong> ${e.themes}</li>` : ''}
-        ${mots ? `<li><strong>Mots clefs :</strong> ${mots}</li>` : ''}
-        <li><strong>Description :</strong> ${e.description || ''}</li>
-        <li><strong>Source :</strong> ${e.source || ''}</li>
-      </ul>
+  ${e.maincat ? `<p><strong>Catégorie principale :</strong> ${e.maincat}</p>` : ''}
+  ${(e.subcats || []).length ? `<p><strong>Catégories secondaires :</strong> ${e.subcats.join(', ')}</p>` : ''}
+  ${e.themes ? `<p><strong>Thème :</strong> ${e.themes}</p>` : ''}
+  ${mots ? `<p><strong>Mots clefs :</strong> ${mots}</p>` : ''}
+  ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
+  ${e.source ? `<p><strong>Source :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}`.trim();
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
       <div id="fiche-navigation">
@@ -406,6 +405,6 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
-
 </body>
 </html>
+
