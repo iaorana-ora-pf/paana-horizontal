@@ -4,549 +4,474 @@
     "start": 1930,
     "end": 1930,
     "maincat": "Éducation",
-    "subcat": "Financement",
     "themes": "Innovationn",
     "keywords": [
-      {
-        "label": "épidémie",
-        "url": "https://decs.bvsalud.org/term/102"
-      },
-      {
-        "label": "hygiène",
-        "url": "https://decs.bvsalud.org/term/123"
-      }
+      "épidémie",
+      "hygiène"
     ],
     "source": "https://source.org/event-1",
     "more": "https://info.org/more-1",
     "contributor": "Contributeur #1",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Financement"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #2",
     "start": 1959,
     "end": 1962,
     "maincat": "Nutrition",
-    "subcat": "Nutrition",
     "themes": "Innovationn",
     "keywords": [
-      {
-        "label": "infrastructure",
-        "url": "https://decs.bvsalud.org/term/105"
-      },
-      {
-        "label": "hygiène",
-        "url": "https://decs.bvsalud.org/term/123"
-      }
+      "infrastructure",
+      "hygiène"
     ],
     "source": "https://source.org/event-2",
     "more": "https://info.org/more-2",
     "contributor": "Contributeur #2",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Nutrition"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #3",
     "start": 1968,
     "end": 1968,
     "maincat": "Éducation",
-    "subcat": "Hygiène",
     "themes": "Équipements, Nutrition infantile",
     "keywords": [
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      },
-      {
-        "label": "infrastructure",
-        "url": "https://decs.bvsalud.org/term/105"
-      }
+      "éducation",
+      "infrastructure"
     ],
     "source": "https://source.org/event-3",
     "more": "https://info.org/more-3",
     "contributor": "Contributeur #3",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Hygiène"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #4",
     "start": 1947,
     "end": 1947,
     "maincat": "Infrastructure",
-    "subcat": "Vaccination",
     "themes": "Campagne, Crise sanitaire",
     "keywords": [
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      },
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      }
+      "éducation",
+      "malnutrition"
     ],
     "source": "https://source.org/event-4",
     "more": "https://info.org/more-4",
     "contributor": "Contributeur #4",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Vaccination"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #5",
     "start": 1923,
     "end": 1923,
     "maincat": "Ressources humaines",
-    "subcat": "Infrastructure",
     "themes": "Sensibilisation, Campagne",
     "keywords": [
-      {
-        "label": "contrôle",
-        "url": "https://decs.bvsalud.org/term/107"
-      },
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      }
+      "contrôle",
+      "malnutrition"
     ],
     "source": "https://source.org/event-5",
     "more": "https://info.org/more-5",
     "contributor": "Contributeur #5",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Infrastructure"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #6",
     "start": 1981,
     "end": 1981,
     "maincat": "Nutrition",
-    "subcat": "Communication",
     "themes": "Vaccins, Nutrition infantile",
     "keywords": [
-      {
-        "label": "formation",
-        "url": "https://decs.bvsalud.org/term/106"
-      },
-      {
-        "label": "vaccin",
-        "url": "https://decs.bvsalud.org/term/789"
-      }
+      "formation",
+      "vaccin"
     ],
     "source": "https://source.org/event-6",
     "more": "https://info.org/more-6",
     "contributor": "Contributeur #6",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Communication"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #7",
     "start": 1999,
     "end": 1999,
     "maincat": "Infrastructure",
-    "subcat": "Environnement",
     "themes": "Vaccins, Équipements",
     "keywords": [
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      },
-      {
-        "label": "contrôle",
-        "url": "https://decs.bvsalud.org/term/107"
-      }
+      "malnutrition",
+      "contrôle"
     ],
     "source": "https://source.org/event-7",
     "more": "https://info.org/more-7",
     "contributor": "Contributeur #7",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Environnement"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #8",
     "start": 1925,
     "end": 1925,
     "maincat": "Législation",
-    "subcat": "Technologie",
     "themes": "Accès aux soins, Vaccins",
     "keywords": [
-      {
-        "label": "infrastructure",
-        "url": "https://decs.bvsalud.org/term/105"
-      },
-      {
-        "label": "épidémie",
-        "url": "https://decs.bvsalud.org/term/102"
-      }
+      "infrastructure",
+      "épidémie"
     ],
     "source": "https://source.org/event-8",
     "more": "https://info.org/more-8",
     "contributor": "Contributeur #8",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Technologie"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #9",
     "start": 2019,
     "end": 2019,
     "maincat": "Santé publique",
-    "subcat": "Technologie",
     "themes": "Sensibilisation, Équipements",
     "keywords": [
-      {
-        "label": "contrôle",
-        "url": "https://decs.bvsalud.org/term/107"
-      },
-      {
-        "label": "hôpital",
-        "url": "https://decs.bvsalud.org/term/103"
-      }
+      "contrôle",
+      "hôpital"
     ],
     "source": "https://source.org/event-9",
     "more": "https://info.org/more-9",
     "contributor": "Contributeur #9",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Technologie"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #10",
     "start": 1926,
     "end": 1926,
     "maincat": "Communication",
-    "subcat": "Environnement",
     "themes": "Innovation, Campagne",
     "keywords": [
-      {
-        "label": "infrastructure",
-        "url": "https://decs.bvsalud.org/term/105"
-      },
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      }
+      "infrastructure",
+      "éducation"
     ],
     "source": "https://source.org/event-10",
     "more": "https://info.org/more-10",
     "contributor": "Contributeur #10",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Environnement"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #11",
     "start": 1960,
     "end": 1960,
     "maincat": "Environnement",
-    "subcat": "Vaccination",
     "themes": "Crise sanitaire, Accès aux soins",
     "keywords": [
-      {
-        "label": "contrôle",
-        "url": "https://decs.bvsalud.org/term/107"
-      },
-      {
-        "label": "hygiène",
-        "url": "https://decs.bvsalud.org/term/123"
-      }
+      "contrôle",
+      "hygiène"
     ],
     "source": "https://source.org/event-11",
     "more": "https://info.org/more-11",
     "contributor": "Contributeur #11",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Vaccination"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #12",
     "start": 1925,
     "end": 1928,
     "maincat": "Recherche",
-    "subcat": "Hygiène",
     "themes": "Sensibilisation, Modernisation",
     "keywords": [
-      {
-        "label": "formation",
-        "url": "https://decs.bvsalud.org/term/106"
-      },
-      {
-        "label": "épidémie",
-        "url": "https://decs.bvsalud.org/term/102"
-      }
+      "formation",
+      "épidémie"
     ],
     "source": "https://source.org/event-12",
     "more": "https://info.org/more-12",
     "contributor": "Contributeur #12",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Hygiène"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #13",
     "start": 1988,
     "end": 1988,
     "maincat": "Santé publique",
-    "subcat": "Nutrition",
     "themes": "Campagne, Innovation",
     "keywords": [
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      },
-      {
-        "label": "vaccin",
-        "url": "https://decs.bvsalud.org/term/789"
-      }
+      "malnutrition",
+      "vaccin"
     ],
     "source": "https://source.org/event-13",
     "more": "https://info.org/more-13",
     "contributor": "Contributeur #13",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Nutrition"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #14",
     "start": 1938,
     "end": 1938,
     "maincat": "Communication",
-    "subcat": "Vaccination",
     "themes": "Crise sanitaire, Campagne",
     "keywords": [
-      {
-        "label": "hygiène",
-        "url": "https://decs.bvsalud.org/term/123"
-      },
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      }
+      "hygiène",
+      "éducation"
     ],
     "source": "https://source.org/event-14",
     "more": "https://info.org/more-14",
     "contributor": "Contributeur #14",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Vaccination"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #15",
     "start": 1923,
     "end": 1923,
     "maincat": "Financement",
-    "subcat": "Éducation",
     "themes": "Équipements, Innovation",
     "keywords": [
-      {
-        "label": "vaccin",
-        "url": "https://decs.bvsalud.org/term/789"
-      },
-      {
-        "label": "formation",
-        "url": "https://decs.bvsalud.org/term/106"
-      }
+      "vaccin",
+      "formation"
     ],
     "source": "https://source.org/event-15",
     "more": "https://info.org/more-15",
     "contributor": "Contributeur #15",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Éducation"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #16",
     "start": 1924,
     "end": 1928,
     "maincat": "Nutrition",
-    "subcat": "Technologie",
     "themes": "Innovation, Crise sanitaire",
     "keywords": [
-      {
-        "label": "santé mentale",
-        "url": "https://decs.bvsalud.org/term/104"
-      },
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      }
+      "santé mentale",
+      "éducation"
     ],
     "source": "https://source.org/event-16",
     "more": "https://info.org/more-16",
     "contributor": "Contributeur #16",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Technologie"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #17",
     "start": 1917,
     "end": 1922,
     "maincat": "Hygiène",
-    "subcat": "Hygiène",
     "themes": "Innovationn",
     "keywords": [
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      },
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      }
+      "malnutrition",
+      "éducation"
     ],
     "source": "https://source.org/event-17",
     "more": "https://info.org/more-17",
     "contributor": "Contributeur #17",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Hygiène"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #18",
     "start": 1996,
     "end": 1996,
     "maincat": "Communication",
-    "subcat": "Législation",
     "themes": "Modernisation, Sensibilisation",
     "keywords": [
-      {
-        "label": "éducation",
-        "url": "https://decs.bvsalud.org/term/456"
-      },
-      {
-        "label": "vaccin",
-        "url": "https://decs.bvsalud.org/term/789"
-      }
+      "éducation",
+      "vaccin"
     ],
     "source": "https://source.org/event-18",
     "more": "https://info.org/more-18",
     "contributor": "Contributeur #18",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Législation"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #19",
     "start": 2010,
     "end": 2010,
     "maincat": "Financement",
-    "subcat": "Santé publique",
     "themes": "Accès aux soins, Vaccins",
     "keywords": [
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      },
-      {
-        "label": "hôpital",
-        "url": "https://decs.bvsalud.org/term/103"
-      }
+      "malnutrition",
+      "hôpital"
     ],
     "source": "https://source.org/event-19",
     "more": "https://info.org/more-19",
     "contributor": "Contributeur #19",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Santé publique"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #20",
     "start": 1934,
     "end": 1936,
     "maincat": "Nutrition",
-    "subcat": "Nutrition",
     "themes": "Vaccins, Campagne",
     "keywords": [
-      {
-        "label": "malnutrition",
-        "url": "https://decs.bvsalud.org/term/101"
-      },
-      {
-        "label": "vaccin",
-        "url": "https://decs.bvsalud.org/term/789"
-      }
+      "malnutrition",
+      "vaccin"
     ],
     "source": "https://source.org/event-20",
     "more": "https://info.org/more-20",
     "contributor": "Contributeur #20",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Nutrition"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #21",
     "start": 1958,
     "end": 1958,
     "maincat": "Législation",
-    "subcat": "Environnement",
     "themes": "Vaccins, Sensibilisation",
     "keywords": [
-      {
-        "label": "hôpital",
-        "url": "https://decs.bvsalud.org/term/103"
-      },
-      {
-        "label": "infrastructure",
-        "url": "https://decs.bvsalud.org/term/105"
-      }
+      "hôpital",
+      "infrastructure"
     ],
     "source": "https://source.org/event-21",
     "more": "https://info.org/more-21",
     "contributor": "Contributeur #21",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Environnement"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #22",
     "start": 1901,
     "end": 1901,
     "maincat": "Vaccination",
-    "subcat": "Environnement",
     "themes": "Modernisation, Vaccins",
     "keywords": [
-      {
-        "label": "vaccin",
-        "url": "https://decs.bvsalud.org/term/789"
-      },
-      {
-        "label": "hôpital",
-        "url": "https://decs.bvsalud.org/term/103"
-      }
+      "vaccin",
+      "hôpital"
     ],
     "source": "https://source.org/event-22",
     "more": "https://info.org/more-22",
     "contributor": "Contributeur #22",
-    "major": true
+    "major": true,
+    "subcats": [
+      "Environnement"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #23",
     "start": 1981,
     "end": 1981,
     "maincat": "Technologie",
-    "subcat": "Ressources humaines",
     "themes": "Crise sanitaire, Prévention",
     "keywords": [
-      {
-        "label": "santé mentale",
-        "url": "https://decs.bvsalud.org/term/104"
-      },
-      {
-        "label": "formation",
-        "url": "https://decs.bvsalud.org/term/106"
-      }
+      "santé mentale",
+      "formation"
     ],
     "source": "https://source.org/event-23",
     "more": "https://info.org/more-23",
     "contributor": "Contributeur #23",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Ressources humaines"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #24",
     "start": 1930,
     "end": 1932,
     "maincat": "Éducation",
-    "subcat": "Financement",
     "themes": "Modernisation, Crise sanitaire",
     "keywords": [
-      {
-        "label": "épidémie",
-        "url": "https://decs.bvsalud.org/term/102"
-      },
-      {
-        "label": "formation",
-        "url": "https://decs.bvsalud.org/term/106"
-      }
+      "épidémie",
+      "formation"
     ],
     "source": "https://source.org/event-24",
     "more": "https://info.org/more-24",
     "contributor": "Contributeur #24",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Financement"
+    ],
+    "description": ""
   },
   {
     "title": "Événement de santé publique #25",
     "start": 1975,
     "end": 1975,
     "maincat": "Ressources humaines",
-    "subcat": "Technologie",
     "themes": "Nutrition infantile, Équipements",
     "keywords": [
-      {
-        "label": "formation",
-        "url": "https://decs.bvsalud.org/term/106"
-      },
-      {
-        "label": "hygiène",
-        "url": "https://decs.bvsalud.org/term/123"
-      }
+      "formation",
+      "hygiène"
     ],
     "source": "https://source.org/event-25",
     "more": "https://info.org/more-25",
     "contributor": "Contributeur #25",
-    "major": false
+    "major": false,
+    "subcats": [
+      "Technologie"
+    ],
+    "description": ""
   }
 ]
