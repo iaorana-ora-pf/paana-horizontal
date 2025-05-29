@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 7- Paana</title>
-<meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
-<link href="header-footer.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
-<style>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contribuer 7 - Paana</title>
+  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française"/>
+  <link rel="stylesheet" href="header-footer.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
     :root {
       --primary: #007b7f;
       --background: #fdfdf0;
@@ -31,27 +31,6 @@
       margin: 0 auto;
       padding: 1.5rem 2rem;
     }
-    .year-btn {
-      width: 100%;
-      height: 2.5rem;
-      font-size: 1rem;
-      background: none;
-      border: none;
-      text-align: center;
-      cursor: pointer;
-      color: var(--text);
-      margin: 2px 0;
-      transition: background 0.2s, font-size 0.2s;
-    }
-    .year-btn:hover {
-      background-color: #fee58c;
-    }
-    .year-btn.active {
-      color: var(--primary);
-      font-weight: bold;
-      font-size: 1.3rem;
-      border-radius: 4px;
-    }
     .timeline-layout {
       display: flex;
       width: 100%;
@@ -63,6 +42,25 @@
       flex-direction: column;
       align-items: center;
     }
+    .year-btn {
+      width: 100%;
+      height: 2.5rem;
+      font-size: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text);
+      margin: 2px 0;
+    }
+    .year-btn:hover {
+      background-color: #fee58c;
+    }
+    .year-btn.active {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.3rem;
+      border-radius: 4px;
+    }
     #scroll-up, #scroll-down {
       width: 80px;
       height: 2.5rem;
@@ -71,23 +69,25 @@
       background: white;
       cursor: pointer;
     }
-    #scroll-up:hover, #scroll-down:hover {
-      background: #eee;
-    }
     .years-column {
       width: 80px;
       height: calc(2.5rem * 10);
       overflow-y: scroll;
       background: white;
       border-right: 1px solid #ddd;
-      scroll-behavior: smooth;
-      scrollbar-width: thin;
     }
     .events-column {
       width: 600px;
       background: var(--light);
       overflow-y: auto;
       padding: 1.5rem;
+    }
+    .fiche-column {
+      flex: 0 0 400px;
+      background: #fff;
+      padding: 1.5rem;
+      border-left: 1px solid #ddd;
+      overflow-y: auto;
     }
     .event-box {
       border: 2px solid var(--primary);
@@ -96,26 +96,10 @@
       background-color: white;
       margin-bottom: 1.5rem;
     }
-    .title-central {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      color: var(--primary);
+    .event.selected {
+      background-color: #fff8b0;
       font-weight: bold;
-      text-decoration: none;
     }
-    .pluriannuel-badge {
-      display: inline-block;
-      background-color: var(--primary);
-      color: white;
-      font-size: 0.7rem;
-      padding: 2px 6px;
-      margin-left: 6px;
-      border-radius: 4px;
-    }
-    .pluriannuel-badge.gray {
-  background-color: #ccc;
-  color: #333;
-}
     .collapsible-box {
       border: 1px solid var(--gray);
       border-radius: 6px;
@@ -129,68 +113,27 @@
       align-items: center;
       cursor: pointer;
       font-weight: bold;
-      user-select: none;
     }
     .collapsible-toggle i {
       margin-right: 0.5rem;
       transition: transform 0.3s ease;
     }
+    .collapsible-box.open .collapsible-content {
+      display: block;
+    }
     .collapsible-content {
       display: none;
       margin-top: 0.5rem;
     }
-    .collapsible-box.open .collapsible-content {
-      display: block;
-    }
     .collapsible-box.open .collapsible-toggle i {
       transform: rotate(90deg);
     }
-    .events-column h5 {
-      margin-bottom: 0.2rem;
-      color: var(--gray-dark);
-      font-weight: bold;
-      text-decoration: underline;
-    }
-    .events-column ul {
-      margin-top: 0;
-      padding-left: 1.2rem;
-    }
-    .events-column li {
-      margin-bottom: 0.3rem;
-    }
-    .fiche-column {
-      flex: 0 0 400px;
-      background: #fff;
-      padding: 1.5rem;
-      border-left: 1px solid #ddd;
-      overflow-y: auto;
-    }
-    .fiche-divider {
-  height: 4px;
-  background-color: #ffe066; /* jaune doux */
-  margin-bottom: 1rem;
-  width: 100%;
-}
-    .event.selected {
-      background-color: #fff8b0;
-      font-weight: bold;
-    }
     #fiche-divider {
-  width: 100%;
-  height: 4px;
-  background-color: #fee58c; /* jaune */
-  margin-top: 2rem;
-  margin-bottom: 1rem; /* espace avant les boutons */
-}
-    #fiche-content .fiche-section {
+      width: 100%;
+      height: 4px;
+      background-color: #fee58c;
+      margin-top: 2rem;
       margin-bottom: 1rem;
-    }
-    #fiche-content a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    #fiche-content a:hover {
-      text-decoration: underline;
     }
     #fiche-navigation {
       display: flex;
@@ -206,77 +149,86 @@
       cursor: pointer;
       border-radius: 5px;
     }
-    #fiche-navigation button:hover {
-      background-color: #005f62;
+    #filters {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
   </style>
 </head>
 <body>
 <header>
-<div class="logo">
-<span class="brand">Paana</span>
-<div class="trait"></div>
-<div class="signature">Emmanuelle RUPP-TERRIS</div>
-</div>
-<nav>
-<a href="a-propos.html">A PROPOS</a>
-<a href="contribuer.html">CONTRIBUER</a>
-<a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
-<a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
-</nav>
+  <div class="logo">
+    <span class="brand">Paana</span>
+    <div class="trait"></div>
+    <div class="signature">Emmanuelle RUPP-TERRIS</div>
+  </div>
+  <nav>
+    <a href="a-propos.html">A PROPOS</a>
+    <a href="contribuer.html">CONTRIBUER</a>
+    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
+    <a href="mailto:frise.sante.pf@gmail.com"><i class="fas fa-envelope fa-lg"></i></a>
+  </nav>
 </header>
 <main>
-<div class="timeline-layout">
-<div class="years-container">
-<button id="scroll-up">↑</button>
-<div class="years-column" id="years-column"></div>
-<button id="scroll-down">↓</button>
-</div>
-<div class="events-column">
-<div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
-<div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
-<div class="collapsible-box" id="box-superieur">
-<div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')">
-<i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années précédentes
-        </div>
-<div class="collapsible-content" id="bloc-superieur"></div>
-</div>
-<div class="event-box">
-<h4 class="title-central">Événements de l'année</h4>
-<div id="events-central-list"></div>
-</div>
-<div class="collapsible-box" id="box-inferieur">
-<div class="collapsible-toggle" onclick="toggleCollapse('box-inferieur')">
-<i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années suivantes
-        </div>
-<div class="collapsible-content" id="bloc-inferieur"></div>
-</div>
-</div>
-<div class="fiche-column">
-<h3 id="fiche-titre">Détails</h3>
-<div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
-</div>
-</div>
-    <div id="floating-help" style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
-  <button onclick="toggleHelp()" aria-controls="help-content" aria-expanded="false" id="help-button">
-  ❔ Mode d'emploi
-</button>
-  <div id="help-content" style="display:none; margin-top: 8px; background: white; border: 1px solid #ccc; padding: 1rem; width: 300px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem;">
-    <h4>Mode d'emploi</h4>
-    <ul style="padding-left: 1rem;">
-      <li><strong>Icônes :</strong> Chaque icône correspond à la catégorie principale de l'événement. Passez la souris dessus pour afficher le nom exact de la catégorie.</li>
-      <li><strong>Couleurs :</strong> Chaque carré de couleur correspond au thème de l'événement. Passez la souris dessus pour afficher le nom exact du thème.</li>
-      </ul>
+  <div class="timeline-layout">
+    <div class="years-container">
+      <button id="scroll-up">↑</button>
+      <div class="years-column" id="years-column"></div>
+      <button id="scroll-down">↓</button>
+    </div>
+    <div class="events-column">
+      <!-- FILTRES -->
+      <div id="filters">
+        <select id="filter-maincat">
+          <option value="">Toutes les catégories</option>
+          <option value="Contexte">Contexte</option>
+          <option value="Gouvernance en santé publique (stewardship)">Gouvernance</option>
+          <option value="Engagement communautaire et participation sociale">Engagement</option>
+          <option value="Planification, financement et gestion multisectorielle">Planification</option>
+          <option value="Prévention et détection précoce des maladies">Prévention</option>
+          <option value="Accès aux produits et technologies de santé">Accès</option>
+          <option value="Promotion de la santé">Promotion</option>
+          <option value="Protection de la santé">Protection</option>
+          <option value="Qualité et équité des services de santé">Qualité</option>
+          <option value="Recherche, évaluation et développement des connaissances">Recherche</option>
+          <option value="Développement de la main-d’œuvre en santé publique">Main-d'œuvre</option>
+          <option value="Surveillance et suivi de la santé publique">Surveillance</option>
+          <option value="Gestion des urgences de santé publique">Urgences</option>
+        </select>
+        <select id="filter-theme">
+          <option value="">Tous les thèmes</option>
+        </select>
+        <select id="filter-keyword">
+          <option value="">Tous les mots-clefs</option>
+        </select>
+        <button onclick="resetFilters()">Réinitialiser</button>
+      </div>
+      <div id="loader" style="text-align:center; margin-top:3rem; font-style:italic;">Chargement...</div>
+      <div id="message-attente" style="text-align:center; margin-top:3rem; font-style:italic; color:#666;">Aucun événement affiché. Sélectionnez une année dans la colonne de gauche.</div>
+      <div class="collapsible-box" id="box-superieur">
+        <div class="collapsible-toggle" onclick="toggleCollapse('box-superieur')"><i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années précédentes</div>
+        <div class="collapsible-content" id="bloc-superieur"></div>
+      </div>
+      <div class="event-box">
+        <h4 class="title-central">Événements de l'année</h4>
+        <div id="events-central-list"></div>
+      </div>
+      <div class="collapsible-box" id="box-inferieur">
+        <div class="collapsible-toggle" onclick="toggleCollapse('box-inferieur')"><i class="fas fa-chevron-right"></i> Événements survenus dans les 2 années suivantes</div>
+        <div class="collapsible-content" id="bloc-inferieur"></div>
+      </div>
+    </div>
+    <div class="fiche-column">
+      <h3 id="fiche-titre">Détails</h3>
+      <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
+    </div>
   </div>
-</div>
 </main>
-<!-- SCRIPT will be appended below -->
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const yearCol = document.getElementById("years-column");
-  window.eventData = [];
 
-  const categoryIcons = {
+<script>
+const categoryIcons = {
   "Contexte": "fa-globe",
   "Gouvernance en santé publique (stewardship)": "fa-gavel",
   "Engagement communautaire et participation sociale": "fa-users-line",
@@ -292,129 +244,97 @@ window.addEventListener("DOMContentLoaded", () => {
   "Gestion des urgences de santé publique": "fa-triangle-exclamation"
 };
 
-  function stringToColor(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = str.charCodeAt(i) + ((hash << 5) - hash);
-    }
-    let color = '#';
-    for (let i = 0; i < 3; i++) {
-      const value = (hash >> (i * 8)) & 0xff;
-      color += ('00' + value.toString(16)).slice(-2);
-    }
-    return color;
+function stringToColor(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
-
-  function renderEvents(year) {
-    const top = document.getElementById("bloc-superieur");
-    const center = document.getElementById("events-central-list");
-    const bottom = document.getElementById("bloc-inferieur");
-    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
-const makeEventText = (e, idx, isContextual = false) => {
-  const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
-  const color = stringToColor(e.themes || "");
-  const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
-
-  return `
-    <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
-      <div>
-        ${icon}
-        <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
-        ${e.title}
-        ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
-        ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
-      </div>
-    </div>`;
-};
-
-    window.eventData.forEach((e, idx) => {
-      if (e.start <= year && e.end >= year) {
-        center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
-      }
-    });
-
-    const groupByYear = (from, to) => {
-      const map = {};
-      for (let y = from; y <= to; y++) {
-        const evts = window.eventData.filter(e => (e.start <= y && e.end >= y));
-        if (evts.length) map[y] = evts;
-      }
-      return map;
-    };
-
-    const renderContextual = (container, map) => {
-      for (const [y, events] of Object.entries(map)) {
-        const title = document.createElement("h5");
-        title.textContent = y;
-        container.appendChild(title);
-        const ul = document.createElement("ul");
-        events.forEach(e => {
-          const li = document.createElement("li");
-          li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
-          ul.appendChild(li);
-        });
-        container.appendChild(ul);
-      }
-    };
-
-    renderContextual(top, groupByYear(year - 2, year - 1));
-    renderContextual(bottom, groupByYear(year + 1, year + 2));
-
-    const total = top.children.length + center.children.length + bottom.children.length;
-    document.getElementById("message-attente").style.display = total ? "none" : "block";
-    document.getElementById("loader").style.display = "none";
+  let color = '#';
+  for (let i = 0; i < 3; i++) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += ('00' + value.toString(16)).slice(-2);
   }
+  return color;
+}
 
-  
-  window.renderFiche = function(e, index) {
-    document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
-    const current = document.querySelectorAll('.event[data-id="' + index + '"]')[0];
-    if (current) current.style.backgroundColor = "#fff8b0";
-const mots = (e.keywords || []).join(', ');
-    const titre = document.getElementById("fiche-titre");
-    const fiche = document.getElementById("fiche-content");
+function renderEvents(year) {
+  const top = document.getElementById("bloc-superieur");
+  const center = document.getElementById("events-central-list");
+  const bottom = document.getElementById("bloc-inferieur");
+  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 
-    // Titre bleu et gras
-    titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
-const ficheDivider = `<div id="fiche-divider"></div>`;
-    
-    const related = window.eventData.filter(x => x.themes === e.themes);
-    const other = related.map(r =>
-      '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') + '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' + r.title + '</a></li>'
-    ).join('');
+  const maincatFilter = document.getElementById("filter-maincat").value;
+  const themeFilter = document.getElementById("filter-theme").value;
+  const keywordFilter = document.getElementById("filter-keyword").value;
 
-    fiche.innerHTML = `
-      ${e.start && e.end ? `<p><strong>Année ou période :</strong> ${e.start === e.end ? e.start : e.start + ' – ' + e.end}</p>` : ''}
-     ${e.maincat ? `<p><strong>Catégorie principale<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> : </strong> ${e.maincat}</p>` : ''}
-${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> :</strong> ${e.subcats.join(', ')} </p>` : ''}
-      ${e.themes ? `<p><strong>Thème :</strong> <span title="Thème : ${e.themes}" style="display:inline-block; width:12px; height:12px; background-color:${stringToColor(e.themes)}; margin-right:6px; vertical-align:middle; border-radius:2px;"></span>${e.themes}</p>` : ''}
-      ${mots ? `<p><strong>Mots-clefs (issus du DeCS) <a href="https://decs.bvsalud.org/fr/" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> :</strong> ${mots}</p>` : ''}
-      ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
-      ${e.source ? `<p><strong>Source(s) :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
-      <h4>Autres événements du même thème</h4>
-      <ul>${other}</ul>
-       ${ficheDivider} 
-      <div id="fiche-navigation">
-      <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
-    Evénement précédent
-  </button>
-  <button ${index < window.eventData.length - 1 ? `onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})"` : 'disabled'}>
-    Evénement suivant
-  </button>
-</div>
-    `;
+  const makeEventText = (e, idx, isContextual = false) => {
+    const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+    const color = stringToColor(e.themes || "");
+    const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
+
+    return `<div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
+      <div>${icon}
+      <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
+      ${e.title} ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
+      ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
+      </div></div>`;
   };
 
+  const matchesFilters = (e) =>
+    (!maincatFilter || e.maincat === maincatFilter) &&
+    (!themeFilter || e.themes === themeFilter) &&
+    (!keywordFilter || (e.keywords || []).includes(keywordFilter));
 
-  window.toggleCollapse = function(id) {
-    document.getElementById(id).classList.toggle("open");
+  const filteredEvents = window.eventData.filter(e => e.start <= year && e.end >= year && matchesFilters(e));
+  filteredEvents.forEach((e, idx) => center.insertAdjacentHTML("beforeend", makeEventText(e, idx)));
+
+  const groupByYear = (from, to) => {
+    const map = {};
+    for (let y = from; y <= to; y++) {
+      const evts = window.eventData.filter(e => e.start <= y && e.end >= y && matchesFilters(e));
+      if (evts.length) map[y] = evts;
+    }
+    return map;
   };
+
+  const renderContextual = (container, map) => {
+    for (const [y, events] of Object.entries(map)) {
+      const title = document.createElement("h5");
+      title.textContent = y;
+      container.appendChild(title);
+      const ul = document.createElement("ul");
+      events.forEach(e => {
+        const li = document.createElement("li");
+        li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
+    }
+  };
+
+  renderContextual(top, groupByYear(year - 2, year - 1));
+  renderContextual(bottom, groupByYear(year + 1, year + 2));
+  document.getElementById("message-attente").style.display = filteredEvents.length ? "none" : "block";
+  document.getElementById("loader").style.display = "none";
+}
+
+function resetFilters() {
+  document.getElementById("filter-maincat").value = "";
+  document.getElementById("filter-theme").value = "";
+  document.getElementById("filter-keyword").value = "";
+  const active = document.querySelector(".year-btn.active");
+  if (active) renderEvents(parseInt(active.dataset.year));
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const yearCol = document.getElementById("years-column");
 
   fetch("events.json?" + Date.now())
     .then(r => r.json())
     .then(d => {
       d.sort((a, b) => a.start - b.start);
-    window.eventData = d;
+      window.eventData = d;
+
       const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
       years.forEach(year => {
         const btn = document.createElement("button");
@@ -423,39 +343,53 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
         btn.dataset.year = year;
         yearCol.appendChild(btn);
       });
-      const yearButtons = document.querySelectorAll(".year-btn");
-      yearButtons.forEach(btn => {
+
+      const themes = [...new Set(d.map(e => e.themes).filter(Boolean))].sort();
+      const keywords = [...new Set(d.flatMap(e => e.keywords || []))].sort();
+      const themeSelect = document.getElementById("filter-theme");
+      const keywordSelect = document.getElementById("filter-keyword");
+
+      themes.forEach(t => {
+        const opt = document.createElement("option");
+        opt.value = opt.textContent = t;
+        themeSelect.appendChild(opt);
+      });
+      keywords.forEach(k => {
+        const opt = document.createElement("option");
+        opt.value = opt.textContent = k;
+        keywordSelect.appendChild(opt);
+      });
+
+      document.querySelectorAll(".year-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-          yearButtons.forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".year-btn").forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
           renderEvents(parseInt(btn.dataset.year));
         });
       });
-      if (yearButtons.length) yearButtons[0].click();
 
       document.getElementById("scroll-up").addEventListener("click", () => scrollYear(-1));
       document.getElementById("scroll-down").addEventListener("click", () => scrollYear(1));
 
       function scrollYear(offset) {
-        const currentIndex = [...yearButtons].findIndex(btn => btn.classList.contains("active"));
-        const newIndex = currentIndex + offset;
-        if (newIndex >= 0 && newIndex < yearButtons.length) {
-          yearButtons[newIndex].click();
-          yearButtons[newIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+        const buttons = [...document.querySelectorAll(".year-btn")];
+        const index = buttons.findIndex(btn => btn.classList.contains("active"));
+        const next = index + offset;
+        if (next >= 0 && next < buttons.length) {
+          buttons[next].click();
+          buttons[next].scrollIntoView({ behavior: "smooth", block: "center" });
         }
+      }
+
+      themeSelect.addEventListener("change", () => renderEvents(parseInt(document.querySelector(".year-btn.active").dataset.year)));
+      keywordSelect.addEventListener("change", () => renderEvents(parseInt(document.querySelector(".year-btn.active").dataset.year)));
+      document.getElementById("filter-maincat").addEventListener("change", () => renderEvents(parseInt(document.querySelector(".year-btn.active").dataset.year)));
+
+      if (document.querySelectorAll(".year-btn").length) {
+        document.querySelectorAll(".year-btn")[0].click();
       }
     });
 });
-  function toggleHelp() {
-  const help = document.getElementById("help-content");
-  const btn = document.getElementById("help-button");
-  const isVisible = help.style.display === "block";
-  help.style.display = isVisible ? "none" : "block";
-  btn.setAttribute("aria-expanded", !isVisible);
-}
-    
 </script>
 </body>
 </html>
-
-
