@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 3- Paana</title>
+<title>Contribuer 5- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -112,6 +113,10 @@
       margin-left: 6px;
       border-radius: 4px;
     }
+    .pluriannuel-badge.gray {
+  background-color: #ccc;
+  color: #333;
+}
     .collapsible-box {
       border: 1px solid var(--gray);
       border-radius: 6px;
@@ -176,11 +181,9 @@
       text-decoration: underline;
     }
     #fiche-navigation {
-      margin-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid var(--gray);
-  padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
     }
     #fiche-navigation button {
       background-color: var(--primary);
@@ -239,9 +242,7 @@
 </div>
 <div class="fiche-column">
 <h3 id="fiche-titre">Détails</h3>
-<div id="fiche-content">...</div>
-<div id="fiche-navigation" class="navigation-chronologique">
-  <!-- Les boutons seront ajoutés dynamiquement ici -->
+<div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
 </div>
 </div>
 </main>
@@ -285,21 +286,22 @@ window.addEventListener("DOMContentLoaded", () => {
     const center = document.getElementById("events-central-list");
     const bottom = document.getElementById("bloc-inferieur");
     top.innerHTML = center.innerHTML = bottom.innerHTML = "";
+const makeEventText = (e, idx, isContextual = false) => {
+  const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+  const color = stringToColor(e.themes || "");
+  const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
 
-    const makeEventText = (e, idx) => {
-      const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
-      const color = stringToColor(e.themes || "");
-     return `
-  <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
-    <div>
-      ${icon}
-      <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
-      ${e.title}
-      ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
-      ${(e.start !== e.end ? '<span class="pluriannuel-badge">Pluriannuel</span>' : '')}
-    </div>
-  </div>`;
-    };
+  return `
+    <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
+      <div>
+        ${icon}
+        <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
+        ${e.title}
+        ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
+        ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
+      </div>
+    </div>`;
+};
 
     window.eventData.forEach((e, idx) => {
       if (e.start <= year && e.end >= year) {
@@ -324,7 +326,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const ul = document.createElement("ul");
         events.forEach(e => {
           const li = document.createElement("li");
-          li.innerHTML = makeEventText(e, window.eventData.indexOf(e));
+          li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
           ul.appendChild(li);
         });
         container.appendChild(ul);
@@ -367,16 +369,14 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
       ${e.source ? `<p><strong>Source(s) :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
-
-const nav = document.getElementById("fiche-navigation");
-nav.innerHTML = `
+      <div id="fiche-navigation">
   <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
-    ← Précédent
+    Précédent
   </button>
   <button ${index < window.eventData.length - 1 ? `onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})"` : 'disabled'}>
-    Suivant →
+    Suivant
   </button>
-`;
+</div>
     `;
   };
 
