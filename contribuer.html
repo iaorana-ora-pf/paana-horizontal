@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 5- Paana</title>
+<title>Contribuer - Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -166,6 +166,12 @@
       border-left: 1px solid #ddd;
       overflow-y: auto;
     }
+    .fiche-divider {
+  height: 4px;
+  background-color: #ffe066; /* jaune doux */
+  margin-bottom: 1rem;
+  width: 100%;
+}
     .event.selected {
       background-color: #fff8b0;
       font-weight: bold;
@@ -370,6 +376,7 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
       <div id="fiche-navigation">
+      <div class="fiche-divider"></div> 
   <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
     Précédent
   </button>
