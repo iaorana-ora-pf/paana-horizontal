@@ -258,6 +258,19 @@
 <div id="fiche-content">Cliquez sur un événement pour voir sa fiche complète.</div>
 </div>
 </div>
+    <div id="floating-help" style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
+  <button onclick="toggleHelp()" style="background: #007b7f; color: white; border: none; border-radius: 6px; padding: 10px 14px; cursor: pointer;">
+    ❔ Aide
+  </button>
+  <div id="help-content" style="display:none; margin-top: 8px; background: white; border: 1px solid #ccc; padding: 1rem; width: 300px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem;">
+    <h4>Aide</h4>
+    <ul style="padding-left: 1rem;">
+      <li><strong>Catégories :</strong> Les catégories (FESP) sont des fonctions essentielles de santé publique.</li>
+      <li><strong>Couleurs :</strong> Chaque thème est représenté par une couleur unique.</li>
+      <li><strong>Mots-clefs :</strong> Ils résument le sujet principal, selon le thésaurus DeCS.</li>
+    </ul>
+  </div>
+</div>
 </main>
 <!-- SCRIPT will be appended below -->
 <script>
@@ -435,6 +448,11 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
       }
     });
 });
+  function toggleHelp() {
+  const help = document.getElementById("help-content");
+  help.style.display = help.style.display === "none" ? "block" : "none";
+}
+  
 </script>
 </body>
 </html>
