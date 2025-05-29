@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 6- Paana</title>
+<title>Contribuer 7- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -209,53 +209,6 @@
     #fiche-navigation button:hover {
       background-color: #005f62;
     }
-
-.filter-dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.filter-toggle {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.filter-options {
-  display: none;
-  position: absolute;
-  z-index: 1000;
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 0.5rem;
-  max-height: 300px;
-  overflow-y: auto;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 6px;
-  margin-top: 0.3rem;
-  min-width: 200px;
-}
-
-.filter-dropdown.open .filter-options {
-  display: block;
-}
-
-.filter-options label {
-  display: block;
-  margin-bottom: 0.3rem;
-  color: var(--text);
-  cursor: pointer;
-}
-
-.filter-options label.disabled {
-  color: #aaa;
-}
-
-    
   </style>
 </head>
 <body>
@@ -273,25 +226,6 @@
 </nav>
 </header>
 <main>
-    <div id="filters" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
-  <!-- Filtre Catégories -->
-  <div class="filter-dropdown">
-    <button class="filter-toggle">Catégories ⌄</button>
-    <div class="filter-options" id="filter-categories"></div>
-  </div>
-
-  <!-- Filtre Thèmes -->
-  <div class="filter-dropdown">
-    <button class="filter-toggle">Thèmes ⌄</button>
-    <div class="filter-options" id="filter-themes"></div>
-  </div>
-
-  <!-- Filtre Mots-clés -->
-  <div class="filter-dropdown">
-    <button class="filter-toggle">Mots-clés ⌄</button>
-    <div class="filter-options" id="filter-keywords"></div>
-  </div>
-</div>
 <div class="timeline-layout">
 <div class="years-container">
 <button id="scroll-up">↑</button>
@@ -392,67 +326,12 @@ const makeEventText = (e, idx, isContextual = false) => {
       </div>
     </div>`;
 };
-function renderFilteredEvents(year, filteredData) {
-  const top = document.getElementById("bloc-superieur");
-  const center = document.getElementById("events-central-list");
-  const bottom = document.getElementById("bloc-inferieur");
-  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 
-  const makeEventText = (e, idx, isContextual = false) => {
-    const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
-    const color = stringToColor(e.themes || "");
-    const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
-
-    return `
-      <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
-        <div>
-          ${icon}
-          <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
-          ${e.title}
-          ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
-          ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
-        </div>
-      </div>`;
-  };
-
-  const inRange = e => e.start <= year && e.end >= year;
-
-  filteredData.forEach((e, idx) => {
-    if (inRange(e)) center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
-  });
-
-  const contextual = (from, to) => {
-    const map = {};
-    for (let y = from; y <= to; y++) {
-      const evts = filteredData.filter(e => inRange(e) && e.start <= y && e.end >= y);
-      if (evts.length) map[y] = evts;
-    }
-    return map;
-  };
-
-  const renderContextual = (container, map) => {
-    for (const [y, events] of Object.entries(map)) {
-      const title = document.createElement("h5");
-      title.textContent = y;
-      container.appendChild(title);
-      const ul = document.createElement("ul");
-      events.forEach(e => {
-        const li = document.createElement("li");
-        li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
-        ul.appendChild(li);
-      });
-      container.appendChild(ul);
-    }
-  };
-
-  renderContextual(top, contextual(year - 2, year - 1));
-  renderContextual(bottom, contextual(year + 1, year + 2));
-
-  const total = top.children.length + center.children.length + bottom.children.length;
-  document.getElementById("message-attente").style.display = total ? "none" : "block";
-  document.getElementById("loader").style.display = "none";
-}
-
+    window.eventData.forEach((e, idx) => {
+      if (e.start <= year && e.end >= year) {
+        center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
+      }
+    });
 
     const groupByYear = (from, to) => {
       const map = {};
@@ -536,32 +415,6 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
     .then(d => {
       d.sort((a, b) => a.start - b.start);
     window.eventData = d;
-         // Étape 4 — remplissage dynamique des filtres
-  const allCategories = new Set();
-  const allThemes = new Set();
-  const allKeywords = new Set();
-
-  window.eventData.forEach(event => {
-    if (event.maincat) allCategories.add(event.maincat);
-    (event.subcats || []).forEach(cat => allCategories.add(cat));
-    if (event.themes) allThemes.add(event.themes);
-    (event.keywords || []).forEach(kw => allKeywords.add(kw));
-  });
-
-  function populateFilter(containerId, values, groupName) {
-    const container = document.getElementById(containerId);
-    values.sort().forEach(value => {
-      const id = `${groupName}-${value.replace(/\s+/g, '-')}`;
-      const label = document.createElement("label");
-      label.innerHTML = `<input type="checkbox" name="${groupName}" value="${value}" onchange="applyFilters()"> ${value}`;
-      container.appendChild(label);
-    });
-  }
-
-  populateFilter("filter-categories", Array.from(allCategories), "categories");
-  populateFilter("filter-themes", Array.from(allThemes), "themes");
-  populateFilter("filter-keywords", Array.from(allKeywords), "keywords");
-        
       const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
       years.forEach(year => {
         const btn = document.createElement("button");
@@ -600,77 +453,7 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
   help.style.display = isVisible ? "none" : "block";
   btn.setAttribute("aria-expanded", !isVisible);
 }
-   document.querySelectorAll('.filter-toggle').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const dropdown = btn.parentElement;
-    dropdown.classList.toggle('open');
-  });
-});
-
-document.addEventListener('click', (e) => {
-  document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove('open');
-    }
-  });
-}); 
-    function applyFilters() {
-  const selectedCats = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value);
-  const selectedThemes = Array.from(document.querySelectorAll('input[name="themes"]:checked')).map(cb => cb.value);
-  const selectedKeywords = Array.from(document.querySelectorAll('input[name="keywords"]:checked')).map(cb => cb.value);
-
-  const filtersActive = {
-    categories: selectedCats.length > 0,
-    themes: selectedThemes.length > 0,
-    keywords: selectedKeywords.length > 0
-  };
-
-  const year = parseInt(document.querySelector(".year-btn.active")?.dataset.year || 0);
-
-  const visibleEvents = window.eventData.filter(e => {
-    const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
-    const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
-    const keywordMatch = !filtersActive.keywords || (e.keywords || []).some(k => selectedKeywords.includes(k));
-    return e.start <= year && e.end >= year && catMatch && themeMatch && keywordMatch;
-  });
-
-  // === GRISER les options non associées ===
-  const matchedEvents = window.eventData.filter(e => {
-    const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
-    const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
-    const keywordMatch = !filtersActive.keywords || (e.keywords || []).some(k => selectedKeywords.includes(k));
-    return catMatch && themeMatch && keywordMatch;
-  });
-
-  const activeCats = new Set();
-  const activeThemes = new Set();
-  const activeKeywords = new Set();
-
-  matchedEvents.forEach(e => {
-    if (e.maincat) activeCats.add(e.maincat);
-    (e.subcats || []).forEach(c => activeCats.add(c));
-    if (e.themes) activeThemes.add(e.themes);
-    (e.keywords || []).forEach(k => activeKeywords.add(k));
-  });
-
-  function updateOptionStyles(name, activeSet) {
-    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-      const label = input.parentElement;
-      if (activeSet.has(input.value) || input.checked) {
-        label.classList.remove('disabled');
-      } else {
-        label.classList.add('disabled');
-      }
-    });
-  }
-
-  updateOptionStyles("categories", activeCats);
-  updateOptionStyles("themes", activeThemes);
-  updateOptionStyles("keywords", activeKeywords);
-        
-  // === Afficher les événements filtrés ===
-  renderFilteredEvents(year, visibleEvents);
-}
+    
 </script>
 </body>
 </html>
