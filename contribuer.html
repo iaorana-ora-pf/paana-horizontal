@@ -616,6 +616,7 @@ document.addEventListener('click', (e) => {
   });
 }); 
 function applyFilters() {
+    console.log("→ applyFilters appelée !");
   const selectedCats = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value);
   const selectedThemes = Array.from(document.querySelectorAll('input[name="themes"]:checked')).map(cb => cb.value);
   const selectedKeywords = Array.from(document.querySelectorAll('input[name="keywords"]:checked')).map(cb => cb.value);
@@ -683,8 +684,9 @@ function applyFilters() {
       });
     });
   }
-
+console.log("→ Événements visibles à rendre :", visibleEvents);
   renderFilteredEvents(year, visibleEvents);
+    console.log("→ Appel de renderFilteredEvents pour l’année", year);
 }
 </script>
 </body>
