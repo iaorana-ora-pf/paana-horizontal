@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer - Paana</title>
+<title>Contribuer 3- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -367,10 +367,7 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
       ${e.source ? `<p><strong>Source(s) :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
-     // 1. Actualise seulement la fiche descriptive
-fiche.innerHTML = ficheHTML;
 
-// 2. Ajoute la navigation chronologique en dehors
 const nav = document.getElementById("fiche-navigation");
 nav.innerHTML = `
   <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
