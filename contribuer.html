@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 3- Paana</title>
+<title>Contribuer 2 - Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -425,7 +425,7 @@ function renderFilteredEvents(year, filteredData) {
   const contextual = (from, to) => {
     const map = {};
     for (let y = from; y <= to; y++) {
-      const evts = filteredData.filter(e => inRange(e) && e.start <= y && e.end >= y);
+      const evts = filteredData.filter(e => e.start <= y && e.end >= y);
       if (evts.length) map[y] = evts;
     }
     return map;
