@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 1- Paana</title>
+<title>Contribuer 5- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -482,6 +482,32 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
     .then(d => {
       d.sort((a, b) => a.start - b.start);
     window.eventData = d;
+         // Étape 4 — remplissage dynamique des filtres
+  const allCategories = new Set();
+  const allThemes = new Set();
+  const allKeywords = new Set();
+
+  window.eventData.forEach(event => {
+    if (event.maincat) allCategories.add(event.maincat);
+    (event.subcats || []).forEach(cat => allCategories.add(cat));
+    if (event.themes) allThemes.add(event.themes);
+    (event.keywords || []).forEach(kw => allKeywords.add(kw));
+  });
+
+  function populateFilter(containerId, values, groupName) {
+    const container = document.getElementById(containerId);
+    values.sort().forEach(value => {
+      const id = `${groupName}-${value.replace(/\s+/g, '-')}`;
+      const label = document.createElement("label");
+      label.innerHTML = `<input type="checkbox" name="${groupName}" value="${value}" onchange="applyFilters()"> ${value}`;
+      container.appendChild(label);
+    });
+  }
+
+  populateFilter("filter-categories", Array.from(allCategories), "categories");
+  populateFilter("filter-themes", Array.from(allThemes), "themes");
+  populateFilter("filter-keywords", Array.from(allKeywords), "keywords");
+        
       const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
       years.forEach(year => {
         const btn = document.createElement("button");
@@ -534,6 +560,122 @@ document.addEventListener('click', (e) => {
     }
   });
 }); 
+    function applyFilters() {
+  const selectedCats = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value);
+  const selectedThemes = Array.from(document.querySelectorAll('input[name="themes"]:checked')).map(cb => cb.value);
+  const selectedKeywords = Array.from(document.querySelectorAll('input[name="keywords"]:checked')).map(cb => cb.value);
+
+  const filtersActive = {
+    categories: selectedCats.length > 0,
+    themes: selectedThemes.length > 0,
+    keywords: selectedKeywords.length > 0
+  };
+
+  const year = parseInt(document.querySelector(".year-btn.active")?.dataset.year || 0);
+
+  const visibleEvents = window.eventData.filter(e => {
+    const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
+    const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
+    const keywordMatch = !filtersActive.keywords || (e.keywords || []).some(k => selectedKeywords.includes(k));
+    return e.start <= year && e.end >= year && catMatch && themeMatch && keywordMatch;
+  });
+
+  // === GRISER les options non associées ===
+  const matchedEvents = window.eventData.filter(e => {
+    const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
+    const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
+    const keywordMatch = !filtersActive.keywords || (e.keywords || []).some(k => selectedKeywords.includes(k));
+    return catMatch && themeMatch && keywordMatch;
+  });
+
+  const activeCats = new Set();
+  const activeThemes = new Set();
+  const activeKeywords = new Set();
+
+  matchedEvents.forEach(e => {
+    if (e.maincat) activeCats.add(e.maincat);
+    (e.subcats || []).forEach(c => activeCats.add(c));
+    if (e.themes) activeThemes.add(e.themes);
+    (e.keywords || []).forEach(k => activeKeywords.add(k));
+  });
+
+  function updateOptionStyles(name, activeSet) {
+    document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
+      const label = input.parentElement;
+      if (activeSet.has(input.value) || input.checked) {
+        label.classList.remove('disabled');
+      } else {
+        label.classList.add('disabled');
+      }
+    });
+  }
+
+  updateOptionStyles("categories", activeCats);
+  updateOptionStyles("themes", activeThemes);
+  updateOptionStyles("keywords", activeKeywords);
+
+  // === Afficher les événements filtrés ===
+  
+    function renderFilteredEvents(year, filteredData) {
+  const top = document.getElementById("bloc-superieur");
+  const center = document.getElementById("events-central-list");
+  const bottom = document.getElementById("bloc-inferieur");
+  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
+
+  const makeEventText = (e, idx, isContextual = false) => {
+    const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+    const color = stringToColor(e.themes || "");
+    const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
+
+    return `
+      <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
+        <div>
+          ${icon}
+          <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
+          ${e.title}
+          ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
+          ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
+        </div>
+      </div>`;
+  };
+
+  const inRange = e => e.start <= year && e.end >= year;
+
+  filteredData.forEach((e, idx) => {
+    if (inRange(e)) center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
+  });
+
+  const contextual = (from, to) => {
+    const map = {};
+    for (let y = from; y <= to; y++) {
+      const evts = filteredData.filter(e => inRange(e) && e.start <= y && e.end >= y);
+      if (evts.length) map[y] = evts;
+    }
+    return map;
+  };
+
+  const renderContextual = (container, map) => {
+    for (const [y, events] of Object.entries(map)) {
+      const title = document.createElement("h5");
+      title.textContent = y;
+      container.appendChild(title);
+      const ul = document.createElement("ul");
+      events.forEach(e => {
+        const li = document.createElement("li");
+        li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
+    }
+  };
+
+  renderContextual(top, contextual(year - 2, year - 1));
+  renderContextual(bottom, contextual(year + 1, year + 2));
+
+  const total = top.children.length + center.children.length + bottom.children.length;
+  document.getElementById("message-attente").style.display = total ? "none" : "block";
+  document.getElementById("loader").style.display = "none";
+}
 </script>
 </body>
 </html>
