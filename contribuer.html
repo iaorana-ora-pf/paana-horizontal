@@ -615,19 +615,20 @@ document.addEventListener('click', (e) => {
     }
   });
 }); 
-    function applyFilters() {
+   function applyFilters() {
   const selectedCats = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value);
   const selectedThemes = Array.from(document.querySelectorAll('input[name="themes"]:checked')).map(cb => cb.value);
   const selectedKeywords = Array.from(document.querySelectorAll('input[name="keywords"]:checked')).map(cb => cb.value);
 
   const filtersActive = {
-    categories: false,
+    categories: selectedCats.length > 0,
     themes: selectedThemes.length > 0,
     keywords: selectedKeywords.length > 0
   };
 
   const year = parseInt(document.querySelector(".year-btn.active")?.dataset.year || 0);
 
+  // Événements à afficher (intersection des filtres cochés)
   const visibleEvents = window.eventData.filter(e => {
     const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
     const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
@@ -635,7 +636,7 @@ document.addEventListener('click', (e) => {
     return e.start <= year && e.end >= year && catMatch && themeMatch && keywordMatch;
   });
 
-  // === GRISER les options non associées ===
+  // === GRISER ce qui ne correspond pas ===
   const matchedEvents = window.eventData.filter(e => {
     const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
     const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
@@ -654,6 +655,7 @@ document.addEventListener('click', (e) => {
     (e.keywords || []).forEach(k => activeKeywords.add(k));
   });
 
+  // ✅ Griser seulement thèmes et mots-clés
   function updateOptionStyles(name, activeSet) {
     document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
       const label = input.parentElement;
@@ -664,13 +666,12 @@ document.addEventListener('click', (e) => {
       }
     });
   }
-if (!filtersActive.categories) {
-  updateOptionStyles("categories", activeCats);
-}
+
   updateOptionStyles("themes", activeThemes);
   updateOptionStyles("keywords", activeKeywords);
-        
-  // === Afficher les événements filtrés ===
+  // ⛔ PAS de grisé sur les catégories
+
+  // Affichage des événements filtrés
   renderFilteredEvents(year, visibleEvents);
 }
 </script>
