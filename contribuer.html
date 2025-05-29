@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 5- Paana</title>
+<title>Contribuer 6- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -393,12 +393,67 @@ const makeEventText = (e, idx, isContextual = false) => {
       </div>
     </div>`;
 };
+function renderFilteredEvents(year, filteredData) {
+  const top = document.getElementById("bloc-superieur");
+  const center = document.getElementById("events-central-list");
+  const bottom = document.getElementById("bloc-inferieur");
+  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 
-    window.eventData.forEach((e, idx) => {
-      if (e.start <= year && e.end >= year) {
-        center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
-      }
-    });
+  const makeEventText = (e, idx, isContextual = false) => {
+    const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+    const color = stringToColor(e.themes || "");
+    const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
+
+    return `
+      <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
+        <div>
+          ${icon}
+          <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
+          ${e.title}
+          ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
+          ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
+        </div>
+      </div>`;
+  };
+
+  const inRange = e => e.start <= year && e.end >= year;
+
+  filteredData.forEach((e, idx) => {
+    if (inRange(e)) center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
+  });
+
+  const contextual = (from, to) => {
+    const map = {};
+    for (let y = from; y <= to; y++) {
+      const evts = filteredData.filter(e => inRange(e) && e.start <= y && e.end >= y);
+      if (evts.length) map[y] = evts;
+    }
+    return map;
+  };
+
+  const renderContextual = (container, map) => {
+    for (const [y, events] of Object.entries(map)) {
+      const title = document.createElement("h5");
+      title.textContent = y;
+      container.appendChild(title);
+      const ul = document.createElement("ul");
+      events.forEach(e => {
+        const li = document.createElement("li");
+        li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
+        ul.appendChild(li);
+      });
+      container.appendChild(ul);
+    }
+  };
+
+  renderContextual(top, contextual(year - 2, year - 1));
+  renderContextual(bottom, contextual(year + 1, year + 2));
+
+  const total = top.children.length + center.children.length + bottom.children.length;
+  document.getElementById("message-attente").style.display = total ? "none" : "block";
+  document.getElementById("loader").style.display = "none";
+}
+
 
     const groupByYear = (from, to) => {
       const map = {};
@@ -613,68 +668,9 @@ document.addEventListener('click', (e) => {
   updateOptionStyles("categories", activeCats);
   updateOptionStyles("themes", activeThemes);
   updateOptionStyles("keywords", activeKeywords);
-
+        
   // === Afficher les événements filtrés ===
-  
-    function renderFilteredEvents(year, filteredData) {
-  const top = document.getElementById("bloc-superieur");
-  const center = document.getElementById("events-central-list");
-  const bottom = document.getElementById("bloc-inferieur");
-  top.innerHTML = center.innerHTML = bottom.innerHTML = "";
-
-  const makeEventText = (e, idx, isContextual = false) => {
-    const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
-    const color = stringToColor(e.themes || "");
-    const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
-
-    return `
-      <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
-        <div>
-          ${icon}
-          <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
-          ${e.title}
-          ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
-          ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
-        </div>
-      </div>`;
-  };
-
-  const inRange = e => e.start <= year && e.end >= year;
-
-  filteredData.forEach((e, idx) => {
-    if (inRange(e)) center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
-  });
-
-  const contextual = (from, to) => {
-    const map = {};
-    for (let y = from; y <= to; y++) {
-      const evts = filteredData.filter(e => inRange(e) && e.start <= y && e.end >= y);
-      if (evts.length) map[y] = evts;
-    }
-    return map;
-  };
-
-  const renderContextual = (container, map) => {
-    for (const [y, events] of Object.entries(map)) {
-      const title = document.createElement("h5");
-      title.textContent = y;
-      container.appendChild(title);
-      const ul = document.createElement("ul");
-      events.forEach(e => {
-        const li = document.createElement("li");
-        li.innerHTML = makeEventText(e, window.eventData.indexOf(e), true);
-        ul.appendChild(li);
-      });
-      container.appendChild(ul);
-    }
-  };
-
-  renderContextual(top, contextual(year - 2, year - 1));
-  renderContextual(bottom, contextual(year + 1, year + 2));
-
-  const total = top.children.length + center.children.length + bottom.children.length;
-  document.getElementById("message-attente").style.display = total ? "none" : "block";
-  document.getElementById("loader").style.display = "none";
+  renderFilteredEvents(year, visibleEvents);
 }
 </script>
 </body>
