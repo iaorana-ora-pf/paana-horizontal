@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 4 - Paana</title>
+<title>Contribuer 2 - Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -372,27 +372,7 @@ window.addEventListener("DOMContentLoaded", () => {
     return color;
   }
 
-  function renderEvents(year) {
-    const top = document.getElementById("bloc-superieur");
-    const center = document.getElementById("events-central-list");
-    const bottom = document.getElementById("bloc-inferieur");
-    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
-const makeEventText = (e, idx, isContextual = false) => {
-  const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
-  const color = stringToColor(e.themes || "");
-  const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
-
-  return `
-    <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
-      <div>
-        ${icon}
-        <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
-        ${e.title}
-        ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
-        ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
-      </div>
-    </div>`;
-};
+  
 function renderFilteredEvents(year, filteredData) {
   const top = document.getElementById("bloc-superieur");
   const center = document.getElementById("events-central-list");
@@ -415,6 +395,27 @@ function renderFilteredEvents(year, filteredData) {
         </div>
       </div>`;
   };
+    function renderEvents(year) {
+    const top = document.getElementById("bloc-superieur");
+    const center = document.getElementById("events-central-list");
+    const bottom = document.getElementById("bloc-inferieur");
+    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
+const makeEventText = (e, idx, isContextual = false) => {
+  const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+  const color = stringToColor(e.themes || "");
+  const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
+
+  return `
+    <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
+      <div>
+        ${icon}
+        <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
+        ${e.title}
+        ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
+        ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
+      </div>
+    </div>`;
+};
 
   const inRange = e => e.start <= year && e.end >= year;
 
