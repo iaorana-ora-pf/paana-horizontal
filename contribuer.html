@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 1- Paana</title>
+<title>Contribuer 2- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -259,14 +259,14 @@
 </div>
 </div>
     <div id="floating-help" style="position: fixed; bottom: 20px; right: 20px; z-index: 999;">
-  <button onclick="toggleHelp()" style="background: #007b7f; color: white; border: none; border-radius: 6px; padding: 10px 14px; cursor: pointer;">
-    ❔ Mode d'emploi
-  </button>
+  <button onclick="toggleHelp()" aria-controls="help-content" aria-expanded="false" id="help-button">
+  ❔ Mode d'emploi
+</button>
   <div id="help-content" style="display:none; margin-top: 8px; background: white; border: 1px solid #ccc; padding: 1rem; width: 300px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-size: 0.9rem;">
     <h4>Mode d'emploi</h4>
     <ul style="padding-left: 1rem;">
       <li><strong>Icônes :</strong> Chaque icône correspond à la catégorie principale de l'événement. Passez la souris dessus pour afficher le nom exact de la catégorie.</li>
-      <li><strong>Couleurs :</strong> Chaque carré de couelur correspond au thème de l'événement. Passez la souris dessus pour afficher le nom exact du thème.</li>
+      <li><strong>Couleurs :</strong> Chaque carré de couleur correspond au thème de l'événement. Passez la souris dessus pour afficher le nom exact du thème.</li>
       </ul>
   </div>
 </div>
@@ -449,9 +449,12 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
 });
   function toggleHelp() {
   const help = document.getElementById("help-content");
-  help.style.display = help.style.display === "none" ? "block" : "none";
+  const btn = document.getElementById("help-button");
+  const isVisible = help.style.display === "block";
+  help.style.display = isVisible ? "none" : "block";
+  btn.setAttribute("aria-expanded", !isVisible);
 }
-  
+    
 </script>
 </body>
 </html>
