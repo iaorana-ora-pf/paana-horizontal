@@ -1,10 +1,11 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 2 - Paana</title>
+<title>Contribuer 4 - Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -372,7 +373,27 @@ window.addEventListener("DOMContentLoaded", () => {
     return color;
   }
 
-  
+  function renderEvents(year) {
+    const top = document.getElementById("bloc-superieur");
+    const center = document.getElementById("events-central-list");
+    const bottom = document.getElementById("bloc-inferieur");
+    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
+const makeEventText = (e, idx, isContextual = false) => {
+  const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
+  const color = stringToColor(e.themes || "");
+  const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
+
+  return `
+    <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
+      <div>
+        ${icon}
+        <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
+        ${e.title}
+        ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
+        ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
+      </div>
+    </div>`;
+};
 function renderFilteredEvents(year, filteredData) {
   const top = document.getElementById("bloc-superieur");
   const center = document.getElementById("events-central-list");
@@ -395,27 +416,6 @@ function renderFilteredEvents(year, filteredData) {
         </div>
       </div>`;
   };
-    function renderEvents(year) {
-    const top = document.getElementById("bloc-superieur");
-    const center = document.getElementById("events-central-list");
-    const bottom = document.getElementById("bloc-inferieur");
-    top.innerHTML = center.innerHTML = bottom.innerHTML = "";
-const makeEventText = (e, idx, isContextual = false) => {
-  const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
-  const color = stringToColor(e.themes || "");
-  const badgeClass = isContextual ? 'pluriannuel-badge gray' : 'pluriannuel-badge';
-
-  return `
-    <div class="event" data-id="${idx}" style="padding-left:0.6rem;background:white;cursor:pointer;" onclick="window.renderFiche(window.eventData[${idx}], ${idx})">
-      <div>
-        ${icon}
-        <span style="display:inline-block; width:12px; height:12px; background-color:${color}; margin-right:6px; vertical-align:middle;" title="Thème : ${e.themes}"></span>
-        ${e.title}
-        ${(e.start !== e.end ? ` <em>(${e.start}–${e.end})</em>` : '')}
-        ${(e.start !== e.end ? `<span class="${badgeClass}">Pluriannuel</span>` : '')}
-      </div>
-    </div>`;
-};
 
   const inRange = e => e.start <= year && e.end >= year;
 
@@ -573,13 +573,13 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
         yearCol.appendChild(btn);
       });
       const yearButtons = document.querySelectorAll(".year-btn");
-    yearButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    yearButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    applyFilters(); // ✅ Appelle applyFilters à la place
-  });
-});
+      yearButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          yearButtons.forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          renderEvents(parseInt(btn.dataset.year));
+        });
+      });
       if (yearButtons.length) yearButtons[0].click();
 
       document.getElementById("scroll-up").addEventListener("click", () => scrollYear(-1));
@@ -616,8 +616,7 @@ document.addEventListener('click', (e) => {
     }
   });
 }); 
-function applyFilters() {
-    console.log("→ applyFilters appelée !");
+   function applyFilters() {
   const selectedCats = Array.from(document.querySelectorAll('input[name="categories"]:checked')).map(cb => cb.value);
   const selectedThemes = Array.from(document.querySelectorAll('input[name="themes"]:checked')).map(cb => cb.value);
   const selectedKeywords = Array.from(document.querySelectorAll('input[name="keywords"]:checked')).map(cb => cb.value);
@@ -630,6 +629,7 @@ function applyFilters() {
 
   const year = parseInt(document.querySelector(".year-btn.active")?.dataset.year || 0);
 
+  // Événements à afficher (intersection des filtres cochés)
   const visibleEvents = window.eventData.filter(e => {
     const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
     const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
@@ -637,7 +637,7 @@ function applyFilters() {
     return e.start <= year && e.end >= year && catMatch && themeMatch && keywordMatch;
   });
 
-  // === ÉVÉNEMENTS FILTRÉS POUR GRISER ===
+  // === GRISER ce qui ne correspond pas ===
   const matchedEvents = window.eventData.filter(e => {
     const catMatch = !filtersActive.categories || selectedCats.some(cat => [e.maincat, ...(e.subcats || [])].includes(cat));
     const themeMatch = !filtersActive.themes || selectedThemes.includes(e.themes);
@@ -656,10 +656,11 @@ function applyFilters() {
     (e.keywords || []).forEach(k => activeKeywords.add(k));
   });
 
+  // ✅ Griser seulement thèmes et mots-clés
   function updateOptionStyles(name, activeSet) {
     document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
       const label = input.parentElement;
-      if (input.checked || activeSet.has(input.value)) {
+      if (activeSet.has(input.value) || input.checked) {
         label.classList.remove('disabled');
       } else {
         label.classList.add('disabled');
@@ -667,27 +668,12 @@ function applyFilters() {
     });
   }
 
-  // === GRISER UNIQUEMENT LES GROUPES NON ACTIFS ===
-  if (filtersActive.categories) {
-    updateOptionStyles("themes", activeThemes);
-    updateOptionStyles("keywords", activeKeywords);
-  } else if (filtersActive.themes) {
-    updateOptionStyles("categories", activeCats);
-    updateOptionStyles("keywords", activeKeywords);
-  } else if (filtersActive.keywords) {
-    updateOptionStyles("categories", activeCats);
-    updateOptionStyles("themes", activeThemes);
-  } else {
-    // Aucun filtre coché : tout actif
-    ["categories", "themes", "keywords"].forEach(name => {
-      document.querySelectorAll(`input[name="${name}"]`).forEach(input => {
-        input.parentElement.classList.remove("disabled");
-      });
-    });
-  }
-console.log("→ Événements visibles à rendre :", visibleEvents);
+  updateOptionStyles("themes", activeThemes);
+  updateOptionStyles("keywords", activeKeywords);
+  // ⛔ PAS de grisé sur les catégories
+
+  // Affichage des événements filtrés
   renderFilteredEvents(year, visibleEvents);
-    console.log("→ Appel de renderFilteredEvents pour l’année", year);
 }
 </script>
 </body>
