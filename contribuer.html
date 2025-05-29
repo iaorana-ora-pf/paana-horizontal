@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer - Paana</title>
+<title>Contribuer2 - Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -176,6 +176,13 @@
       background-color: #fff8b0;
       font-weight: bold;
     }
+    #fiche-divider {
+  width: 100%;
+  height: 4px;
+  background-color: #fee58c; /* jaune */
+  margin-top: 2rem;
+  margin-bottom: 1rem; /* espace avant les boutons */
+}
     #fiche-content .fiche-section {
       margin-bottom: 1rem;
     }
@@ -358,7 +365,7 @@ const makeEventText = (e, idx, isContextual = false) => {
 
     // Titre bleu et gras
     titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
-
+const ficheDivider = `<div id="fiche-divider"></div>`;
     const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
     const related = window.eventData.filter(x => x.themes === e.themes);
     const other = related.map(r =>
@@ -375,13 +382,13 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
       ${e.source ? `<p><strong>Source(s) :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
       <h4>Autres événements du même thème</h4>
       <ul>${other}</ul>
+       ${ficheDivider} 
       <div id="fiche-navigation">
-      <div class="fiche-divider"></div> 
-  <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
-    Précédent
+      <button ${index > 0 ? `onclick="window.renderFiche(window.eventData[${index - 1}], ${index - 1})"` : 'disabled'}>
+    Evénement précédent
   </button>
   <button ${index < window.eventData.length - 1 ? `onclick="window.renderFiche(window.eventData[${index + 1}], ${index + 1})"` : 'disabled'}>
-    Suivant
+    Evénement suivant
   </button>
 </div>
     `;
