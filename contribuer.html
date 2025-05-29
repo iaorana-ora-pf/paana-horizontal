@@ -359,14 +359,14 @@ const makeEventText = (e, idx, isContextual = false) => {
     document.querySelectorAll('.event').forEach(el => el.style.backgroundColor = '');
     const current = document.querySelectorAll('.event[data-id="' + index + '"]')[0];
     if (current) current.style.backgroundColor = "#fff8b0";
-
+const mots = (e.keywords || []).join(', ');
     const titre = document.getElementById("fiche-titre");
     const fiche = document.getElementById("fiche-content");
 
     // Titre bleu et gras
     titre.innerHTML = `<span style="color: var(--primary); font-weight: bold;">${e.title}</span>`;
 const ficheDivider = `<div id="fiche-divider"></div>`;
-    const mots = (e.keywords || []).map(k => '<a href="https://decs.pf/fiche?q=' + encodeURIComponent(k) + '" target="_blank">' + k + '</a>').join(', ');
+    
     const related = window.eventData.filter(x => x.themes === e.themes);
     const other = related.map(r =>
       '<li' + (r.title === e.title ? ' style="font-weight:bold;"' : '') + '><a href="#" onclick="window.renderFiche(window.eventData[' + window.eventData.indexOf(r) + '],' + window.eventData.indexOf(r) + ');return false;">' + r.title + '</a></li>'
@@ -377,7 +377,7 @@ const ficheDivider = `<div id="fiche-divider"></div>`;
      ${e.maincat ? `<p><strong>Catégorie principale<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> : </strong> ${e.maincat}</p>` : ''}
 ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FESP - définitions et exemples.pdf" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> :</strong> ${e.subcats.join(', ')} </p>` : ''}
       ${e.themes ? `<p><strong>Thème :</strong> <span title="Thème : ${e.themes}" style="display:inline-block; width:12px; height:12px; background-color:${stringToColor(e.themes)}; margin-right:6px; vertical-align:middle; border-radius:2px;"></span>${e.themes}</p>` : ''}
-      ${mots ? `<p><strong>Mots-clefs (issus du DeCS) :</strong> ${mots}</p>` : ''}
+      ${mots ? `<p><strong>Mots-clefs (issus du DeCS) <a href="https://decs.bvsalud.org/fr/" target="_blank" style="margin-left:0.5rem;"><i class="fas fa-circle-info"></i></a> :</strong> ${mots}</p>` : ''}
       ${e.description ? `<p><strong>Description :</strong> ${e.description}</p>` : ''}
       ${e.source ? `<p><strong>Source(s) :</strong> <a href="${e.source}" target="_blank">${e.source}</a></p>` : ''}
       <h4>Autres événements du même thème</h4>
