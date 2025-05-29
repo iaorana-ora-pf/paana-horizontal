@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 3 - Paana</title>
+<title>Contribuer 4 - Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -572,13 +572,13 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
         yearCol.appendChild(btn);
       });
       const yearButtons = document.querySelectorAll(".year-btn");
-      yearButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          yearButtons.forEach(b => b.classList.remove("active"));
-          btn.classList.add("active");
-          renderEvents(parseInt(btn.dataset.year));
-        });
-      });
+    yearButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    yearButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    applyFilters(); // ✅ Appelle applyFilters à la place
+  });
+});
       if (yearButtons.length) yearButtons[0].click();
 
       document.getElementById("scroll-up").addEventListener("click", () => scrollYear(-1));
