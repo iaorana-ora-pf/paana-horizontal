@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorer - Paana</title>
+  <title>Explorer 2- Paana</title>
   <link rel="stylesheet" href="header-footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
@@ -185,7 +185,13 @@
       <label for="year">Année</label>
       <input type="number" id="year" placeholder="ex. 2020" />
     </div>
-
+ <div class="filter-group">
+  <label for="cat-toggle" style="font-weight: normal;">Catégories</label>
+  <div class="dropdown" id="cat-dropdown">
+    <div id="cat-toggle" class="dropdown-toggle">Sélectionner des catégories ⌄</div>
+    <div class="dropdown-menu" id="cat-group"></div>
+  </div>
+</div>
     <div class="filter-group">
       <label for="theme">Thème</label>
       <select id="theme">
@@ -196,13 +202,7 @@
       </select>
     </div>
 
-   <div class="filter-group">
-  <label for="cat-toggle" style="font-weight: normal;">Catégories</label>
-  <div class="dropdown" id="cat-dropdown">
-    <div id="cat-toggle" class="dropdown-toggle">Sélectionner des catégories ⌄</div>
-    <div class="dropdown-menu" id="cat-group"></div>
-  </div>
-</div>
+  
 
     <div class="filter-group">
       <label for="keywords">Mot-clé</label>
@@ -245,6 +245,7 @@
       "Développement de la main-d’œuvre en santé publique",
       "Engagement communautaire et participation sociale",
       "Gestion des urgences de santé publique",
+      "Gouvernance en santé publique"
       "Planification, financement et gestion multisectorielle",
       "Prévention et détection précoce des maladies",
       "Promotion de la santé",
