@@ -1,41 +1,64 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Explorer - Paana</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>explorer 2- Paana</title>
+  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française">
   <link rel="stylesheet" href="header-footer.css" />
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
+     /* === BASE === */
     body {
+      margin: 0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #fdfdf0;
+      color: #050505;
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
-   
-    .filters {
-      /* style des filtres */
+    /* === MAIN CONTENT === */
+    main {
+      flex-grow: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 2rem 2rem;
+      background-color: #fdfdf0;
+      color: #050505;
     }
 
-    .layout {
-      flex: 1;
-      display: flex;
-      /* disposition principale */
+    main h2:first-of-type {
+      margin-top: 0.5rem;
     }
 
-    .timeline {
-      /* style timeline */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
     }
 
-    .fiche {
-      /* style fiche */
+    h2 {
+      color: #007b7f;
+      font-weight: bold;
+      margin-top: 2rem;
     }
-     .footer{
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      color: #050505;
+    }
+
+    main ul li {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+      color: #050505;
+    }
+
+        .footer{
   text-align: center;
   padding: 20px;
   width: 100%;
