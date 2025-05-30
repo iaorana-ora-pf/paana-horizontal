@@ -1,7 +1,6 @@
- body {
-      font-family: 'Segoe UI', sans-serif;
-    }
-
+body {
+  font-family: 'Segoe UI', sans-serif;
+}
 
 /* === HEADER GLOBAL === */
 header {
@@ -13,21 +12,23 @@ header {
   flex-wrap: wrap;
   color: #fdfdf0;
 }
-.footer{
+
+/* === FOOTER === */
+.footer {
   text-align: center !important;
   padding: 20px;
   width: 100%;
-  font-size: 0.85rem;      /* Police plus petite */
-  color: #666666;          /* Gris doux */
+  font-size: 0.85rem;
+  color: #666666;
 }
-.footer div {
-  text-align: inherit;
-}
-    .footer p {
+
+.footer p {
   margin: 0;
-  line-height: 1.6;}
-color: #666666; /* hérite du gris défini dans .footer */
+  line-height: 1.6;
   font-size: inherit;
+  color: inherit;
+}
+
 /* === LOGO & NOM === */
 .logo {
   color: #fdfdf0;
@@ -90,4 +91,4 @@ nav a:hover i {
     justify-content: flex-start;
     margin-top: 1rem;
   }
-
+}
