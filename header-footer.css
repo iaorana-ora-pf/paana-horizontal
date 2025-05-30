@@ -21,7 +21,7 @@ header {
     .footer p {
   margin: 0;
   line-height: 1.6;}
-color: inherit; /* hérite du gris défini dans .footer */
+color: #666666; /* hérite du gris défini dans .footer */
   font-size: inherit;
 /* === LOGO & NOM === */
 .logo {
