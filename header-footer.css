@@ -8,10 +8,12 @@ header {
   flex-wrap: wrap;
   color: #fdfdf0;
 }
-        .footer{
+.footer{
   text-align: center !important;
   padding: 20px;
   width: 100%;
+  font-size: 0.85rem;      /* Police plus petite */
+  color: #666666;          /* Gris doux */
 }
 .footer div {
   text-align: inherit;
@@ -19,6 +21,8 @@ header {
     .footer p {
   margin: 0;
   line-height: 1.6;}
+color: inherit; /* hérite du gris défini dans .footer */
+  font-size: inherit;
 /* === LOGO & NOM === */
 .logo {
   color: #fdfdf0;
