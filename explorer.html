@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorer 1 - Paana</title>
+  <title>Explorer 4 - Paana</title>
   <style>
     body {
       margin: 0;
@@ -14,10 +14,82 @@
       flex-direction: column;
       min-height: 100vh;
     }
-
-    header {
-      /* Personnalise selon le style souhaité */
+   header {
+      background-color: #007b7f;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+    header .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    .filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1rem;
+      background: #e6f7f8;
+      justify-content: center;
+    }
+    .filters input, .filters select {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    .layout {
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+      gap: 2rem;
+    }
+    .timeline {
+      flex: 2;
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    .event-card {
+      min-width: 200px;
+      background: white;
+      border: 2px solid #007b7f;
+      border-left: 10px solid #fee58c;
+      border-radius: 6px;
+      padding: 1rem;
+      cursor: pointer;
+    }
+    .event-card:hover {
+      background: #fff9d9;
+    }
+    .fiche {
+      flex: 1;
+      background: white;
+      border-left: 2px solid #007b7f;
+      padding: 1rem;
+      border-radius: 6px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .event-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+    .timeline::-webkit-scrollbar {
+      height: 10px;
+    }
+    .timeline::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 5px;
+    }
+   
 
     .footer {
       text-align: center;
@@ -54,7 +126,33 @@
     </nav>
   </header>
 
-  <!-- Ton contenu principal ici -->
+ <div class="filters">
+  <input type="number" id="year" placeholder="Année (ex. 2020)" />
+  <select id="theme">
+    <option value="">Thème</option>
+    <option>Gouvernance</option>
+    <option>Urgence</option>
+    <option>Promotion santé</option>
+  </select>
+  <select id="cat">
+    <option value="">Catégorie</option>
+    <option>Accès</option>
+    <option>Surveillance</option>
+  </select>
+  <input type="text" id="keywords" placeholder="Mot-clé (ex: dengue)" />
+</div>
+
+<div class="layout">
+  <div class="timeline" id="timeline">
+    <div class="event-card"><strong>Ex. 2020</strong><br/><span class="event-title">Événement test</span></div>
+    <div class="event-card"><strong>2023</strong><br/><span class="event-title">Plan régional santé</span></div>
+    <div class="event-card"><strong>2024</strong><br/><span class="event-title">Événement futur</span></div>
+  </div>
+  <div class="fiche" id="fiche">
+    <em>🔍 Cliquez sur un événement pour voir les détails.</em>
+  </div>
+</div>
+
 
   <footer class="footer">
     <p>
