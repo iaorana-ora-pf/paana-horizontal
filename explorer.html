@@ -3,236 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorer  - Paana</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'League Spartan', sans-serif;
-      background-color: #fdfdf0;
-      color: #050505;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-   header {
-      background-color: #007b7f;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header .title {
-      font-size: 1.4rem;
-      font-weight: bold;
-    }
-    header a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.1rem;
-    }
-    .filters {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      padding: 1rem;
-      background: #e6f7f8;
-      justify-content: center;
-    }
-    .filters input, .filters select {
-      padding: 0.5rem;
-      font-size: 1rem;
-    }
-    .layout {
-      display: flex;
-      flex-direction: row;
-      padding: 1rem;
-      gap: 2rem;
-    }
-    .timeline {
-      flex: 2;
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-    .event-card {
-      min-width: 200px;
-      background: white;
-      border: 2px solid #007b7f;
-      border-left: 10px solid #fee58c;
-      border-radius: 6px;
-      padding: 1rem;
-      cursor: pointer;
-    }
-    .event-card:hover {
-      background: #fff9d9;
-    }
-    .fiche {
-      flex: 1;
-      background: white;
-      border-left: 2px solid #007b7f;
-      padding: 1rem;
-      border-radius: 6px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-    .event-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-    .timeline::-webkit-scrollbar {
-      height: 10px;
-    }
-    .timeline::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 5px;
-    }
-   
-
-    .footer {
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-    }
-
-    .footer p {
-      margin: 0;
-      line-height: 1.6;
-    }
-  </style>
-
+  <title>Explorer 3- Paana</title>
   <link rel="stylesheet" href="header-footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-
-  <header>
-    <div class="logo">
-      <span class="brand">Paana</span>
-    
-      <div class="trait"></div>
-    </div>
-    <nav>
-      <a href="/a-propos">A PROPOS</a>
-      <a href="/explorer">EXPLORER</a>
-      <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
-      <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail">
-        <i class="fas fa-envelope fa-lg"></i>
-      </a>
-      <a href="/" title="Accueil">
-        <i class="fas fa-house"></i>
-      </a>
-    </nav>
-  </header>
-  
-<p style="text-align: center; padding: 1rem; font-size: 1.1rem;">
-  🔍 <em>Affinez votre exploration en sélectionnant une année, un thème, une catégorie ou un mot-clé pour retrouver facilement les événements marquants de la santé publique en Polynésie française.</em>
-</p>
-  
- <div class="filters">
-  <input type="number" id="year" placeholder="Année (ex. 2020)" />
-  
-<select id="cat" multiple size="6">
-  <option value="Accès aux produits et technologies de santé">Accès aux produits et technologies de santé</option>
-  <option value="Contexte">Contexte</option>
-  <option value="Développement de la main-d’œuvre en santé publique">Développement de la main-d’œuvre en santé publique</option>
-  <option value="Engagement communautaire et participation sociale">Engagement communautaire et participation sociale</option>
-  <option value="Gestion des urgences de santé publique">Gestion des urgences de santé publique</option>
-  <option value="Planification, financement et gestion multisectorielle">Planification, financement et gestion multisectorielle</option>
-  <option value="Prévention et détection précoce des maladies">Prévention et détection précoce des maladies</option>
-  <option value="Promotion de la santé">Promotion de la santé</option>
-  <option value="Protection de la santé">Protection de la santé</option>
-  <option value="Qualité et équité des services de santé">Qualité et équité des services de santé</option>
-  <option value="Recherche, évaluation et développement des connaissances">Recherche, évaluation et développement des connaissances</option>
-  <option value="Surveillance et suivi de la santé publique">Surveillance et suivi de la santé publique</option>
-</select>
-
-<select id="theme">
-  <option value="">Thème</option>
-  <option>Gouvernance</option>
-  <option>Urgence</option>
-  <option>Promotion santé</option>
-</select>
-   
-  <input type="text" id="keywords" placeholder="Mot-clé (ex: dengue)" />
-</div>
-
-<div class="layout">
-  <div class="timeline" id="timeline">
-    <div class="event-card"><strong>Ex. 2020</strong><br/><span class="event-title">Événement test</span></div>
-    <div class="event-card"><strong>2023</strong><br/><span class="event-title">Plan régional santé</span></div>
-    <div class="event-card"><strong>2024</strong><br/><span class="event-title">Événement futur</span></div>
-  </div>
-  <div class="fiche" id="fiche">
-    <em>🔍 Cliquez sur un événement pour voir les détails.</em>
-  </div>
-</div>
-
-
-  <footer class="footer">
-    <p>
-      © 2025 Emmanuelle RUPP-TERRIS.<br>
-      Tous droits réservés. Reproduction interdite sans autorisation.
-    </p>
-  </footer>
-<script>
-  const events = [
-    { year: 2020, title: "COVID-19 : confinement", theme: "Urgence", cat: "Surveillance et suivi de la santé publique", keywords: ["covid", "pandémie"] },
-    { year: 2023, title: "Plan régional santé", theme: "Gouvernance", cat: "Planification, financement et gestion multisectorielle", keywords: ["plan", "stratégie"] },
-    // ➕ Ajoute d'autres événements ici
-  ];
-
-  function render() {
-    const y = document.getElementById("year").value;
-    const t = document.getElementById("theme").value;
-    const catSelect = document.getElementById("cat");
-    const selectedCats = Array.from(catSelect.selectedOptions).map(o => o.value);
-    const k = document.getElementById("keywords").value.toLowerCase();
-
-    const timeline = document.getElementById("timeline");
-    timeline.innerHTML = "";
-
-    events.forEach(evt => {
-      if (y && evt.year != y) return;
-      if (t && evt.theme !== t) return;
-      if (selectedCats.length && !selectedCats.includes(evt.cat)) return;
-      if (k && !evt.keywords.join(" ").toLowerCase().includes(k)) return;
-
-      const div = document.createElement("div");
-      div.className = "event-card";
-      div.innerHTML = `<div><strong>${evt.year}</strong></div><div class="event-title">${evt.title}</div>`;
-      div.onclick = () => showFiche(evt);
-      timeline.appendChild(div);
-    });
-  }
-
-  function showFiche(evt) {
-    const f = document.getElementById("fiche");
-    f.innerHTML = `
-      <h3>${evt.title}</h3>
-      <p><strong>Année :</strong> ${evt.year}</p>
-      <p><strong>Thème :</strong> ${evt.theme}</p>
-      <p><strong>Catégorie :</strong> ${evt.cat}</p>
-      <p><strong>Mots-clés :</strong> ${evt.keywords.join(", ")}</p>
-    `;
-  }
-
-  ["year", "theme", "cat", "keywords"].forEach(id =>
-    document.getElementById(id).addEventListener("input", render)
-  );
-
-  render();
-</script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorer - Paana</title>
   <style>
     body {
       margin: 0;
@@ -251,11 +24,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    header .title {
-      font-size: 1.4rem;
-      font-weight: bold;
     }
 
     header a {
@@ -376,157 +144,152 @@
       line-height: 1.6;
     }
   </style>
-
-  <link rel="stylesheet" href="header-footer.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <span class="brand">Paana</span>
-    <div class="trait"></div>
-  </div>
-  <nav>
-    <a href="/a-propos">A PROPOS</a>
-    <a href="/explorer">EXPLORER</a>
-    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
-    <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail"><i class="fas fa-envelope fa-lg"></i></a>
-    <a href="/" title="Accueil"><i class="fas fa-house"></i></a>
-  </nav>
-</header>
+  <header>
+    <div class="logo">
+      <span class="brand">Paana</span>
+      <div class="trait"></div>
+    </div>
+    <nav>
+      <a href="/a-propos">A PROPOS</a>
+      <a href="/explorer">EXPLORER</a>
+      <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
+      <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail"><i class="fas fa-envelope fa-lg"></i></a>
+      <a href="/" title="Accueil"><i class="fas fa-house"></i></a>
+    </nav>
+  </header>
 
-<p style="text-align: center; padding: 1rem; font-size: 1.1rem;">
-  🔍 <em>Affinez votre exploration en sélectionnant une année, un thème, une catégorie ou un mot-clé pour retrouver facilement les événements marquants de la santé publique en Polynésie française.</em>
-</p>
+  <p style="text-align: center; padding: 1rem; font-size: 1.1rem;">
+    🔍 <em>Affinez votre exploration grâce aux filtres. Plusieurs choix sont possibles.</em>
+  </p>
 
-<div class="filters">
-  <div class="filter-group">
-    <label for="year">Année</label>
-    <input type="number" id="year" placeholder="ex. 2020" />
-  </div>
+  <div class="filters">
+    <div class="filter-group">
+      <label for="year">Année</label>
+      <input type="number" id="year" placeholder="ex. 2020" />
+    </div>
 
-  <div class="filter-group">
-    <label for="theme">Thème</label>
-    <select id="theme">
-      <option value="">Tous</option>
-      <option>Gouvernance</option>
-      <option>Urgence</option>
-      <option>Promotion santé</option>
-    </select>
-  </div>
+    <div class="filter-group">
+      <label for="theme">Thème</label>
+      <select id="theme">
+        <option value="">Tous</option>
+        <option>Gouvernance</option>
+        <option>Urgence</option>
+        <option>Promotion santé</option>
+      </select>
+    </div>
 
-  <div class="filter-group checkbox-grid">
-    <span>Catégories</span>
-    <div class="checkbox-list" id="cat-group">
-      <!-- Cases générées par JS -->
+    <div class="filter-group checkbox-grid">
+      <span>Catégories</span>
+      <div class="checkbox-list" id="cat-group"></div>
+    </div>
+
+    <div class="filter-group">
+      <label for="keywords">Mot-clé</label>
+      <input type="text" id="keywords" placeholder="ex. dengue" />
     </div>
   </div>
 
-  <div class="filter-group">
-    <label for="keywords">Mot-clé</label>
-    <input type="text" id="keywords" placeholder="ex. dengue" />
+  <div class="layout">
+    <div class="timeline" id="timeline"></div>
+    <div class="fiche" id="fiche">
+      <em>🔍 Cliquez sur un événement pour voir les détails.</em>
+    </div>
   </div>
-</div>
 
-<div class="layout">
-  <div class="timeline" id="timeline"></div>
-  <div class="fiche" id="fiche">
-    <em>🔍 Cliquez sur un événement pour voir les détails.</em>
-  </div>
-</div>
+  <footer class="footer">
+    <p>© 2025 Emmanuelle RUPP-TERRIS.<br>Tous droits réservés. Reproduction interdite sans autorisation.</p>
+  </footer>
 
-<footer class="footer">
-  <p>© 2025 Emmanuelle RUPP-TERRIS.<br>Tous droits réservés. Reproduction interdite sans autorisation.</p>
-</footer>
+  <script>
+    const events = [
+      {
+        year: 2020,
+        title: "COVID-19 : confinement",
+        theme: "Urgence",
+        cat: "Surveillance et suivi de la santé publique",
+        keywords: ["covid", "pandémie"]
+      },
+      {
+        year: 2023,
+        title: "Plan régional santé",
+        theme: "Gouvernance",
+        cat: "Planification, financement et gestion multisectorielle",
+        keywords: ["plan", "stratégie"]
+      }
+    ];
 
-<script>
-  const events = [
-    {
-      year: 2020,
-      title: "COVID-19 : confinement",
-      theme: "Urgence",
-      cat: "Surveillance et suivi de la santé publique",
-      keywords: ["covid", "pandémie"]
-    },
-    {
-      year: 2023,
-      title: "Plan régional santé",
-      theme: "Gouvernance",
-      cat: "Planification, financement et gestion multisectorielle",
-      keywords: ["plan", "stratégie"]
+    const categories = [
+      "Accès aux produits et technologies de santé",
+      "Contexte",
+      "Développement de la main-d’œuvre en santé publique",
+      "Engagement communautaire et participation sociale",
+      "Gestion des urgences de santé publique",
+      "Planification, financement et gestion multisectorielle",
+      "Prévention et détection précoce des maladies",
+      "Promotion de la santé",
+      "Protection de la santé",
+      "Qualité et équité des services de santé",
+      "Recherche, évaluation et développement des connaissances",
+      "Surveillance et suivi de la santé publique"
+    ];
+
+    function generateCategoryCheckboxes() {
+      const container = document.getElementById("cat-group");
+      categories.forEach(cat => {
+        const label = document.createElement("label");
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = cat;
+        input.className = "cat-filter";
+        label.appendChild(input);
+        label.append(` ${cat}`);
+        container.appendChild(label);
+      });
     }
-  ];
 
-  const categories = [
-    "Accès aux produits et technologies de santé",
-    "Contexte",
-    "Développement de la main-d’œuvre en santé publique",
-    "Engagement communautaire et participation sociale",
-    "Gestion des urgences de santé publique",
-    "Planification, financement et gestion multisectorielle",
-    "Prévention et détection précoce des maladies",
-    "Promotion de la santé",
-    "Protection de la santé",
-    "Qualité et équité des services de santé",
-    "Recherche, évaluation et développement des connaissances",
-    "Surveillance et suivi de la santé publique"
-  ];
+    function render() {
+      const y = document.getElementById("year").value;
+      const t = document.getElementById("theme").value;
+      const selectedCats = Array.from(document.querySelectorAll(".cat-filter:checked")).map(cb => cb.value);
+      const k = document.getElementById("keywords").value.toLowerCase();
 
-  function generateCategoryCheckboxes() {
-    const container = document.getElementById("cat-group");
-    categories.forEach(cat => {
-      const label = document.createElement("label");
-      const input = document.createElement("input");
-      input.type = "checkbox";
-      input.value = cat;
-      input.className = "cat-filter";
-      label.appendChild(input);
-      label.append(` ${cat}`);
-      container.appendChild(label);
-    });
-  }
+      const timeline = document.getElementById("timeline");
+      timeline.innerHTML = "";
 
-  function render() {
-    const y = document.getElementById("year").value;
-    const t = document.getElementById("theme").value;
-    const selectedCats = Array.from(document.querySelectorAll(".cat-filter:checked")).map(cb => cb.value);
-    const k = document.getElementById("keywords").value.toLowerCase();
+      events.forEach(evt => {
+        if (y && evt.year != y) return;
+        if (t && evt.theme !== t) return;
+        if (selectedCats.length && !selectedCats.includes(evt.cat)) return;
+        if (k && !evt.keywords.join(" ").toLowerCase().includes(k)) return;
 
-    const timeline = document.getElementById("timeline");
-    timeline.innerHTML = "";
+        const div = document.createElement("div");
+        div.className = "event-card";
+        div.innerHTML = `<div><strong>${evt.year}</strong></div><div class="event-title">${evt.title}</div>`;
+        div.onclick = () => showFiche(evt);
+        timeline.appendChild(div);
+      });
+    }
 
-    events.forEach(evt => {
-      if (y && evt.year != y) return;
-      if (t && evt.theme !== t) return;
-      if (selectedCats.length && !selectedCats.includes(evt.cat)) return;
-      if (k && !evt.keywords.join(" ").toLowerCase().includes(k)) return;
+    function showFiche(evt) {
+      const f = document.getElementById("fiche");
+      f.innerHTML = `
+        <h3>${evt.title}</h3>
+        <p><strong>Année :</strong> ${evt.year}</p>
+        <p><strong>Thème :</strong> ${evt.theme}</p>
+        <p><strong>Catégorie :</strong> ${evt.cat}</p>
+        <p><strong>Mots-clés :</strong> ${evt.keywords.join(", ")}</p>
+      `;
+    }
 
-      const div = document.createElement("div");
-      div.className = "event-card";
-      div.innerHTML = `<div><strong>${evt.year}</strong></div><div class="event-title">${evt.title}</div>`;
-      div.onclick = () => showFiche(evt);
-      timeline.appendChild(div);
-    });
-  }
-
-  function showFiche(evt) {
-    const f = document.getElementById("fiche");
-    f.innerHTML = `
-      <h3>${evt.title}</h3>
-      <p><strong>Année :</strong> ${evt.year}</p>
-      <p><strong>Thème :</strong> ${evt.theme}</p>
-      <p><strong>Catégorie :</strong> ${evt.cat}</p>
-      <p><strong>Mots-clés :</strong> ${evt.keywords.join(", ")}</p>
-    `;
-  }
-
-  generateCategoryCheckboxes();
-  ["year", "theme", "keywords"].forEach(id =>
-    document.getElementById(id).addEventListener("input", render)
-  );
-  document.getElementById("cat-group").addEventListener("input", render);
-  render();
-</script>
+    generateCategoryCheckboxes();
+    ["year", "theme", "keywords"].forEach(id =>
+      document.getElementById(id).addEventListener("input", render)
+    );
+    document.getElementById("cat-group").addEventListener("input", render);
+    render();
+  </script>
 </body>
 </html>
