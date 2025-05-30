@@ -3,314 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorer 2- Paana</title>
+  <title>Explorer - Paana</title>
+  <meta name="description" content="Paana - Base de connaissances sur la santé publique en Polynésie française">
   <link rel="stylesheet" href="header-footer.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: 'League Spartan', sans-serif;
-      background-color: #fdfdf0;
-      color: #050505;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+   
+  </style>
 
-        .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      background: #e6f7f8;
-      padding: 2rem 1rem;
-    }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    .filter-group {
-      display: flex;
-      flex-direction: column;
-      min-width: 200px;
-      font-size: 0.95rem;
-    }
-
-    .filter-group label, .filter-group span {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
-    .filter-group input, .filter-group select {
-      padding: 0.6rem;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    .checkbox-grid .checkbox-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.3rem;
-      max-height: 180px;
-      overflow-y: auto;
-      padding: 0.3rem;
-      background: #fff;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .checkbox-list label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .layout {
-      display: flex;
-      flex-direction: row;
-      padding: 1rem;
-      gap: 2rem;
-    }
-
-    .timeline {
-      flex: 2;
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .event-card {
-      min-width: 200px;
-      background: white;
-      border: 2px solid #007b7f;
-      border-left: 10px solid #fee58c;
-      border-radius: 6px;
-      padding: 1rem;
-      cursor: pointer;
-    }
-
-    .event-card:hover {
-      background: #fff9d9;
-    }
-
-    .fiche {
-      flex: 1;
-      background: white;
-      border-left: 2px solid #007b7f;
-      padding: 1rem;
-      border-radius: 6px;
-      max-height: 80vh;
-      overflow-y: auto;
-    }
-
-    .event-title {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-
-    .timeline::-webkit-scrollbar {
-      height: 10px;
-    }
-
-    .timeline::-webkit-scrollbar-thumb {
-      background: #ccc;
-      border-radius: 5px;
-    }
-.dropdown {
-  position: relative;
-  user-select: none;
-}
-
-.dropdown-toggle {
-  padding: 0.6rem;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  max-height: 200px;
-  overflow-y: auto;
-  padding: 0.5rem;
-  display: none;
-  z-index: 1000;
-}
-
-.dropdown-menu label {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.2rem 0;
-  font-size: 0.95rem;
-  font-weight: normal; /* <- pas en gras */
-}
-
-.dropdown.open .dropdown-menu {
-  display: block;
-}
-    </style>
 </head>
 <body>
 
   <header>
-    <div class="logo">
-      <span class="brand">Paana</span>
-      <div class="trait"></div>
-    </div>
-    <nav>
-      <a href="/a-propos">A PROPOS</a>
-      <a href="/explorer">EXPLORER</a>
-      <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
-      <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail"><i class="fas fa-envelope fa-lg"></i></a>
-      <a href="/" title="Accueil"><i class="fas fa-house"></i></a>
-    </nav>
-  </header>
-
-  <p style="text-align: center; padding: 1rem; font-size: 1.1rem;">
-    🔍 <em>Affinez votre exploration grâce aux filtres. Plusieurs choix sont possibles.</em>
-  </p>
-
-  <div class="filters">
-    <div class="filter-group">
-      <label for="year">Année</label>
-      <input type="number" id="year" placeholder="ex. 2020" />
-    </div>
- <div class="filter-group">
-  <label for="cat-toggle" style="font-weight: normal;">Catégories</label>
-  <div class="dropdown" id="cat-dropdown">
-    <div id="cat-toggle" class="dropdown-toggle">Sélectionner des catégories ⌄</div>
-    <div class="dropdown-menu" id="cat-group"></div>
+  <div class="logo">
+  <span class="brand">Paana</span>
+  <div class="trait"></div>
   </div>
-</div>
-    <div class="filter-group">
-      <label for="theme">Thème</label>
-      <select id="theme">
-        <option value="">Tous</option>
-        <option>Gouvernance</option>
-        <option>Urgence</option>
-        <option>Promotion santé</option>
-      </select>
-    </div>
+  <nav>
+    <a href="a-propos.html">A PROPOS</a>
+    <a href="explorer.html">EXPLORER</a>
+    <a href="https://forms.gle/PR8ZHvSXxLNYETtx9" target="_blank">SOUMETTRE</a>
+    <a href="mailto:frise.sante.pf@gmail.com" title="Contacter par mail">
+      <i class="fas fa-envelope fa-lg"></i>
+    <a href="index.html" title="Accueil">
+  <i class="fas fa-house"></i> 
+    </a>
+  </nav>
+</header>
 
-  
-
-    <div class="filter-group">
-      <label for="keywords">Mot-clé</label>
-      <input type="text" id="keywords" placeholder="ex. dengue" />
-    </div>
-  </div>
-
-  <div class="layout">
-    <div class="timeline" id="timeline"></div>
-    <div class="fiche" id="fiche">
-      <em>🔍 Cliquez sur un événement pour voir les détails.</em>
-    </div>
-  </div>
-
-  <footer class="footer">
+  <main>
+ 
+  </main>
+ <footer class="footer">
     <p>© 2025 Emmanuelle RUPP-TERRIS.<br>Tous droits réservés. Reproduction interdite sans autorisation.</p>
   </footer>
-
-  <script>
-    const events = [
-      {
-        year: 2020,
-        title: "COVID-19 : confinement",
-        theme: "Urgence",
-        cat: "Surveillance et suivi de la santé publique",
-        keywords: ["covid", "pandémie"]
-      },
-      {
-        year: 2023,
-        title: "Plan régional santé",
-        theme: "Gouvernance",
-        cat: "Planification, financement et gestion multisectorielle",
-        keywords: ["plan", "stratégie"]
-      }
-    ];
-
-    const categories = [
-      "Accès aux produits et technologies de santé",
-      "Contexte",
-      "Développement de la main-d’œuvre en santé publique",
-      "Engagement communautaire et participation sociale",
-      "Gestion des urgences de santé publique",
-      "Gouvernance en santé publique"
-      "Planification, financement et gestion multisectorielle",
-      "Prévention et détection précoce des maladies",
-      "Promotion de la santé",
-      "Protection de la santé",
-      "Qualité et équité des services de santé",
-      "Recherche, évaluation et développement des connaissances",
-      "Surveillance et suivi de la santé publique"
-    ];
-
-    function generateCategoryCheckboxes() {
-      const container = document.getElementById("cat-group");
-      categories.forEach(cat => {
-        const label = document.createElement("label");
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.value = cat;
-        input.className = "cat-filter";
-        label.appendChild(input);
-        label.append(` ${cat}`);
-        container.appendChild(label);
-      });
-    }
-document.getElementById("cat-toggle").addEventListener("click", function (e) {
-  document.getElementById("cat-dropdown").classList.toggle("open");
-});
-    function render() {
-      const y = document.getElementById("year").value;
-      const t = document.getElementById("theme").value;
-      const selectedCats = Array.from(document.querySelectorAll(".cat-filter:checked")).map(cb => cb.value);
-      const k = document.getElementById("keywords").value.toLowerCase();
-
-      const timeline = document.getElementById("timeline");
-      timeline.innerHTML = "";
-
-      events.forEach(evt => {
-        if (y && evt.year != y) return;
-        if (t && evt.theme !== t) return;
-        if (selectedCats.length && !selectedCats.includes(evt.cat)) return;
-        if (k && !evt.keywords.join(" ").toLowerCase().includes(k)) return;
-
-        const div = document.createElement("div");
-        div.className = "event-card";
-        div.innerHTML = `<div><strong>${evt.year}</strong></div><div class="event-title">${evt.title}</div>`;
-        div.onclick = () => showFiche(evt);
-        timeline.appendChild(div);
-      });
-    }
-
-    function showFiche(evt) {
-      const f = document.getElementById("fiche");
-      f.innerHTML = `
-        <h3>${evt.title}</h3>
-        <p><strong>Année :</strong> ${evt.year}</p>
-        <p><strong>Thème :</strong> ${evt.theme}</p>
-        <p><strong>Catégorie :</strong> ${evt.cat}</p>
-        <p><strong>Mots-clés :</strong> ${evt.keywords.join(", ")}</p>
-      `;
-    }
-
-    generateCategoryCheckboxes();
-    ["year", "theme", "keywords"].forEach(id =>
-      document.getElementById(id).addEventListener("input", render)
-    );
-    document.getElementById("cat-group").addEventListener("input", render);
-    render();
-  </script>
 </body>
 </html>
