@@ -41,13 +41,6 @@ color: #666666; /* hérite du gris défini dans .footer */
   margin: 10px 0;
 }
 
-.logo .signature {
-  font-size: 0.9rem;
-  font-weight: normal;
-  color: #fdfdf0;
-  margin-top: 0.2rem;
-}
-
 /* === NAVIGATION === */
 nav {
   display: flex;
