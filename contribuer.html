@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Contribuer 1- Paana</title>
+<title>Contribuer 2- Paana</title>
 <meta content="Paana - Base de connaissances sur la santé publique en Polynésie française" name="description"/>
 <link href="header-footer.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
@@ -246,7 +246,18 @@
     <option value="Surveillance et suivi de la santé publique">Surveillance et suivi de la santé publique</option>
     <option value="Gestion des urgences de santé publique">Gestion des urgences de santé publique</option>
   </select>
+
+           <div style="margin-top: 1rem;">
+    <label><strong>Filtrer par thème(s) :</strong></label>
+    <div id="theme-dropdown" style="display:inline-block; position:relative; margin-left:1rem;">
+      <button type="button" onclick="toggleThemeDropdown()" style="cursor:pointer;">Sélectionner des thèmes ⌄</button>
+      <div id="theme-options" style="display:none; position:absolute; top:100%; left:0; background:#fff; border:1px solid #ccc; max-height:200px; overflow-y:auto; padding:0.5rem; z-index:10;">
+        <!-- les thèmes seront générés ici -->
+      </div>
+    </div>
+  </div>
 </div>
+
 <div class="timeline-layout">
 <div class="years-container">
 <button id="scroll-up">↑</button>
@@ -331,7 +342,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const top = document.getElementById("bloc-superieur");
     const center = document.getElementById("events-central-list");
     const selectedMaincat = document.getElementById("filter-maincat").value;
-    const bottom = document.getElementById("bloc-inferieur");
+    const checkedThemes = [...document.querySelectorAll(".theme-checkbox:checked")].map(cb => cb.value);
+      const bottom = document.getElementById("bloc-inferieur");
     top.innerHTML = center.innerHTML = bottom.innerHTML = "";
 const makeEventText = (e, idx, isContextual = false) => {
   const icon = categoryIcons[e.maincat] ? `<i class="fas ${categoryIcons[e.maincat]}" title="${e.maincat}" style="margin-right:0.4rem;"></i>` : "";
@@ -351,10 +363,11 @@ const makeEventText = (e, idx, isContextual = false) => {
 };
 
   window.eventData.forEach((e, idx) => {
-  if (
-    e.start <= year && e.end >= year &&
-    (!selectedMaincat || e.maincat === selectedMaincat)
-  ) {
+ if (
+  e.start <= year && e.end >= year &&
+  (!selectedMaincat || e.maincat === selectedMaincat) &&
+  (checkedThemes.length === 0 || checkedThemes.includes(e.themes))
+)  {
     center.insertAdjacentHTML("beforeend", makeEventText(e, idx));
   }
 });
@@ -441,7 +454,24 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
     .then(d => {
       d.sort((a, b) => a.start - b.start);
     window.eventData = d;
-      const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
+     // Génération dynamique des thèmes
+const themeOptions = document.getElementById("theme-options");
+const uniqueThemes = [...new Set(d.map(e => e.themes).filter(Boolean))].sort();
+
+uniqueThemes.forEach(theme => {
+  const id = "theme-" + theme.replace(/\s+/g, "-");
+  const div = document.createElement("div");
+  div.innerHTML = `<label><input type="checkbox" class="theme-checkbox" value="${theme}"> ${theme}</label>`;
+  themeOptions.appendChild(div);
+});
+
+document.querySelectorAll(".theme-checkbox").forEach(cb => {
+  cb.addEventListener("change", () => {
+    const active = document.querySelector(".year-btn.active");
+    if (active) renderEvents(parseInt(active.dataset.year));
+  });
+});
+        const years = [...new Set(d.flatMap(e => Array.from({length: e.end - e.start + 1}, (_, i) => e.start + i)))].sort((a, b) => a - b);
       years.forEach(year => {
         const btn = document.createElement("button");
         btn.className = "year-btn";
@@ -483,6 +513,10 @@ ${(e.subcats || []).length ? `<p><strong>Catégories secondaires<a href="Les FES
   const active = document.querySelector(".year-btn.active");
   if (active) renderEvents(parseInt(active.dataset.year));
 });  
+    function toggleThemeDropdown() {
+  const dropdown = document.getElementById("theme-options");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
 </script>
 </body>
 </html>
