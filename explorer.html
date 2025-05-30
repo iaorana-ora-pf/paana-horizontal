@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Explorer 4 - Paana</title>
+  <title>Explorer 6 - Paana</title>
   <style>
     body {
       margin: 0;
@@ -111,6 +111,7 @@
   <header>
     <div class="logo">
       <span class="brand">Paana</span>
+    
       <div class="trait"></div>
     </div>
     <nav>
@@ -125,20 +126,36 @@
       </a>
     </nav>
   </header>
-
+  
+<p style="text-align: center; padding: 1rem; font-size: 1.1rem;">
+  🔍 <em>Affinez votre exploration en sélectionnant une année, un thème, une catégorie ou un mot-clé pour retrouver facilement les événements marquants de la santé publique en Polynésie française.</em>
+</p>
+  
  <div class="filters">
   <input type="number" id="year" placeholder="Année (ex. 2020)" />
-  <select id="theme">
-    <option value="">Thème</option>
-    <option>Gouvernance</option>
-    <option>Urgence</option>
-    <option>Promotion santé</option>
-  </select>
-  <select id="cat">
-    <option value="">Catégorie</option>
-    <option>Accès</option>
-    <option>Surveillance</option>
-  </select>
+  
+<select id="cat" multiple size="6">
+  <option value="Accès aux produits et technologies de santé">Accès aux produits et technologies de santé</option>
+  <option value="Contexte">Contexte</option>
+  <option value="Développement de la main-d’œuvre en santé publique">Développement de la main-d’œuvre en santé publique</option>
+  <option value="Engagement communautaire et participation sociale">Engagement communautaire et participation sociale</option>
+  <option value="Gestion des urgences de santé publique">Gestion des urgences de santé publique</option>
+  <option value="Planification, financement et gestion multisectorielle">Planification, financement et gestion multisectorielle</option>
+  <option value="Prévention et détection précoce des maladies">Prévention et détection précoce des maladies</option>
+  <option value="Promotion de la santé">Promotion de la santé</option>
+  <option value="Protection de la santé">Protection de la santé</option>
+  <option value="Qualité et équité des services de santé">Qualité et équité des services de santé</option>
+  <option value="Recherche, évaluation et développement des connaissances">Recherche, évaluation et développement des connaissances</option>
+  <option value="Surveillance et suivi de la santé publique">Surveillance et suivi de la santé publique</option>
+</select>
+
+<select id="theme">
+  <option value="">Thème</option>
+  <option>Gouvernance</option>
+  <option>Urgence</option>
+  <option>Promotion santé</option>
+</select>
+   
   <input type="text" id="keywords" placeholder="Mot-clé (ex: dengue)" />
 </div>
 
@@ -160,6 +177,53 @@
       Tous droits réservés. Reproduction interdite sans autorisation.
     </p>
   </footer>
+<script>
+  const events = [
+    { year: 2020, title: "COVID-19 : confinement", theme: "Urgence", cat: "Surveillance et suivi de la santé publique", keywords: ["covid", "pandémie"] },
+    { year: 2023, title: "Plan régional santé", theme: "Gouvernance", cat: "Planification, financement et gestion multisectorielle", keywords: ["plan", "stratégie"] },
+    // ➕ Ajoute d'autres événements ici
+  ];
 
+  function render() {
+    const y = document.getElementById("year").value;
+    const t = document.getElementById("theme").value;
+    const catSelect = document.getElementById("cat");
+    const selectedCats = Array.from(catSelect.selectedOptions).map(o => o.value);
+    const k = document.getElementById("keywords").value.toLowerCase();
+
+    const timeline = document.getElementById("timeline");
+    timeline.innerHTML = "";
+
+    events.forEach(evt => {
+      if (y && evt.year != y) return;
+      if (t && evt.theme !== t) return;
+      if (selectedCats.length && !selectedCats.includes(evt.cat)) return;
+      if (k && !evt.keywords.join(" ").toLowerCase().includes(k)) return;
+
+      const div = document.createElement("div");
+      div.className = "event-card";
+      div.innerHTML = `<div><strong>${evt.year}</strong></div><div class="event-title">${evt.title}</div>`;
+      div.onclick = () => showFiche(evt);
+      timeline.appendChild(div);
+    });
+  }
+
+  function showFiche(evt) {
+    const f = document.getElementById("fiche");
+    f.innerHTML = `
+      <h3>${evt.title}</h3>
+      <p><strong>Année :</strong> ${evt.year}</p>
+      <p><strong>Thème :</strong> ${evt.theme}</p>
+      <p><strong>Catégorie :</strong> ${evt.cat}</p>
+      <p><strong>Mots-clés :</strong> ${evt.keywords.join(", ")}</p>
+    `;
+  }
+
+  ["year", "theme", "cat", "keywords"].forEach(id =>
+    document.getElementById(id).addEventListener("input", render)
+  );
+
+  render();
+</script>
 </body>
 </html>
