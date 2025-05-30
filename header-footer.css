@@ -1,3 +1,8 @@
+ body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+
 /* === HEADER GLOBAL === */
 header {
   background-color: #007b7f;
