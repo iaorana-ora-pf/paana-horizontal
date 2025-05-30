@@ -8,7 +8,17 @@ header {
   flex-wrap: wrap;
   color: #fdfdf0;
 }
-
+        .footer{
+  text-align: center !important;
+  padding: 20px;
+  width: 100%;
+}
+.footer div {
+  text-align: inherit;
+}
+    .footer p {
+  margin: 0;
+  line-height: 1.6;}
 /* === LOGO & NOM === */
 .logo {
   color: #fdfdf0;
@@ -78,11 +88,4 @@ nav a:hover i {
     justify-content: flex-start;
     margin-top: 1rem;
   }
-        .footer{
-  text-align: center;
-  padding: 20px;
-  width: 100%;
-}
-    .footer p {
-  margin: 0;
-  line-height: 1.6;}
+
